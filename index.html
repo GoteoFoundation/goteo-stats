@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Goteo Statistics</title>
+
+    <!-- Bootstrap -->
+    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/outliers.goteo.css"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+<div class="container">
+      
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active">
+  <a href="#money" role="tab" data-toggle="tab">
+    <icon class="fa fa-money"></icon> Money </a>
+  </li>
+  <li><a href="#projects" role="tab" data-toggle="tab">
+    <i class="fa fa-projects"></i> Projects </a>
+  </li>
+  <li>
+    <a href="#community" role="tab" data-toggle="tab">
+      <i class="fa fa-community"></i> Community_</a>
+    </li>
+    <li>
+    <a href="#rewards" role="tab" data-toggle="tab">
+      <i class="fa fa-rewards"></i> Rewards_</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  
+<div class="tab-content">
+
+<div class="tab-pane fade active in" id="money">
+
+  
+</div>
+
+<div class="tab-pane fade" id="projects">
+
+</div>
+
+<div class="tab-pane fade" id="community">
+
+</div>
+
+<div class="tab-pane fade" id="rewards">
+
+</div>
+</div>
+</div>
+    <!--<div id="goteoStats"></div>-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    <script type="text/javascript" src="js/goteoController.js"></script>
+    <script type="text/javascript" src="js/viz.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/piechart.js"></script>
+    <script type="text/javascript" src="js/barchart.js"></script>
+    <script type="text/javascript" src="js/rankchart.js"></script>
+    <script type="text/javascript">
+
+        //queue().defer(d3.json, "conf/chartsTemplate.json")
+        queue().defer(d3.json, "conf/multiChartsTemplate.json")
+            .await(ready);
+
+        function ready(error,chartsTemplate){
+
+            var goteoObj = outliers.controller.Goteo({
+                'idName':"money",
+                'baseJUrl':"data/",
+                'textsFile':"texts.json",
+                'year': "all",
+                'chartsTemplate': chartsTemplate['money'],
+                'category': 'all'
+            });
+            var goteoObj2 = outliers.controller.Goteo({
+                'idName':"projects",
+                'baseJUrl':"data/",
+                'textsFile':"texts.json",
+                'year': "all",
+                'chartsTemplate': chartsTemplate['projects'],
+                'category': 'all'
+            });
+            var goteoObj3 = outliers.controller.Goteo({
+                'idName':"community",
+                'baseJUrl':"data/",
+                'textsFile':"texts.json",
+                'year': "all",
+                'chartsTemplate': chartsTemplate['community'],
+                'category': 'all'
+            });
+            var goteoObj4 = outliers.controller.Goteo({
+                'idName':"rewards",
+                'baseJUrl':"data/",
+                'textsFile':"texts.json",
+                'year': "all",
+                'chartsTemplate': chartsTemplate['rewards'],
+                'category': 'all'
+            });
+
+            goteoObj.start();
+            goteoObj2.start();
+            goteoObj3.start();
+            goteoObj4.start();
+            //$("#moneytab").click(function(d){goteoObj.start();});
+        }
+    </script>
+  </body>
+</html>

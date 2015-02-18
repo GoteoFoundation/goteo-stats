@@ -1,0 +1,44 @@
+[
+    {
+        "id": "recaudacion",
+        "title": "Dinero Recaudado",
+        "footer": "recaudados",
+        "dataField": "v1",
+        "type": "pie"
+    },
+    {
+        "id": "retornos",
+        "dataField": "v2",
+        "title": "Tipo de Retornos Colectivos",
+        "footer": "",
+        "type": "bar"
+    },
+    {
+        "id": "licencias",
+        "title": "Licencias más utilizadas",
+        "footer": "",
+        "dataField": "v3",
+        "type": "pie"
+    },
+    {
+        "id": "financiacion_media",
+        "dataField": "v4",
+        "title": "Media de financiación",
+        "footer": "",
+        "type": "bar"
+    },
+    {
+        "id": "topdonantes",
+        "dataField": "vd1",
+        "title": "Top Donantes",
+        "footer": "",
+        "type": "rank"
+    },
+    {
+        "id": "topdonantes2",
+        "dataField": "vd2",
+        "title": "Top Donantes Alt",
+        "footer": "",
+        "type": "rank"
+    }
+]
