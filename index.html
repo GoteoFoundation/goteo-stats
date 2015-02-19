@@ -61,62 +61,86 @@
             .await(ready);
 
         function ready(error,chartsTemplate){
-            var goteoObj = outliers.controller.Goteo({
-                'idName':"money",
-                'baseJUrl':"data/",
-                'textsFile':"texts.json",
-                'year': "all",
-                'chartsTemplate': chartsTemplate['money'],
-                'baseUrl': 'http://api.goteo.org/v1/reports/',
-                'endpoint': 'money/',
-                'category': 'all'
+            // Retrieve Goteo categories.
+            d3.json("http://api.goteo.org/v1/categories/")
+              .header("Authorization", "Basic " + btoa('goteo:goteo'))
+              .get(function (error, categories){
+                var selectors = [
+                    {
+                        name: "year",
+                        title: "Año: ",
+                        values: ["all", 2011, 2012, 2013, 2014]
+                    },
+                    {
+                        name: "category",
+                        title: "Categoría: ",
+                        values: []
+                    }
+                ];
+                categories.items.forEach(function (d) {
+                    selectors[1].values.push({id: d.id, name: d.name});
+                });
+                var goteoObj = outliers.controller.Goteo({
+                    'idName':"money",
+                    'baseJUrl':"data/",
+                    'textsFile':"texts.json",
+                    'year': "all",
+                    'chartsTemplate': chartsTemplate['money'],
+                    'selectorsTemplate': selectors,
+                    'baseUrl': 'http://api.goteo.org/v1/reports/',
+                    'endpoint': 'money/',
+                    'category': 'all'
+                });
+                var goteoObj2 = outliers.controller.Goteo({
+                    'idName':"projects",
+                    'baseJUrl':"data/",
+                    'textsFile':"texts.json",
+                    'year': "all",
+                    'chartsTemplate': chartsTemplate['projects'],
+                    'selectorsTemplate': selectors,
+                    'baseUrl': 'http://api.goteo.org/v1/reports/',
+                    'endpoint': 'projects/',
+                    'category': 'all'
+                });
+                var goteoObj3 = outliers.controller.Goteo({
+                    'idName':"community",
+                    'baseJUrl':"data/",
+                    'textsFile':"texts.json",
+                    'year': "all",
+                    'chartsTemplate': chartsTemplate['community'],
+                    'selectorsTemplate': selectors,
+                    'baseUrl': 'http://api.goteo.org/v1/reports/',
+                    'endpoint': 'community/',
+                    'category': 'all'
+                });
+                var goteoObj4 = outliers.controller.Goteo({
+                    'idName':"rewards",
+                    'baseJUrl':"data/",
+                    'textsFile':"texts.json",
+                    'year': "all",
+                    'chartsTemplate': chartsTemplate['rewards'],
+                    'selectorsTemplate': selectors,
+                    'baseUrl': 'http://api.goteo.org/v1/reports/',
+                    'endpoint': 'rewards/',
+                    'category': 'all'
+              });
+                goteoObj.start();
+                /*
+                 * Handles problems with text bounding box due to not being displayed the container DIV.
+                 */
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    var selectedTab = $(e.target).attr("href");
+                    if (selectedTab === "#projects") {
+                        goteoObj2.start();
+                    } else if (selectedTab === "#community") {
+                        goteoObj3.start();
+                    } else if (selectedTab === "#rewards") {
+                        goteoObj4.start();
+                    } else if (selectedTab === "#money") {
+                        goteoObj.start();
+                    }
+                });
             });
-            var goteoObj2 = outliers.controller.Goteo({
-                'idName':"projects",
-                'baseJUrl':"data/",
-                'textsFile':"texts.json",
-                'year': "all",
-                'chartsTemplate': chartsTemplate['projects'],
-                'baseUrl': 'http://api.goteo.org/v1/reports/',
-                'endpoint': 'projects/',
-                'category': 'all'
-            });
-            var goteoObj3 = outliers.controller.Goteo({
-                'idName':"community",
-                'baseJUrl':"data/",
-                'textsFile':"texts.json",
-                'year': "all",
-                'chartsTemplate': chartsTemplate['community'],
-                'baseUrl': 'http://api.goteo.org/v1/reports/',
-                'endpoint': 'community/',
-                'category': 'all'
-            });
-            var goteoObj4 = outliers.controller.Goteo({
-                'idName':"rewards",
-                'baseJUrl':"data/",
-                'textsFile':"texts.json",
-                'year': "all",
-                'chartsTemplate': chartsTemplate['rewards'],
-                'baseUrl': 'http://api.goteo.org/v1/reports/',
-                'endpoint': 'rewards/',
-                'category': 'all'
-            });
-            goteoObj.start();
-            /*
-            * Handles problems with text bounding box due to not being displayed the container DIV.
-            */
-            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                var selectedTab = $(e.target).attr("href");
-                if (selectedTab === "#projects") {
-                    goteoObj2.start();
-                } else if (selectedTab === "#community") {
-                    goteoObj3.start();
-                } else if (selectedTab === "#rewards") {
-                    goteoObj4.start();
-                } else if (selectedTab === "#money") {
-                    goteoObj.start();
-                }
-            })
         };
     </script>
   </body>
