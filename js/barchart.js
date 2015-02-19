@@ -30,6 +30,7 @@ outliers.viz.BarChart = function() {
   * @param {String} textField: name of the field where the text to be displayed on the label is.
   */
   bar.render = function  (data, valueField, idField, textField) {
+    console.log("RENDER PARA BAR ", data);
     function rightRoundedRect(x, y, width, height) {
       var radius = Math.abs(height * 0.33);
       return "M" + x + "," + y

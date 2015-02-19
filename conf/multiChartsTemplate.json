@@ -4,22 +4,29 @@
             "id": "recaudacion",
             "title": "Dinero Recaudado",
             "footer": "recaudados",
-            "dataField": "v1",
-            "type": "pie"
+            "dataField": "cash-amount",
+            "type": "bar"
         },
         {
             "id": "donacion_media",
-            "dataField": "v4",
+            "dataField": "average-donation",
             "title": "Donacion Media",
             "footer": "",
             "type": "bar"
         },
         {
+            "id": "avg_received",
+            "dataField": "average-received",
+            "title": "% medio de financiación por campaña",
+            "footer": "",
+            "type": "bar"
+        },
+        {
             "id": "fundraising",
-            "dataField": "v2",
+            "dataField": "pledged",
             "title": "Fundraising levantado por la Fundación",
             "footer": "",
-            "type": "rank"
+            "type": "bar"
         }
     ],
     "projects":[
@@ -54,15 +61,31 @@
     ],
     "community":[
         {
+            "id": "collaborators",
+            "dataField": "collaborators",
+            "title": "Número de colaboraciones",
+            "footer": "colaboraciones",
+            "type": "bar"
+        },
+        {
+            "id": "avg-collaborators",
+            "dataField": "average-collaborators",
+            "title": "Media de colaboraciones por proyecto publicado",
+            "footer": "",
+            "type": "bar"
+        },
+        {
             "id": "topdonantes",
-            "dataField": "vd1",
+            "listName": "top10-donors",
+            "dataField": "amount",
             "title": "Top Donantes",
             "footer": "",
             "type": "rank"
         },
         {
             "id": "topdonantes2",
-            "dataField": "vd1",
+            "listName": "top10-donors",
+            "dataField": "contributions",
             "title": "Top Donantes Alt",
             "footer": "",
             "type": "rank"

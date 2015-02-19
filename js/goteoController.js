@@ -10,6 +10,7 @@ outliers.controller.Goteo = function (options) {
         self[key] = options[key];
     }
     self.parentSelect = "#"+self.idName;
+    self.APIUrl = self.baseUrl + self.endpoint;
     /*self.chartsList = [
       {
         id: "recaudacion",
@@ -100,7 +101,12 @@ outliers.controller.Goteo = function (options) {
                   .attr("class", "selector col-sm-6")
                   .on("change", function (d) {
                     self[d.name] = this.value;
-                    self.refreshData();
+                    if(self.parentSelect!="#community"&&self.parentSelect!="#money"){
+                        self.refreshData();
+                    }
+                    else{
+                        self.refreshDataCall();
+                    }
                   })
                   .each(function (d) {
                      var options = d3.select(this)
@@ -153,14 +159,18 @@ outliers.controller.Goteo = function (options) {
     //$(document).ready(function() {
     //$(window).load(function(){
     self.start = function(){
+
         console.log("START DEL PUTO CONTROLLER ",self.parentSelect);
         console.log(self.parentSelect.replace('#','')+"BarChart");
         self.generateHtml();
-        self.refreshData();
+        if(self.parentSelect!='#community'&&self.parentSelect!="#money"){
+          self.refreshData();
+        }
+        else{
+          self.refreshDataCall();
+        }
         // Instantiate charts.
         self.chartsList.forEach(function (d) {
-            console.log("QUE onda");
-            console.log("#"+d.id + d.type.capitalize() + "Chart");
           var currentChart;
           //var chartWidth = $("#" + d.id + d.type.capitalize() + "Chart").innerWidth();
           var chartWidth = 250;
@@ -203,6 +213,35 @@ outliers.controller.Goteo = function (options) {
         });
         self.fillTotals(self.data);
       });
+    };
+    self.refreshDataCall = function(){
+        $.ajaxSetup({
+              headers: { 'Authorization': "Basic " + btoa('goteo:goteo')}
+        });
+        
+        //Retrieve some user information:
+        $.get(self.APIUrl,function(data){
+                            
+          console.log("DATOSCALL ", data);
+          self.data = $.extend(true, [], data);
+          self.data.meses = [];
+          $.each(['January','February','March','April','May','June','July','August','September','October','November','December'],function(i,d){
+            self.dataAux = $.extend(true, [], data);
+            self.dataAux.month = d;
+            self.data.meses.push(self.dataAux);
+          });
+          self.chartsList.forEach(function (d) {
+            if(d.type === "bar"){
+                d.chart.render(self.data.meses, d.dataField, "month", "month");
+            }
+            else if (d.type === "rank"){
+                console.log(d.dataField);
+                console.log(data[d.listName][0][d.dataField]);
+                d.chart.render(self.data[d.listName], d.dataField , "user","user");
+            }
+          });
+
+        });
     };
     self.fillTotals = function(data){
       self.chartsList.forEach(function (d) {

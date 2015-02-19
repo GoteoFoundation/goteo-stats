@@ -7,7 +7,7 @@ outliers.viz.RankChart = function() {
   var container = "body",
       width = 500,
       height = 400,
-      margin = {"top": 10, "left": 10, "bottom": 10, "right": 10},
+      margin = {"top": 10, "left": 10, "bottom": 10, "right": 10, "internal": 150},
       svgParent = null,
       svg = null,
       x = d3.scale.linear(),
@@ -20,7 +20,7 @@ outliers.viz.RankChart = function() {
       maxOffset = Number.MIN_VALUE,
       labelPadding = 10,
       // ADDED BY ALEX
-      rankLength = 10;
+      rankLength = 11;
 
   function rank() {}
 
@@ -77,6 +77,7 @@ outliers.viz.RankChart = function() {
              .attr("height", height)
              .attr("viewBox", "0 0 " + width + " " + height)
              .append("g")
+             .attr("transform","translate(0,"+30+")")
              .attr("id", "rank-" + container.replace(".","").replace("#", ""));
     svg = svgParent.select("#rank-" + container.replace(".","").replace("#", ""));
     // Add labels.
@@ -157,7 +158,7 @@ outliers.viz.RankChart = function() {
      */
     // Add bars.
     ranks = svg.selectAll(".rank")
-              .data(data,function(d){ return d.nombre; });
+              .data(data,function(d){ return d[idField]; });
     ranks.exit()
         .remove();
 
@@ -179,16 +180,16 @@ outliers.viz.RankChart = function() {
         
 
     var names = ranks.enter().append("text")
-        .text(function(d){return d.nombre;})
+        .text(function(d){return d[textField];})
         .attr("class","rank")
         .attr("x",margin.left)
         .attr("y",function(d,i){ return i*rankHeight; });
 
     var values = ranks.enter().append("text")
-        .text(function(d){return d[valueField].toFixed(2);})
+        .text(function(d){ return d[valueField].toFixed(2);})
         .attr("class","rank")
         //.attr("transform",function(d,i){ return "translate("+(margin.left+50)+",0)"; });
-        .attr("x",margin.left+100)
+        .attr("x",margin.left+margin.internal)
         .attr("y",function(d,i){ return i*rankHeight; });
 
     /*names.transition()
