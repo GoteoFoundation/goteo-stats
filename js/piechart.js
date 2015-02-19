@@ -57,7 +57,6 @@ outliers.viz.PieChart = function() {
   */
   piechart.render = function(newData, valueField, idField, textField) {
     data = newData;
-    console.log("DATAPIE  ",data);
     function arcTween(a) {
       var i = d3.interpolate(this._current, a);
       this._current = i(0);
@@ -82,7 +81,7 @@ outliers.viz.PieChart = function() {
                    .attr("transform", "translate(" + (side / 2) + "," + (side / 2) + ")");
     var maxValue = Number.MIN_VALUE;
     for (var i = 0; i < data.length; i++) {
-      if (maxId === null && data[i].id != 10000) { // 10000: special ID for others.
+      if (maxId === null) {
         maxId = i;
         if (valueField) {
           maxValue = data[i][valueField];
@@ -92,7 +91,7 @@ outliers.viz.PieChart = function() {
       }
       else {
         if (valueField) {
-          if (maxValue < data[i][valueField] && data[i].id != 10000) { // 10000: special ID for others.
+          if (maxValue < data[i][valueField]) {
             maxId = i;
             maxValue = data[i][valueField];
           }
@@ -122,9 +121,11 @@ outliers.viz.PieChart = function() {
     var pieArcs = layout(data),
         arcs = svg.selectAll(".arc")
                   .data(pieArcs, function(d, i) {
+                    console.log(d);
                     if (!idField) {
                       return i;
                     } else {
+                      console.log(d.data[idField]);
                       return d.data[idField];
                     }
                   });

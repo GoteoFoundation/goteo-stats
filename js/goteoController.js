@@ -12,18 +12,7 @@ outliers.controller.Goteo = function (options) {
     self.parentSelect = "#"+self.idName;
     self.APIUrl = self.baseUrl + self.endpoint;
     self.chartsList = self.chartsTemplate;
-    self.selectorsList = [
-      {
-        name: "year",
-        title: "Año: ",
-        values: ["all", 2011, 2012, 2013, 2014]
-      },
-      {
-        name: "category",
-        title: "Categoría: ",
-        values: ["all", "cat1", "cat2", "cat3"]
-      }
-    ];
+    self.selectorsList = self.selectorsTemplate;
     self.generateHtml = function () {
       // Append charts container.
       var mainContainer = d3.select(self.parentSelect)
@@ -69,8 +58,20 @@ outliers.controller.Goteo = function (options) {
                                      .data(d.values);
                      options.enter()
                             .append("option")
-                            .attr("value", function (d) { return d; })
-                            .html(function (d) { return d; });
+                            .attr("value", function (d) {
+                              if (typeof d === 'object') {
+                                return d.id;
+                              } else {
+                                return d;
+                              }
+                            })
+                            .html(function (d) {
+                               if (typeof d === 'object') {
+                                 return d.name;
+                               } else {
+                                 return d;
+                               }
+                            });
                   });
       // Add charts.
       var chartsContainer = d3.select("#mainContainer-" + self.idName)
@@ -111,9 +112,6 @@ outliers.controller.Goteo = function (options) {
                .attr("class", "col-sm-6");
     };
     self.start = function(){
-
-        console.log("START DEL PUTO CONTROLLER ",self.parentSelect);
-        console.log(self.parentSelect.replace('#','')+"BarChart");
         self.generateHtml();
         if(self.parentSelect!='#community'&&self.parentSelect!="#money"){
           self.refreshData();
@@ -157,9 +155,8 @@ outliers.controller.Goteo = function (options) {
           if (d.type === "bar") {
             d.chart.render(self.data.meses, d.dataField, "mes", "mes");
           } else if (d.type === "pie") {
-            d.chart.render(self.prepareData(self.data.meses, self.data[d.dataField],d.dataField), d.dataField, "mes", "mes");
+            d.chart.render(self.prepareData(self.data.meses, self.data[d.dataField], d.dataField), d.dataField, "mes", "mes");
           } else if (d.type === "rank"){
-            //console.log("REFRSH ",self.data.donantes[0]);
             d.chart.render(self.data.donantes, d.dataField , "nombre","nombre");
           }
         });
@@ -170,11 +167,8 @@ outliers.controller.Goteo = function (options) {
         $.ajaxSetup({
               headers: { 'Authorization': "Basic " + btoa('goteo:goteo')}
         });
-        
         //Retrieve some user information:
         $.get(self.APIUrl,function(data){
-                            
-          console.log("DATOSCALL ", data);
           self.data = $.extend(true, [], data);
           self.data.meses = [];
           $.each(['January','February','March','April','May','June','July','August','September','October','November','December'],function(i,d){
@@ -187,8 +181,6 @@ outliers.controller.Goteo = function (options) {
                 d.chart.render(self.data.meses, d.dataField, "month", "month");
             }
             else if (d.type === "rank"){
-                console.log(d.dataField);
-                console.log(data[d.listName][0][d.dataField]);
                 d.chart.render(self.data[d.listName], d.dataField , "user","user");
             }
           });
@@ -202,7 +194,7 @@ outliers.controller.Goteo = function (options) {
           d3.select(totalId).html(self.formatNumbers(data[d.dataField]));
         }
         else{
-          console.log("AQUI DEBERIA IR LE TOTAL DE RANK");
+          //TODO: Aquí debería ir el total de rank, si existe.
         }
       });
     };

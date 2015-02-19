@@ -17,9 +17,7 @@ outliers.viz.RankChart = function() {
       labels = null,
       transitionDuration = 500,
       maxOffset = Number.MIN_VALUE,
-      labelPadding = 10,
-      // ADDED BY ALEX
-      rankLength = 11;
+      labelPadding = 10;
 
   function rank() {}
 
@@ -32,9 +30,7 @@ outliers.viz.RankChart = function() {
   * @param {String} textField: name of the field where the text to be displayed on the label is.
   */
   rank.render = function  (data, valueField, idField, textField) {
-
-    rankHeight = (height - margin.top - margin.bottom)/rankLength;
-    console.log("RH " , rankHeight);
+    rankHeight = (height - margin.top - margin.bottom) / data.length;
     // Update scales.
     y.domain(data.map(function (d, i) {
         if (idField) {
@@ -45,17 +41,12 @@ outliers.viz.RankChart = function() {
       }))
      .rangeRoundBands([margin.top, height - margin.bottom], roundBands);
     // Create SVG.
-    console.log("CREO SVG", d3.select(container));
-    console.log(container);
-    console.log(d3.select(container));
-    console.log(width);
     svgParent = d3.select(container)
                   .selectAll("svg")
                   .data([data]);
     svgParent.attr("width", width)
              .attr("height", height)
              .attr("viewBox", "0 0 " + width + " " + height);
-    console.log(svgParent);
     svgParent.enter()
              .append("svg")
              .attr("width", width)
@@ -63,26 +54,34 @@ outliers.viz.RankChart = function() {
              .attr("viewBox", "0 0 " + width + " " + height)
              .append("g")
              .attr("transform","translate(0,"+30+")")
-             .attr("id", "rank-" + container.replace(".","").replace("#", ""));
-    svg = svgParent.select("#rank-" + container.replace(".","").replace("#", ""));
-    ranks = svg.selectAll(".rank")
-              .data(data,function(d){ return d[idField]; });
-    ranks.exit()
-        .remove();
-    ranks.transition()
-        .duration(transitionDuration)
-        .attr("transform",function (d,i) { return "translate(" + margin.left + "," + (i * rankHeight) + ")"; });
-    var names = ranks.enter()
-                     .append("text")
-                     .text(function (d) { return d[textField]; })
-                     .attr("class","rank")
-                     .attr("x", margin.left)
-                     .attr("y", function (d,i) { return i * rankHeight; });
-    var values = ranks.enter().append("text")
-        .text(function(d){ return d[valueField].toFixed(2);})
-        .attr("class","rank")
-        .attr("x",margin.left+margin.internal)
-        .attr("y",function(d,i){ return i*rankHeight; });
+             .attr("id", "rank-" + container.replace(".", "").replace("#", ""));
+    svg = svgParent.select("#rank-" + container.replace(".", "").replace("#", ""));
+    var names = svg.selectAll(".rank.name")
+                   .data(data,function(d){ return d[idField]; });
+    names.exit()
+         .remove();
+    names.enter()
+         .append("text")
+         .text(function (d) { return d[textField]; })
+         .attr("class", "rank name")
+         .attr("transform",function (d,i) { return "translate(" + margin.left + "," + (i * rankHeight) + ")"; });
+    names.transition()
+         .duration(transitionDuration)
+         .text(function (d) { return d[textField]; })
+         .attr("transform",function (d,i) { return "translate(" + margin.left + "," + (i * rankHeight) + ")"; });
+    var values = svg.selectAll(".rank.value")
+                    .data(data,function(d){ return d[idField]; });
+    values.exit()
+          .remove();
+    values.enter()
+          .append("text")
+          .text(function (d) { return d[valueField].toFixed(2); })
+          .attr("class", "rank value")
+          .attr("transform",function (d,i) { return "translate(" + (margin.left + margin.internal) + "," + (i * rankHeight) + ")"; });
+    values.transition()
+          .duration(transitionDuration)
+          .text(function (d) { return d[valueField].toFixed(2); })
+          .attr("transform",function (d,i) { return "translate(" + (margin.left + margin.internal) + "," + (i * rankHeight) + ")"; });
   }
 
   /**

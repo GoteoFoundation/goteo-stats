@@ -81,9 +81,20 @@
 
 /* Bar chart CSS */
 .barGraph.bar {
-    fill: #20b3b2;
+    fill: #e7e7e7;
     stroke: none;
 }
-.barGraph.barLabels {
+.barGraph.bar.selected {
+    fill: #20b3b2;
+}
+.barGraph.bar.maximum {
+    fill: #c7ecec;
+}
+.barGraph.barLabels,
+.barGraph.tooltip,
+.rank.name,
+.rank.value {
     font-size: 12px !important;
+    opacity: 1.0;
+    pointer-events: none;
 }
