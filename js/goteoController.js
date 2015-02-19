@@ -113,12 +113,6 @@ outliers.controller.Goteo = function (options) {
     };
     self.start = function(){
         self.generateHtml();
-        if(self.parentSelect!='#community'&&self.parentSelect!="#money"){
-          self.refreshData();
-        }
-        else{
-          self.refreshDataCall();
-        }
         // Instantiate charts.
         self.chartsList.forEach(function (d) {
           var currentChart;
@@ -147,16 +141,29 @@ outliers.controller.Goteo = function (options) {
           }
           d.chart = currentChart;
         });
+        self.update();
+    };
+    self.update = function () {
+      if (self.parentSelect!='#community' && self.parentSelect!="#money"){
+        self.refreshData();
+      } else{
+        self.refreshDataCall();
+      }
     };
     self.refreshData = function () {
       d3.json(self.baseJUrl + "fake_" + self.year + "_" + (self.category === -1000 ? "all" : self.category) + ".json", function (error,data) {
         self.data = $.extend(true, [], data);
         self.chartsList.forEach(function (d) {
+          var chartWidth = $("#" + d.id + d.type.capitalize() + "Chart").innerWidth();
           if (d.type === "bar") {
+            d.chart.width(chartWidth)
+                   .height(chartWidth);
             d.chart.render(self.data.meses, d.dataField, "mes", "mes");
           } else if (d.type === "pie") {
+            d.chart.side(chartWidth)
             d.chart.render(self.prepareData(self.data.meses, self.data[d.dataField], d.dataField), d.dataField, "mes", "mes");
           } else if (d.type === "rank"){
+            d.chart.width(chartWidth);
             d.chart.render(self.data.donantes, d.dataField , "nombre","nombre");
           }
         });
@@ -179,11 +186,15 @@ outliers.controller.Goteo = function (options) {
             self.data.meses.push(self.dataAux);
           });
           self.chartsList.forEach(function (d) {
+            var chartWidth = $("#" + d.id + d.type.capitalize() + "Chart").innerWidth();
             if(d.type === "bar"){
-                d.chart.render(self.data.meses, d.dataField, "month", "month");
+              d.chart.width(chartWidth)
+                .height(chartWidth);
+              d.chart.render(self.data.meses, d.dataField, "month", "month");
             }
             else if (d.type === "rank"){
-                d.chart.render(self.data[d.listName], d.dataField , "user","user");
+              d.chart.width(chartWidth);
+              d.chart.render(self.data[d.listName], d.dataField , "user","user");
             }
           });
         });
