@@ -60,6 +60,7 @@
         queue().defer(d3.json, "conf/multiChartsTemplate.json")
             .await(ready);
 
+        var selectedTab = "#money";
         function ready(error,chartsTemplate){
             // Retrieve Goteo categories.
             d3.json("http://api.goteo.org/v1/categories/")
@@ -74,7 +75,7 @@
                     {
                         name: "category",
                         title: "Categoría: ",
-                        values: []
+                        values: [{id:-1000, name: "Todas"}]
                     }
                 ];
                 categories.items.forEach(function (d) {
@@ -89,7 +90,7 @@
                     'selectorsTemplate': selectors,
                     'baseUrl': 'http://api.goteo.org/v1/reports/',
                     'endpoint': 'money/',
-                    'category': 'all'
+                    'category': -1000 //NOTE: -1000 is a reserved value for all categories.
                 });
                 var goteoObj2 = outliers.controller.Goteo({
                     'idName':"projects",
@@ -100,7 +101,7 @@
                     'selectorsTemplate': selectors,
                     'baseUrl': 'http://api.goteo.org/v1/reports/',
                     'endpoint': 'projects/',
-                    'category': 'all'
+                    'category': -1000 //NOTE: -1000 is a reserved value for all categories.
                 });
                 var goteoObj3 = outliers.controller.Goteo({
                     'idName':"community",
@@ -111,7 +112,7 @@
                     'selectorsTemplate': selectors,
                     'baseUrl': 'http://api.goteo.org/v1/reports/',
                     'endpoint': 'community/',
-                    'category': 'all'
+                    'category': -1000 //NOTE: -1000 is a reserved value for all categories.
                 });
                 var goteoObj4 = outliers.controller.Goteo({
                     'idName':"rewards",
@@ -122,14 +123,25 @@
                     'selectorsTemplate': selectors,
                     'baseUrl': 'http://api.goteo.org/v1/reports/',
                     'endpoint': 'rewards/',
-                    'category': 'all'
+                    'category': -1000 //NOTE: -1000 is a reserved value for all categories.
               });
                 goteoObj.start();
                 /*
                  * Handles problems with text bounding box due to not being displayed the container DIV.
                  */
                 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-                    var selectedTab = $(e.target).attr("href");
+                    selectedTab = $(e.target).attr("href");
+                    if (selectedTab === "#projects") {
+                        goteoObj2.start();
+                    } else if (selectedTab === "#community") {
+                        goteoObj3.start();
+                    } else if (selectedTab === "#rewards") {
+                        goteoObj4.start();
+                    } else if (selectedTab === "#money") {
+                        goteoObj.start();
+                    }
+                });
+                $(window).on('resize', function(){
                     if (selectedTab === "#projects") {
                         goteoObj2.start();
                     } else if (selectedTab === "#community") {

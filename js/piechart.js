@@ -121,11 +121,9 @@ outliers.viz.PieChart = function() {
     var pieArcs = layout(data),
         arcs = svg.selectAll(".arc")
                   .data(pieArcs, function(d, i) {
-                    console.log(d);
                     if (!idField) {
                       return i;
                     } else {
-                      console.log(d.data[idField]);
                       return d.data[idField];
                     }
                   });

@@ -35,10 +35,10 @@ outliers.controller.Goteo = function (options) {
       var newSelectors = selectors.enter()
                                   .append("div")
                                   .attr("id", function (d) { return d.name + "Zone"; })
-                                  .attr("class", function (d, i) { return "col-sm-5" + (i == 0 ? " col-sm-offset-2" : ""); });
+                                  .attr("class", function (d, i) { return "col-sm-4" + (i == 0 ? " col-sm-offset-4" : ""); });
       newSelectors.append("div")
                   .attr("id", function (d) { return d.name + "ZoneTitle"; })
-                  .attr("class", "mainTitleZone col-sm-2")
+                  .attr("class", "mainTitleZone col-sm-6")
                   .html(function (d) { return d.title; });
       newSelectors.append("select")
                   .attr("id", function (d) { return d.name + "Selector";})
@@ -86,7 +86,7 @@ outliers.controller.Goteo = function (options) {
                      .data(self.chartsList);
       var newCharts = charts.enter()
                             .append("div")
-                            .attr("class", "chart col-sm-6")
+                            .attr("class", "chart col-md-6")
                             .attr("id", function (d) { return d.id + "Chart-" + self.idName; });
       newCharts.append("div")
                .attr("id", function (d) { return d.id + "Info"; })
@@ -122,8 +122,8 @@ outliers.controller.Goteo = function (options) {
         // Instantiate charts.
         self.chartsList.forEach(function (d) {
           var currentChart;
-          //var chartWidth = $("#" + d.id + d.type.capitalize() + "Chart").innerWidth();
-          var chartWidth = 250;
+          var chartWidth = $("#" + d.id + d.type.capitalize() + "Chart").innerWidth();
+          //var chartWidth = 250;
           if (d.type === "bar") {
             currentChart = new outliers.viz.BarChart()
                                            //.container(self.parentSelect+" #" + d.id + d.type.capitalize() + "Chart")
@@ -149,7 +149,7 @@ outliers.controller.Goteo = function (options) {
         });
     };
     self.refreshData = function () {
-      d3.json(self.baseJUrl + "fake_" + self.year + "_" + self.category + ".json", function (error,data) {
+      d3.json(self.baseJUrl + "fake_" + self.year + "_" + (self.category === -1000 ? "all" : self.category) + ".json", function (error,data) {
         self.data = $.extend(true, [], data);
         self.chartsList.forEach(function (d) {
           if (d.type === "bar") {
@@ -164,11 +164,13 @@ outliers.controller.Goteo = function (options) {
       });
     };
     self.refreshDataCall = function(){
-        $.ajaxSetup({
-              headers: { 'Authorization': "Basic " + btoa('goteo:goteo')}
-        });
-        //Retrieve some user information:
-        $.get(self.APIUrl,function(data){
+        var url = self.APIUrl;
+        if (self.category !== -1000 ) { //NOTE: -1000 is a reserved value for all categories.
+          url = url + "?category=" + self.category;
+        }
+        d3.json(url)
+          .header("Authorization", "Basic " + btoa('goteo:goteo'))
+          .get(function (error, data){
           self.data = $.extend(true, [], data);
           self.data.meses = [];
           $.each(['January','February','March','April','May','June','July','August','September','October','November','December'],function(i,d){
@@ -184,7 +186,6 @@ outliers.controller.Goteo = function (options) {
                 d.chart.render(self.data[d.listName], d.dataField , "user","user");
             }
           });
-
         });
     };
     self.fillTotals = function(data){
