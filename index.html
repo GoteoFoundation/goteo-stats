@@ -18,49 +18,30 @@
     <![endif]-->
   </head>
   <body>
-<div class="container">
-      
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
-  <li class="active">
-  <a href="#money" role="tab" data-toggle="tab">
-    <icon class="fa fa-money"></icon> Money </a>
-  </li>
-  <li><a href="#projects" role="tab" data-toggle="tab">
-    <i class="fa fa-projects"></i> Projects </a>
-  </li>
-  <li>
-    <a href="#community" role="tab" data-toggle="tab">
-      <i class="fa fa-community"></i> Community_</a>
-    </li>
-    <li>
-    <a href="#rewards" role="tab" data-toggle="tab">
-      <i class="fa fa-rewards"></i> Rewards_</a>
-    </li>
-  </ul>
-
-  <!-- Tab panes -->
-  
-<div class="tab-content">
-
-<div class="tab-pane fade active in" id="money">
-
-  
-</div>
-
-<div class="tab-pane fade" id="projects">
-
-</div>
-
-<div class="tab-pane fade" id="community">
-
-</div>
-
-<div class="tab-pane fade" id="rewards">
-
-</div>
-</div>
-</div>
+    <div class="container">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active">
+                <a href="#money" role="tab" data-toggle="tab"><icon class="fa fa-money"></icon> Money </a>
+            </li>
+            <li>
+                <a href="#projects" role="tab" data-toggle="tab"><i class="fa fa-projects"></i> Projects </a>
+            </li>
+            <li>
+                <a href="#community" role="tab" data-toggle="tab"><i class="fa fa-community"></i> Community_</a>
+            </li>
+            <li>
+                <a href="#rewards" role="tab" data-toggle="tab"><i class="fa fa-rewards"></i> Rewards_</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="money"></div>
+            <div class="tab-pane fade" id="projects"></div>
+            <div class="tab-pane fade" id="community"></div>
+            <div class="tab-pane fade" id="rewards"></div>
+        </div>
+    </div>
     <!--<div id="goteoStats"></div>-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -76,12 +57,10 @@
     <script type="text/javascript" src="js/rankchart.js"></script>
     <script type="text/javascript">
 
-        //queue().defer(d3.json, "conf/chartsTemplate.json")
         queue().defer(d3.json, "conf/multiChartsTemplate.json")
             .await(ready);
 
         function ready(error,chartsTemplate){
-
             var goteoObj = outliers.controller.Goteo({
                 'idName':"money",
                 'baseJUrl':"data/",
@@ -122,13 +101,23 @@
                 'endpoint': 'rewards/',
                 'category': 'all'
             });
-
             goteoObj.start();
-            goteoObj2.start();
-            goteoObj3.start();
-            goteoObj4.start();
-            //$("#moneytab").click(function(d){goteoObj.start();});
-        }
+            /*
+            * Handles problems with text bounding box due to not being displayed the container DIV.
+            */
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var selectedTab = $(e.target).attr("href");
+                if (selectedTab === "#projects") {
+                    goteoObj2.start();
+                } else if (selectedTab === "#community") {
+                    goteoObj3.start();
+                } else if (selectedTab === "#rewards") {
+                    goteoObj4.start();
+                } else if (selectedTab === "#money") {
+                    goteoObj.start();
+                }
+            })
+        };
     </script>
   </body>
 </html>

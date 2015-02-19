@@ -11,52 +11,7 @@ outliers.controller.Goteo = function (options) {
     }
     self.parentSelect = "#"+self.idName;
     self.APIUrl = self.baseUrl + self.endpoint;
-    /*self.chartsList = [
-      {
-        id: "recaudacion",
-        title: "Dinero Recaudado",
-        footer: "recaudados",
-        dataField: "v1",
-        type: "pie"
-      },
-      {
-        id: "retornos",
-        dataField: "v2",
-        title: "Tipo de Retornos Colectivos",
-        footer: "",
-        type: "bar"
-      },
-      {
-        id: "licencias",
-        title: "Licencias más utilizadas",
-        footer: "",
-        dataField: "v3",
-        type: "pie"
-      },
-      {
-        id: "financiacion_media",
-        dataField: "v4",
-        title: "Media de financiación",
-        footer: "",
-        type: "bar"
-      },
-      {
-        id: "top_donantes",
-        dataField: "vd1",
-        title: "Top Donantes",
-        footer: "",
-        type: "rank"
-      },
-      {
-        id: "top_donantes2",
-        dataField: "vd2",
-        title: "Top Donantes Alt",
-        footer: "",
-        type: "rank"
-      }
-    ];*/
     self.chartsList = self.chartsTemplate;
-    //console.log(self.chartsList);
     self.selectorsList = [
       {
         name: "year",
@@ -155,9 +110,6 @@ outliers.controller.Goteo = function (options) {
                })
                .attr("class", "col-sm-6");
     };
-
-    //$(document).ready(function() {
-    //$(window).load(function(){
     self.start = function(){
 
         console.log("START DEL PUTO CONTROLLER ",self.parentSelect);
@@ -261,7 +213,6 @@ outliers.controller.Goteo = function (options) {
       return data;
     };
     self.formatNumbers = d3.format(".3s");
-
     return self;
 };
 

@@ -43,16 +43,13 @@ outliers.viz.BarChart = function() {
     }
     // Update scales.
     y.domain(data.map(function (d, i) {
-        if (textField) {
-          return d[textField];
+        if (idField) {
+          return d[idField];
         } else {
           return i;
         }
       }))
      .rangeRoundBands([margin.top, height - margin.bottom], roundBands);
-    //triangleDown.size(y.rangeBand());
-    //triangleUp.size(y.rangeBand());
-    //square.size(y.rangeBand());
     // Create SVG.
     svgParent = d3.select(container)
                   .selectAll("svg")
@@ -70,42 +67,46 @@ outliers.viz.BarChart = function() {
     svg = svgParent.select("#bar-" + container.replace(".","").replace("#", ""));
     // Add labels.
     labels = svg.selectAll(".barLabels")
-                .data(data);
+                .data(data, function (d, i) {
+                  if (idField) {
+                    return d[idField];
+                  } else {
+                    return i;
+                  }
+                });
     labels.exit()
           .remove();
+    console.log("maxOffset 2", maxOffset);
+    labels.enter()
+      .append("text")
+      .attr("class", "barGraph barLabels")
+      .attr("x", margin.left)
+      .attr("y", function(d, i) {
+        if (idField) {
+          return y(d[idField]) + (y.rangeBand() / 2);
+        } else {
+          return y(i) + (y.rangeBand() / 2);
+        }
+      })
+      .style("font-size", width < 480 ? "5pt" : "7pt")
+      .text(function (d, i) {
+        if (textField) {
+          return d[textField];
+        } else {
+          return i;
+        }
+      });
+    console.log("maxOffset 1", maxOffset);
     labels.style("font-size", width < 480 ? "5pt" : "7pt")
           .transition()
           .duration(transitionDuration)
           .attr("y", function(d, i) {
-            if (textField) {
-              return y(d[textField]) + (y.rangeBand() / 2);
+            if (idField) {
+              return y(d[idField]) + (y.rangeBand() / 2);
             } else {
               return y(i) + (y.rangeBand() / 2);
             }
           })
-          .call(function (_) {
-            if (_.length > 0) {
-              for (var l = 0; l < _[0].length; l++) {
-                if (_[0][l]){
-                  var bbox = d3.select(_[0][l]).node().getBBox();
-                  var currentOffset = bbox.x + bbox.width;
-                  maxOffset = currentOffset > maxOffset ? currentOffset : maxOffset;
-                }
-              }
-            }
-          });
-    labels.enter()
-          .append("text")
-          .attr("class", "barGraph barLabels")
-          .attr("x", margin.left)
-          .attr("y", function(d, i) {
-            if (textField) {
-              return y(d[textField]) + (y.rangeBand() / 2);
-            } else {
-              return y(i) + (y.rangeBand() / 2);
-            }
-          })
-          .style("font-size", width < 480 ? "5pt" : "7pt")
           .text(function (d, i) {
             if (textField) {
               return d[textField];
@@ -116,16 +117,22 @@ outliers.viz.BarChart = function() {
           .transition()
           .duration(0)
           .call(function (_) {
+            console.log("Data en call", _);
+            console.log("Entering 1");
             if (_.length > 0) {
               for (var l = 0; l < _[0].length; l++) {
                 if (_[0][l]){
                   var bbox = d3.select(_[0][l]).node().getBBox();
+                  console.log("Node", d3.select(_[0][l]).node());
+                  console.log("BBOX", bbox);
                   var currentOffset = bbox.x + bbox.width;
+                  console.log("currentOffset 1", currentOffset);
                   maxOffset = currentOffset > maxOffset ? currentOffset : maxOffset;
                 }
               }
             }
           });
+    console.log("maxOffset 3", maxOffset);
     // We know the bigger text, we modify X scale.
     x.domain([Math.min(0, d3.min(data, function (d, i) {
                 if (valueField) {
@@ -143,16 +150,24 @@ outliers.viz.BarChart = function() {
               })])
      .range([0, width - margin.right - maxOffset - labelPadding])
      .nice();
+    console.log("X domain", x.domain());
+    console.log("X range", x.range());
     // Add bars.
     bars = svg.selectAll(".bar")
-              .data(data);
+              .data(data, function (d, i) {
+                if (idField) {
+                  return d[idField];
+                } else {
+                  return i;
+                }
+              });
     bars.exit()
         .remove();
     bars.transition()
         .duration(transitionDuration)
         .attr("d", function (d, i) {
           var myX = maxOffset + labelPadding,
-              myY = textField ? y(d[textField]) : y(i),
+              myY = idField ? y(d[idField]) : y(i),
               myWidth = valueField ? x(d[valueField]) : x(d),
               myHeight = y.rangeBand();
           return rightRoundedRect(myX, myY, myWidth, myHeight);
@@ -162,7 +177,7 @@ outliers.viz.BarChart = function() {
         .attr("class", "barGraph bar")
         .attr("d", function (d, i) {
           var myX = maxOffset + labelPadding,
-              myY = textField ? y(d[textField]) : y(i),
+              myY = idField ? y(d[idField]) : y(i),
               myWidth = valueField ? x(d[valueField]) : x(d),
               myHeight = y.rangeBand();
           return rightRoundedRect(myX, myY, myWidth, myHeight);
