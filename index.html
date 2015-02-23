@@ -58,10 +58,11 @@
     <script type="text/javascript">
 
         queue().defer(d3.json, "conf/multiChartsTemplate.json")
+            .defer(d3.json, "data/locations.json")
             .await(ready);
 
         var selectedTab = "#money";
-        function ready(error,chartsTemplate){
+        function ready(error,chartsTemplate,locations){
             // Retrieve Goteo categories.
             d3.json("http://api.goteo.org/v1/categories/")
               .header("Authorization", "Basic " + btoa('goteo:goteo'))
@@ -76,6 +77,11 @@
                         name: "category",
                         title: "Categoría: ",
                         values: [{id:-1000, name: "Todas"}]
+                    },
+                    {
+                        name: "place",
+                        title: "Localización: ",
+                        values: locations
                     }
                 ];
                 categories.items.forEach(function (d) {
