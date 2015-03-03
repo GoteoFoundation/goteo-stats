@@ -1,0 +1,82 @@
+<div class="projects">
+    <div class="section col-sm-6" id="average-amount-successful">
+    </div>
+    <div class="section col-sm-6" id="average-posts-successful">
+    </div>
+    <div class="section col-sm-6" id="failed">
+        <barchart barchart-id="failed"
+                  barchart-title="{{ 'projects.sections.failed.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.failed.description' | translate }}"
+                  barchart-cumul="{{ data.failed.year }}"
+                  barchart-data="{{ data.failed.month }}" />
+    </div>
+    <div class="section col-sm-6" id="percentage-successful">
+        <barchart barchart-id="percentage-successful"
+                  barchart-title="{{ 'projects.sections.percentage-successful.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.percentage-successful.description' | translate }}"
+                  barchart-cumul="{{ data.percentageSuccessful.year }}"
+                  barchart-data="{{ data.percentageSuccessful.month }}" />
+    </div>
+    <div class="section col-sm-6" id="percentage-successful-completed">
+        <barchart barchart-id="percentage-successful-completed"
+                  barchart-title="{{ 'projects.sections.percentage-successful-completed.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.percentage-successful-completed.description' | translate }}"
+                  barchart-cumul="{{ data.percentageSuccessfulCompleted.year }}"
+                  barchart-data="{{ data.percentageSuccessfulCompleted.month }}" />
+    </div>
+    <div class="section col-sm-6" id="published">
+        <barchart barchart-id="published"
+                  barchart-title="{{ 'projects.sections.published.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.published.description' | translate }}"
+                  barchart-cumul="{{ data.published.year }}"
+                  barchart-data="{{ data.published.month }}" />
+    </div>
+    <div class="section col-sm-6" id="received">
+        <barchart barchart-id="received"
+                  barchart-title="{{ 'projects.sections.received.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.received.description' | translate }}"
+                  barchart-cumul="{{ data.received.year }}"
+                  barchart-data="{{ data.received.month }}" />
+    </div>
+    <div class="section col-sm-6" id="successful">
+        <barchart barchart-id="successful"
+                  barchart-title="{{ 'projects.sections.successful.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.successful.description' | translate }}"
+                  barchart-cumul="{{ data.successful.year }}"
+                  barchart-data="{{ data.successful.month }}" />
+    </div>
+    <div class="section col-sm-6" id="successful-completed">
+        <barchart barchart-id="successful-completed"
+                  barchart-title="{{ 'projects.sections.successful-completed.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.successful-completed.description' | translate }}"
+                  barchart-cumul="{{ data.successfulCompleted.year }}"
+                  barchart-data="{{ data.successfulCompleted.month }}" />
+    </div>
+    <div class="section col-sm-6" id="top10-collaborations">
+        <ranking ranking-id="top10-collaborations-ranking"
+                 ranking-title="{{ 'projects.sections.top10-collaborations.title' | translate }}"
+                 ranking-description="{{ 'projects.sections.top10-collaborations.description' | translate }}"
+                 ranking-name-field="project"
+                 ranking-value-field="total"
+                 rankin-display-photo="false"
+                 ranking-data="{{ data.top10Collaborations }}" />
+    </div>
+    <div class="section col-sm-6" id="top10-donations">
+        <ranking ranking-id="top10-donations-ranking"
+                 ranking-title="{{ 'projects.sections.top10-donations.title' | translate }}"
+                 ranking-description="{{ 'projects.sections.top10-donations.description' | translate }}"
+                 ranking-name-field="project"
+                 ranking-value-field="total"
+                 rankin-display-photo="false"
+                 ranking-data="{{ data.top10Donations }}" />
+    </div>
+    <div class="section col-sm-6" id="top10-receipts">
+        <ranking ranking-id="top10-receipts-ranking"
+                 ranking-title="{{ 'projects.sections.top10-receipts.title' | translate }}"
+                 ranking-description="{{ 'projects.sections.top10-receipts.description' | translate }}"
+                 ranking-name-field="project"
+                 ranking-value-field="amount"
+                 rankin-display-photo="false"
+                 ranking-data="{{ data.top10Receipts }}" />
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="ranking-wrapper">
+    <h3 class="ranking-title">{{ title }}</h3>
+    <p class="ranking-description col-sm-5">{{ description }}</p>
+    <ul class="ranking-list col-sm-7">
+        <li ng-repeat="datum in data" class="ranking-item ranking-item row" ng-class="{'ranking-item-last': $index === (data.length-1)}">
+            <div class="ranking-position col-sm-1">{{ $index }}</div>
+            <img ng-if="displayPhoto" ng-src="{{ datum[photoField] }}" class="ranking-item-photo col-sm-3" />
+            <div class="ranking-item-name" ng-class="{'col-sm-7': !displayPhoto, 'col-sm-5': displayPhoto}">{{ datum[nameField] }}</div>
+            <div class="ranking-item-value col-sm-3">{{ datum[valueField] }}</div>
+        </li>
+    </ul>
+</div>

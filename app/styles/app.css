@@ -1,0 +1,238 @@
+/* app css stylesheet */
+
+body {
+    padding-top: 70px;
+    background-color: #deded9;
+    font-family: "Liberation Sans", Helvetica, sans-serif;
+    color: #58595b;
+    font-size: 9pt;
+}
+.navbar {
+    min-height: 60px;
+}
+.navbar-default {
+    background-color: #ffffff;
+}
+.navbar-money {
+    border-color: #7d3681 !important;
+}
+.navbar-projects {
+    border-color: #28b1a6 !important;
+}
+.navbar-community {
+    border-color: #184f8c !important;
+}
+.navbar-rewards {
+    border-color: #04a64b !important;
+}
+.navbar-nav > li {
+    margin-top: 10px;
+}
+.navbar-form {
+    margin-top: 15px;
+}
+.navbar-form select,
+.dropdown-menu > li > a {
+    font-size: 9pt;
+}
+.navbar-default .navbar-nav > li.money-link > a,
+.navbar-default .navbar-nav > li.projects-link > a,
+.navbar-default .navbar-nav > li.community-link > a,
+.navbar-default .navbar-nav > li.rewards-link > a,
+.navbar-default .navbar-nav > li.money-link > a:hover,
+.navbar-default .navbar-nav > li.money-link > a:focus,
+.navbar-default .navbar-nav > li.projects-link > a:hover,
+.navbar-default .navbar-nav > li.projects-link > a:focus,
+.navbar-default .navbar-nav > li.community-link > a:hover,
+.navbar-default .navbar-nav > li.community-link > a:focus,
+.navbar-default .navbar-nav > li.rewards-link > a:hover,
+.navbar-default .navbar-nav > li.rewards-link > a:focus {
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    font-weight: bold;
+}
+.navbar-default .navbar-nav > li.money-link > a:hover,
+.navbar-default .navbar-nav > li.money-link > a:focus,
+.navbar-default .navbar-nav > li.projects-link > a:hover,
+.navbar-default .navbar-nav > li.projects-link > a:focus,
+.navbar-default .navbar-nav > li.community-link > a:hover,
+.navbar-default .navbar-nav > li.community-link > a:focus,
+.navbar-default .navbar-nav > li.rewards-link > a:hover,
+.navbar-default .navbar-nav > li.rewards-link > a:focus,
+.navbar-default .navbar-nav > .active.money-link > a,
+.navbar-default .navbar-nav > .active.money-link > a:hover,
+.navbar-default .navbar-nav > .active.money-link > a:focus,
+.navbar-default .navbar-nav > .active.projects-link > a,
+.navbar-default .navbar-nav > .active.projects-link > a:hover,
+.navbar-default .navbar-nav > .active.projects-link > a:focus,
+.navbar-default .navbar-nav > .active.community-link > a,
+.navbar-default .navbar-nav > .active.community-link > a:focus,
+.navbar-default .navbar-nav > .active.community-link > a:hover,
+.navbar-default .navbar-nav > .active.rewards-link > a,
+.navbar-default .navbar-nav > .active.rewards-link > a:hover,
+.navbar-default .navbar-nav > .active.rewards-link > a:focus {
+    color: #ffffff;
+}
+.money-link > a:hover,
+.money-link > a:focus,
+.navbar-default .navbar-nav > .active.money-link > a,
+.navbar-default .navbar-nav > .active.money-link > a:hover,
+.navbar-default .navbar-nav > .active.money-link > a:focus {
+    background-color: #7d3681 !important;
+}
+.projects-link > a:hover,
+.projects-link > a:focus,
+.navbar-default .navbar-nav > .active.projects-link > a,
+.navbar-default .navbar-nav > .active.projects-link > a:hover,
+.navbar-default .navbar-nav > .active.projects-link > a:focus {
+    background-color: #28b1a6 !important;
+}
+.community-link > a:hover,
+.community-link > a:focus,
+.navbar-default .navbar-nav > .active.community-link > a,
+.navbar-default .navbar-nav > .active.community-link > a:focus,
+.navbar-default .navbar-nav > .active.community-link > a:hover {
+    background-color: #184f8c !important;
+}
+.rewards-link > a:hover,
+.rewards-link > a:focus,
+.navbar-default .navbar-nav > .active.rewards-link > a,
+.navbar-default .navbar-nav > .active.rewards-link > a:hover,
+.navbar-default .navbar-nav > .active.rewards-link > a:focus {
+    background-color: #04a64b !important;
+}
+.navbar-brand img {
+    height: 50px;
+    margin-top: -10px;
+}
+.container {
+    padding-bottom: 70px;
+}
+.section {
+    padding: 10px;
+}
+.projects .ranking-wrapper,
+.projects .barchart-wrapper,
+.projects .piechart-wrapper {
+    border-top-color: #28b1a6;
+}
+.community .ranking-wrapper,
+.community .barchart-wrapper,
+.community .piechart-wrapper {
+    border-top-color: #184f8c;
+}
+.money .ranking-wrapper,
+.money .barchart-wrapper,
+.money .piechart-wrapper {
+    border-top-color: #7d3681;
+}
+.rewards .ranking-wrapper,
+.rewards .barchart-wrapper,
+.rewards .piechart-wrapper {
+    border-top-color: #04a64b;
+}
+.ranking-wrapper,
+.barchart-wrapper,
+.piechart-wrapper {
+    background-color: #fffffe;
+    border-top-style: solid;
+    border-top-width: 3px;
+    overflow: auto;
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-bottom: 30px;
+}
+.ranking-title,
+.barchart-title {
+    margin-bottom: 21px;
+    color: #58595b;
+}
+.ranking-description,
+.barchart-description {
+    padding-left: 0;
+    padding-right: 5px;
+}
+.ranking-list {
+    list-style-type: none;
+    display: block;
+}
+.ranking-item {
+    border-top: 1px solid #ddd;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.ranking-item-last {
+    border-bottom: 1px solid #ddd;
+}
+.ranking-position {
+    font-size: 25px;
+    font-weight: bold;
+    color: #d6d7d0;
+}
+.ranking-item-name,
+.ranking-item-value {
+    line-height: 35px;
+}
+.ranking-item-value {
+    font-weight: bold;
+}
+.projects .ranking-item-value {
+    color: #28b1a6;
+}
+.community .ranking-item-value {
+    color: #184f8c;
+}
+.barchart-cumul,
+.piechart-cumul {
+    font-size: 50pt;
+    font-weight: bold;
+}
+.projects .barchart-cumul {
+    color: #28b1a6;
+}
+.money .barchart-cumul {
+    color: #7d3681;
+}
+.community .piechart-cumul {
+    color: #184f8c;
+}
+.rewards .piechart-cumul {
+    color: #04a64b;
+}
+.barTooltip {
+    font-size: 9pt !important;
+}
+.projects .barTooltip,
+.money .barTooltip {
+    fill: #fff;
+}
+.barchart-chart .barLabels {
+    fill: #58595b;
+    font-size: 9pt !important;
+}
+.projects .barchart-chart .bar {
+    fill: #28b1a6;
+}
+.money .barchart-chart .bar {
+    fill: #7d3681;
+}
+.piechart-chart .arc {
+    fill: #e7e7e7;
+}
+.community .piechart-chart .arc.maximum,
+.community .piechart-chart .arc.selected {
+    fill: #184f8c;
+}
+.rewards .piechart-chart .arc.maximum,
+.rewards .piechart-chart .arc.selected {
+    fill: #04a64b;
+}
+.piechart-chart .perclabel {
+    fill: #58595b;
+    font-weight: bold;
+    font-size: 32pt;
+}
+.piechart-chart .sublabel {
+    fill: #58595b;
+    font-size: 9pt;
+}

@@ -1,0 +1,40 @@
+<div class="community">
+    <div class="section col-sm-6" id="categories">
+        <piechart piechart-id="categories"
+                  piechart-title="{{ 'community.sections.categories.title' | translate }}"
+                  piechart-description="{{ 'community.sections.categories.description' | translate }}"
+                  piechart-cumul="{{ data.users }}"
+                  piechart-id-field="id"
+                  piechart-label-field="name"
+                  piechart-value-field="percentage-users"
+                  piechart-is-percentage="true"
+                  piechart-data="{{ data.categories }}" />
+    </div>
+    <div class="section col-sm-6" id="top10-collaborators">
+        <ranking ranking-id="top10-collaborators-ranking"
+                 ranking-title="{{ 'community.sections.top10-collaborators.title' | translate }}"
+                 ranking-description="{{ 'community.sections.top10-collaborators.description' | translate }}"
+                 ranking-name-field="user"
+                 ranking-value-field="interactions"
+                 rankin-display-photo="false"
+                 ranking-data="{{ data.top10Collaborators }}" />
+    </div>
+    <div class="section col-sm-6" id="top10-donors">
+        <ranking ranking-id="top10-donors-ranking"
+                 ranking-title="{{ 'community.sections.top10-donors.title' | translate }}"
+                 ranking-description="{{ 'community.sections.top10-donors.description' | translate }}"
+                 ranking-name-field="user"
+                 ranking-value-field="amount"
+                 rankin-display-photo="false"
+                 ranking-data="{{ data.top10Donors }}" />
+    </div>
+    <div class="section col-sm-6" id="top10-multidonors">
+        <ranking ranking-id="top10-multidonors-ranking"
+                 ranking-title="{{ 'community.sections.top10-multidonors.title' | translate }}"
+                 ranking-description="{{ 'community.sections.top10-multidonors.description' | translate }}"
+                 ranking-name-field="user"
+                 ranking-value-field="amount"
+                 rankin-display-photo="false"
+                 ranking-data="{{ data.top10Multidonors }}" />
+    </div>
+</div>

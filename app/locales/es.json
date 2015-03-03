@@ -1,0 +1,50 @@
+{
+  "title": "Goteo Statistics",
+  "global": {
+    "all": "Todas las categorías"
+  },
+  "lang": {
+    "select": "Selecciona idioma",
+    "en": "Inglés",
+    "es": "Castellano"
+  },
+  "sections": {
+    "money": "Dinero",
+    "projects": "Proyectos",
+    "community": "Comunidad",
+    "rewards": "Recompensas"
+  },
+  "selector": {
+    "year": "Año",
+    "category": "Categoría"
+  },
+  "money": {
+    "description": "Descripción de la sección Dinero"
+  },
+  "projects": {
+    "sections": {
+      "failed": {
+        "title": "Proyectos fallidos",
+        "description": "Diagrama de barras para los proyectos fallidos cada mes."
+      },
+      "top10-collaborations": {
+        "title": "Proyectos con más colaboraciones",
+        "description": "Ranking con los proyectos que más colaboraciones han recibido."
+      },
+      "top10-donations": {
+        "title": "Proyectos con más donaciones",
+        "description": "Ranking con los proyectos que más donaciones han recibido."
+      },
+      "top10-receipts": {
+        "title": "Proyectos con más receipts",
+        "description": "Ranking con los proyectos que más receipts han recibido."
+      }
+    }
+  },
+  "community": {
+    "description": "Descripción de la sección Comunidad"
+  },
+  "rewards": {
+    "description": "Descripción de la sección Recompensas"
+  }
+}

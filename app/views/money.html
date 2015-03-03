@@ -1,0 +1,114 @@
+<div class="money">
+    <div class="section col-sm-6" id="average-donation">
+        <barchart barchart-id="average-donation"
+                  barchart-title="{{ 'money.sections.average-donation.title' | translate }}"
+                  barchart-description="{{ 'money.sections.average-donation.description' | translate }}"
+                  barchart-cumul="{{ data.averageDonation.year }}"
+                  barchart-data="{{ data.averageDonation.month }}" />
+    </div>
+    <div class="section col-sm-6" id="average-donation-paypal">
+        <barchart barchart-id="average-donation-paypal"
+                  barchart-title="{{ 'money.sections.average-donation-paypal.title' | translate }}"
+                  barchart-description="{{ 'money.sections.average-donation-paypal.description' | translate }}"
+                  barchart-cumul="{{ data.averageDonationPaypal.year }}"
+                  barchart-data="{{ data.averageDonationPaypal.month }}" />
+    </div>
+    <div class="section col-sm-6" id="average-failed">
+        <barchart barchart-id="average-failed"
+                  barchart-title="{{ 'money.sections.average-failed.title' | translate }}"
+                  barchart-description="{{ 'money.sections.average-failed.description' | translate }}"
+                  barchart-cumul="{{ data.averageFailed.year }}"
+                  barchart-data="{{ data.averageFailed.month }}" />
+    </div>
+    <div class="section col-sm-6" id="average-minimum">
+        <barchart barchart-id="average-minimum"
+                  barchart-title="{{ 'money.sections.average-minimum.title' | translate }}"
+                  barchart-description="{{ 'money.sections.average-minimum.description' | translate }}"
+                  barchart-cumul="{{ data.averageMinimum.year }}"
+                  barchart-data="{{ data.averageMinimum.month }}" />
+    </div>
+    <div class="section col-sm-6" id="average-received">
+        <barchart barchart-id="average-received"
+                  barchart-title="{{ 'money.sections.average-received.title' | translate }}"
+                  barchart-description="{{ 'money.sections.average-received.description' | translate }}"
+                  barchart-cumul="{{ data.averageReceived.year }}"
+                  barchart-data="{{ data.averageReceived.month }}" />
+    </div>
+    <div class="section col-sm-6" id="average-secound-round">
+        <barchart barchart-id="average-second-round"
+                  barchart-title="{{ 'money.sections.average-second-round.title' | translate }}"
+                  barchart-description="{{ 'money.sections.average-second-round.description' | translate }}"
+                  barchart-cumul="{{ data.averageSecondRound.year }}"
+                  barchart-data="{{ data.averageSecondRound.month }}" />
+    </div>
+    <div class="section col-sm-6" id="cash-amount">
+        <barchart barchart-id="cash-amount"
+                  barchart-title="{{ 'money.sections.cash-amount.title' | translate }}"
+                  barchart-description="{{ 'money.sections.cash-amount.description' | translate }}"
+                  barchart-cumul="{{ data.cashAmount.year }}"
+                  barchart-data="{{ data.cashAmount.month }}" />
+    </div>
+    <div class="section col-sm-6" id="creditcard-amount">
+        <barchart barchart-id="creditcard-amount"
+                  barchart-title="{{ 'money.sections.creditcard-amount.title' | translate }}"
+                  barchart-description="{{ 'money.sections.creditcard-amount.description' | translate }}"
+                  barchart-cumul="{{ data.creditcardAmount.year }}"
+                  barchart-data="{{ data.creditcardAmount.month }}" />
+    </div>
+    <div class="section col-sm-6" id="fee-amount">
+        <barchart barchart-id="fee-amount"
+                  barchart-title="{{ 'money.sections.fee-amount.title' | translate }}"
+                  barchart-description="{{ 'money.sections.fee-amount.description' | translate }}"
+                  barchart-cumul="{{ data.feeAmount.year }}"
+                  barchart-data="{{ data.feeAmount.month }}" />
+    </div>
+    <div class="section col-sm-6" id="matchfund-amount">
+        <barchart barchart-id="matchfund-amount"
+                  barchart-title="{{ 'money.sections.matchfund-amount.title' | translate }}"
+                  barchart-description="{{ 'money.sections.matchfund-amount.description' | translate }}"
+                  barchart-cumul="{{ data.matchfundAmount.year }}"
+                  barchart-data="{{ data.matchfundAmount.month }}" />
+    </div>
+    <div class="section col-sm-6" id="matchfundpledge-amount">
+        <barchart barchart-id="matchfundpledge-amount"
+                  barchart-title="{{ 'money.sections.matchfundpledge-amount.title' | translate }}"
+                  barchart-description="{{ 'money.sections.matchfundpledge-amount.description' | translate }}"
+                  barchart-cumul="{{ data.matchfundpledgeAmount.year }}"
+                  barchart-data="{{ data.matchfundpledgeAmount.month }}" />
+    </div>
+    <div class="section col-sm-6" id="paypal-amount">
+        <barchart barchart-id="paypal-amount"
+                  barchart-title="{{ 'money.sections.paypal-amount.title' | translate }}"
+                  barchart-description="{{ 'money.sections.paypal-amount.description' | translate }}"
+                  barchart-cumul="{{ data.paypalAmount.year }}"
+                  barchart-data="{{ data.paypalAmount.month }}" />
+    </div>
+    <div class="section col-sm-6" id="pledged">
+        <barchart barchart-id="pledged"
+                  barchart-title="{{ 'money.sections.pledged.title' | translate }}"
+                  barchart-description="{{ 'money.sections.pledged.description' | translate }}"
+                  barchart-cumul="{{ data.pledged.year }}"
+                  barchart-data="{{ data.pledged.month }}" />
+    </div>
+    <div class="section col-sm-6" id="pledged-failed">
+        <barchart barchart-id="pledged-failed"
+                  barchart-title="{{ 'money.sections.pledged-failed.title' | translate }}"
+                  barchart-description="{{ 'money.sections.pledged-failed.description' | translate }}"
+                  barchart-cumul="{{ data.pledgedFailed.year }}"
+                  barchart-data="{{ data.pledgedFailed.month }}" />
+    </div>
+    <div class="section col-sm-6" id="pledged-successful">
+        <barchart barchart-id="pledged-successful"
+                  barchart-title="{{ 'money.sections.pledged-successful.title' | translate }}"
+                  barchart-description="{{ 'money.sections.pledged-successful.description' | translate }}"
+                  barchart-cumul="{{ data.pledgedSuccessful.year }}"
+                  barchart-data="{{ data.pledgedSuccessful.month }}" />
+    </div>
+    <div class="section col-sm-6" id="refunded">
+        <barchart barchart-id="refunded"
+                  barchart-title="{{ 'money.sections.refunded.title' | translate }}"
+                  barchart-description="{{ 'money.sections.refunded.description' | translate }}"
+                  barchart-cumul="{{ data.refunded.year }}"
+                  barchart-data="{{ data.refunded.month }}" />
+    </div>
+</div>

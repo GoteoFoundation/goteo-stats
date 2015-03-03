@@ -103,3 +103,18 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+
+*.DS_Store
+/public/
+/node_modules/
+/app/bower_components/
+/coverage/
+/snapshots/
+.ruby-version
+*.tar.gz
+/app/less/bootstrap.css
+/app/less/**/*.css
+nginx.pid
+npm-debug.log
+.tmp2
+.tmp
