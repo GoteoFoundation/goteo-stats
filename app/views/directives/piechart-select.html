@@ -1,0 +1,11 @@
+<div class="piechart-select-wrapper">
+    <h3 class="piechart-select-title">{{ title }}</h3>
+    <div class="piechart-select-description">{{ description }}</div>
+    <div>
+        <select id="piechart-selector-{{ id }}" data-ng-model="selected" ng-change="updateChart()">
+            <option ng-repeat="item in options" value="{{ $index }}" label="{{ item }}">{{ item }}</option>
+        </select>
+    </div>
+    <div ng-show="currentDataSum > 0" class="piechart-select-chart" id="piechart-select-{{ id }}"></div>
+    <div ng-show="currentDataSum === 0" class="piechart-select-nodata">{{ 'global.nodata' | translate }}</div>
+</div>

@@ -166,7 +166,7 @@ outliers.viz.BarChart = function() {
                   return +d;
                 }
               })])
-      .range([1.0, width - margin.right - maxOffset - labelPadding])
+      .range([2.0, width - margin.right - maxOffset - labelPadding])
      .nice();
     // Add bars.
     bars = svg.selectAll(".bar")

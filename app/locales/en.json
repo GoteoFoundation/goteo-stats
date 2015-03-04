@@ -19,7 +19,60 @@
     "category": "Category"
   },
   "money": {
-    "description": "Money section description"
+    "sections": {
+      "amount": {
+        "title": "Amount subsection",
+        "description": "",
+        "labels": {
+          "cash": "Cash",
+          "creditcard": "Credit Card",
+          "fee": "Fee",
+          "matchfund": "Match Fund",
+          "matchfundpledge": "Match Fund Pledge",
+          "paypal": "PayPal"
+        }
+      },
+      "average-donation": {
+        "title": "Average donation",
+        "description": ""
+      },
+      "average-donation-paypal": {
+        "title": "Average donation PayPal",
+        "description": ""
+      },
+      "average-failed": {
+        "title": "Average failed",
+        "description": ""
+      },
+      "average-minimum": {
+        "title": "Average minimum",
+        "description": ""
+      },
+      "average-received": {
+        "title": "Average received",
+        "description": ""
+      },
+      "average-second-round": {
+        "title": "Average Second Round",
+        "description": ""
+      },
+      "pledged": {
+        "title": "Pledged",
+        "description": ""
+      },
+      "pledged-failed": {
+        "title": "Pledged Failed",
+        "description": ""
+      },
+      "pledged-successful": {
+        "title": "Pledged Successful",
+        "description": ""
+      },
+      "refunded": {
+        "title": "Refunded",
+        "description": ""
+      }
+    }
   },
   "projects": {
     "sections": {

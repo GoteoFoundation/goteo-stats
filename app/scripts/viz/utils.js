@@ -1,5 +1,11 @@
 'use strict';
 
+Number.prototype.pad = function(size) {
+  var s = String(this);
+  while (s.length < (size || 2)) {s = "0" + s;}
+  return s;
+};
+
 var outliers = outliers || {'version':0.1, 'controller':{}, 'viz': {} ,'utils': {}};
 
 outliers.utils.getStyleRuleValue = function (style, selector, sheet) {

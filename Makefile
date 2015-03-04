@@ -8,11 +8,6 @@ app_watch: appserver watcher
 snapshot:
 	gulp snapshot
 
-test:
-	make unit_test
-	make build
-	make acceptance_test
-
 setup:
 	npm install
 	npm install bower
@@ -27,18 +22,6 @@ appserver:
 watcher:
 	gulp watch
 
-test_watcher:
-	npm run-script watcher
-
-unit_test:
-	npm test
-
-acceptance_test:
-	protractor protractor.js
-
-local_acceptance_test:
-	protractor protractor.local.js
-
 documentation:
 	rm -rf docs
 	./node_modules/jsdoc/jsdoc.js\
@@ -48,4 +31,4 @@ documentation:
 	  --private\
 	  app/scripts/
 
-.PHONY: app appserver test_watcher watcher test unit_test acceptance_test local_acceptance_tests setup
+.PHONY: app appserver watcher test setup

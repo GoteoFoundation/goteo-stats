@@ -33,8 +33,12 @@
         if ($rootScope.category !== -1000) {
           params.category = $rootScope.category;
         }
-        params.from_date = $rootScope.year + '-01-01';
-        params.to_date = $rootScope.year + '-12-31';
+        if (type === 'money') {
+          params.year = $rootScope.year;
+        } else {
+          params.from_date = $rootScope.year + '-01-01';
+          params.to_date = $rootScope.year + '-12-31';
+        }
         params.lang = $rootScope.locale;
         if (type === 'money') {
           return api.getMoney(params);
@@ -48,7 +52,7 @@
     };
 
     api.getMoney = function (params) {
-      var api_request = ApiService.get('/reports/money/', params);
+      var api_request = ApiService.get('/digests/reports/money/', params);
       var api_promise = api_request(function (data) {
         return data;
       });
