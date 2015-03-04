@@ -4,7 +4,8 @@
   var app = angular.module('goteoStatistics', [
     'ngRoute',
     'ngResource',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'angularSpinner'
   ]);
 
   app.config(['$routeProvider', function($routeProvider) {
@@ -90,6 +91,13 @@
           return A;
         }
       };
+
+      $scope.$root.$on('$routeChangeStart', function(event, route) {
+        $rootScope.globalLoading = true;
+      });
+      $scope.$root.$on('$routeChangeSuccess', function(event, route) {
+        $rootScope.globalLoading = false;
+      });
 
       // Load initial data.
       $rootScope.years = range(2011, moment().year());

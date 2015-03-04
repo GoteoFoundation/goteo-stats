@@ -1,7 +1,8 @@
 {
   "title": "Goteo Statistics",
   "global": {
-    "all": "All categories"
+    "all": "All",
+    "nodata": "No data available"
   },
   "lang": {
     "select": "Select language",

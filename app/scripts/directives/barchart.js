@@ -14,7 +14,10 @@
           barchartTitle: '@',
           barchartDescription: '@',
           barchartCumul: '@',
-          barchartData: '@'
+          barchartData: '@',
+          barchartIdField: '@',
+          barchartValueField: '@',
+          barchartLabelField: '@'
         },
         link: function ($scope, elm, attrs) {
           var numberFormat = d3.format("-.3s");
@@ -24,6 +27,9 @@
           var data1 = JSON.parse(attrs.barchartData),
               data2 = angular.fromJson(data1);
           $scope.data = data2;
+          $scope.idField = attrs.barchartIdField || 'id';
+          $scope.labelField = attrs.barchartLabelField || 'label';
+          $scope.valueField = attrs.barchartValueField || 'value';
           $scope.cumul = numberFormat(parseFloat(attrs.barchartCumul));
 
           $timeout(function() {
@@ -35,11 +41,11 @@
               .cornerRadius(0)
               .transitionDuration(200);
             angular.element($window).on('resize', resize);
-            $scope.chart.render($scope.data, 'value', 'name', 'name');
+            $scope.chart.render($scope.data, $scope.valueField, $scope.idField, $scope.labelField);
           }, 500);
           var resize = function() {
             $scope.width = (elm[0].children[2].scrollWidth) * 0.9;
-            $scope.chart.resize($scope.width, $scope.width * 1.1, $scope.data, 'value', 'name', 'name');
+            $scope.chart.resize($scope.width, $scope.width * 1.1, $scope.data, $scope.valueField, $scope.idField, $scope.labelField);
           };
         }
       };

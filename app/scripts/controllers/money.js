@@ -35,6 +35,9 @@
       /**
        * Process data to be used in charts.
        */
+      var getDate = function (i) {
+        return moment((i+1).pad() + '-' + $rootScope.year, 'MM-YYYY');
+      };
       var prepareData = function() {
         var temp;
         var datum;
@@ -136,16 +139,16 @@
           $scope.data.amount.push(datum);
 
 
-          $scope.data.averageDonation.months.push({name: k, value: currentData['average-donation']});
-          $scope.data.averageDonationPaypal.months.push({name: k, value: currentData['average-donation-paypal']});
-          $scope.data.averageFailed.months.push({name: k, value: currentData['average-failed']});
-          $scope.data.averageMinimum.months.push({name: k, value: currentData['average-minimum']});
-          $scope.data.averageReceived.months.push({name: k, value: currentData['average-received']});
-          $scope.data.averageSecondRound.months.push({name: k, value: currentData['average-second-round']});
-          $scope.data.pledged.months.push({name: k, value: currentData['pledged']});
-          $scope.data.pledgedFailed.months.push({name: k, value: currentData['pledged-failed']});
-          $scope.data.pledgedSuccessful.months.push({name: k, value: currentData['pledged-successful']});
-          $scope.data.refunded.months.push({name: k, value: currentData['refunded']});
+          $scope.data.averageDonation.months.push({id: k, name: getDate(i+1), value: currentData['average-donation']});
+          $scope.data.averageDonationPaypal.months.push({id: k, name: getDate(i+1), value: currentData['average-donation-paypal']});
+          $scope.data.averageFailed.months.push({id: k, name: getDate(i+1), value: currentData['average-failed']});
+          $scope.data.averageMinimum.months.push({id: k, name: getDate(i+1), value: currentData['average-minimum']});
+          $scope.data.averageReceived.months.push({id: k, name: getDate(i+1), value: currentData['average-received']});
+          $scope.data.averageSecondRound.months.push({id: k, name: getDate(i+1), value: currentData['average-second-round']});
+          $scope.data.pledged.months.push({id: k, name: getDate(i+1), value: currentData['pledged']});
+          $scope.data.pledgedFailed.months.push({id: k, name: getDate(i+1), value: currentData['pledged-failed']});
+          $scope.data.pledgedSuccessful.months.push({id: k, name: getDate(i+1), value: currentData['pledged-successful']});
+          $scope.data.refunded.months.push({id: k, name: getDate(i+1), value: currentData['refunded']});
         }
       };
       prepareData();

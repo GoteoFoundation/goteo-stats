@@ -10,7 +10,8 @@ outliers.viz.AreaChart = function() {
     svgParent = null,
     svg = null,
     transitionDuration = 500,
-    timeAxis = true;
+    timeAxis = true,
+    dotRadius = 5;
 
   function area() {}
 
@@ -28,6 +29,14 @@ outliers.viz.AreaChart = function() {
 
     var x = timeAxis ? d3.time.scale() : d3.scale.linear(),
         y = d3.scale.linear();
+
+    if (timeAxis) {
+      data.forEach(function(d) {
+        if (xField) {
+          d[xField] = new Date(d[xField]);
+        }
+      });
+    }
 
     svgParent = d3.select(container)
       .selectAll("svg")
@@ -70,21 +79,95 @@ outliers.viz.AreaChart = function() {
       .y0(height - margin.top - margin.bottom)
       .y1(function(d) {
         return yField ? y(d[yField]) : y(d);
-      });
+      })
+      .interpolate("monotone");
 
-    svg.append("path")
-      .datum(data)
-      .attr("class", "area")
-      .attr("d", area);
+    var line = d3.svg.line()
+      .x(function(d, i) {
+        return xField ? x(d[xField]) : x(i);
+      })
+      .y(function(d) {
+        return yField ? y(d[yField]) : y(d);
+      })
+      .interpolate("monotone");
 
-    svg.append("g")
+    var renderedXAxis = svg.selectAll(".x.axis")
+      .data([data]);
+    renderedXAxis.exit()
+      .remove();
+    renderedXAxis.transition()
+      .duration(transitionDuration)
+      .call(xAxis);
+    renderedXAxis.enter()
+      .append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + (height - margin.top - margin.bottom) + ")")
       .call(xAxis);
 
-    svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
+    var renderedArea = svg.selectAll(".area")
+      .data([data])
+    renderedArea.exit()
+      .remove();
+    renderedArea.transition()
+      .duration(transitionDuration)
+      .attr("d", area);
+    renderedArea.enter()
+      .append("path")
+      .attr("class", "area")
+      .attr("d", area);
+    var renderedLine = svg.selectAll(".line")
+      .data([data])
+    renderedLine.exit()
+      .remove();
+    renderedLine.transition()
+      .duration(transitionDuration)
+      .attr("d", line);
+    renderedLine.enter()
+      .append("path")
+      .attr("class", "line")
+      .attr("d", line);
+
+    var renderedDot = svg.selectAll('.dot')
+      .data(data, function (d, i) {
+        return idField ? d[idField] : i;
+      });
+    renderedDot.exit()
+      .remove();
+    renderedDot.transition()
+      .duration(transitionDuration)
+      .attr('cx', function(d, i) {
+        return xField ? x(d[xField]) : x(i);
+      })
+      .attr('cy', function(d) {
+        return yField ? y(d[yField]) : y(d);
+      });
+    renderedDot.enter()
+      .append('circle')
+      .attr('class', 'dot')
+      .attr('cx', function(d, i) {
+        return xField ? x(d[xField]) : x(i);
+      })
+      .attr('cy', function(d) {
+        return yField ? y(d[yField]) : y(d);
+      })
+      .attr('r', dotRadius);
+
+  };
+
+  /**
+   * Resizes all the chart elements according to the new width provided.
+   *
+   * @param {Number} newWidth: new width of the chart.
+   * @param {Number} newHeight: new height of the chart.
+   * @param {Object[]} data: THE DATA (mandatory)
+   * @param {String} valueField: name of the field where the value to be displayed is.
+   * @param {String} idField: name of the field where the ID of every datum is.
+   * @param {String} textField: name of the field where the text to be displayed on the label is.
+   */
+  area.resize = function (newWidth, newHeight, data, xField, yField, idField, textField) {
+    width = newWidth;
+    height = newHeight;
+    bar.render(data, xField, yField, idField, textField);
   };
 
   /**
@@ -139,11 +222,23 @@ outliers.viz.AreaChart = function() {
    * If x is provided, sets the condition to draw the X axis as a time scale to it. If not
    * returns its current value.
    *
-   * @param {Number} x: number of milliseconds a transition must take.
+   * @param {Boolean} x: set X axis as a time axis..
    */
   area.timeAxis = function (_) {
     if (!arguments.length) return timeAxis;
     timeAxis = _;
+    return area;
+  };
+
+  /**
+   * If x is provided, sets the dot radius to it. If not
+   * returns its current value.
+   *
+   * @param {Number} x: dot radius.
+   */
+  area.dotRadius = function (_) {
+    if (!arguments.length) return dotRadius;
+    dotRadius = _;
     return area;
   };
 

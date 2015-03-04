@@ -16,7 +16,8 @@
           areachartCumul: '@',
           areachartData: '@',
           areachartXField: '@',
-          areachartYField: '@'
+          areachartYField: '@',
+          areachartIdField: '@'
         },
         link: function ($scope, elm, attrs) {
           var numberFormat = d3.format("-.3s");
@@ -29,21 +30,22 @@
           $scope.cumul = numberFormat(parseFloat(attrs.areachartCumul));
           $scope.xField = attrs.areachartXField || 'name';
           $scope.yField = attrs.areachartYField || 'value';
+          $scope.idField = attrs.areachartIdField || 'id';
 
           $timeout(function() {
             $scope.width = (elm[0].children[2].scrollWidth) * 0.9;
             $scope.chart = outliers.viz.AreaChart()
               .container("#areachart-" + $scope.id)
               .width($scope.width)
-              .height($scope.width * 1.1)
+              .height($scope.width * 0.5)
               .transitionDuration(200);
-            //angular.element($window).on('resize', resize);
-            $scope.chart.render($scope.data, $scope.xField, $scope.yField, $scope.xField, $scope.xField);
+            angular.element($window).on('resize', resize);
+            $scope.chart.render($scope.data, $scope.xField, $scope.yField, $scope.idField, $scope.xField);
           }, 500);
-          /*var resize = function() {
+          var resize = function() {
             $scope.width = (elm[0].children[2].scrollWidth) * 0.9;
-            $scope.chart.resize($scope.width, $scope.width * 1.1, $scope.data, 'value', 'name', 'name');
-          };*/
+            $scope.chart.resize($scope.width, $scope.width * 0.5, $scope.data, $scope.xField, $scope.yField, $scope.idField, $scope.xField);
+          };
         }
       };
     }]);

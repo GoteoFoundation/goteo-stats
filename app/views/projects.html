@@ -7,6 +7,9 @@
         <barchart barchart-id="failed"
                   barchart-title="{{ 'projects.sections.failed.title' | translate }}"
                   barchart-description="{{ 'projects.sections.failed.description' | translate }}"
+                  barchart-id-field="name"
+                  barchart-label-field="name"
+                  barchart-value-field="value"
                   barchart-cumul="{{ data.failed.year }}"
                   barchart-data="{{ data.failed.month }}" />
     </div>
@@ -14,6 +17,9 @@
         <barchart barchart-id="percentage-successful"
                   barchart-title="{{ 'projects.sections.percentage-successful.title' | translate }}"
                   barchart-description="{{ 'projects.sections.percentage-successful.description' | translate }}"
+                  barchart-id-field="name"
+                  barchart-label-field="name"
+                  barchart-value-field="value"
                   barchart-cumul="{{ data.percentageSuccessful.year }}"
                   barchart-data="{{ data.percentageSuccessful.month }}" />
     </div>
@@ -21,6 +27,9 @@
         <barchart barchart-id="percentage-successful-completed"
                   barchart-title="{{ 'projects.sections.percentage-successful-completed.title' | translate }}"
                   barchart-description="{{ 'projects.sections.percentage-successful-completed.description' | translate }}"
+                  barchart-id-field="name"
+                  barchart-label-field="name"
+                  barchart-value-field="value"
                   barchart-cumul="{{ data.percentageSuccessfulCompleted.year }}"
                   barchart-data="{{ data.percentageSuccessfulCompleted.month }}" />
     </div>
@@ -28,6 +37,9 @@
         <barchart barchart-id="published"
                   barchart-title="{{ 'projects.sections.published.title' | translate }}"
                   barchart-description="{{ 'projects.sections.published.description' | translate }}"
+                  barchart-id-field="name"
+                  barchart-label-field="name"
+                  barchart-value-field="value"
                   barchart-cumul="{{ data.published.year }}"
                   barchart-data="{{ data.published.month }}" />
     </div>
@@ -35,6 +47,9 @@
         <barchart barchart-id="received"
                   barchart-title="{{ 'projects.sections.received.title' | translate }}"
                   barchart-description="{{ 'projects.sections.received.description' | translate }}"
+                  barchart-id-field="name"
+                  barchart-label-field="name"
+                  barchart-value-field="value"
                   barchart-cumul="{{ data.received.year }}"
                   barchart-data="{{ data.received.month }}" />
     </div>
@@ -43,12 +58,18 @@
                   barchart-title="{{ 'projects.sections.successful.title' | translate }}"
                   barchart-description="{{ 'projects.sections.successful.description' | translate }}"
                   barchart-cumul="{{ data.successful.year }}"
+                  barchart-id-field="name"
+                  barchart-label-field="name"
+                  barchart-value-field="value"
                   barchart-data="{{ data.successful.month }}" />
     </div>
     <div class="section col-sm-6" id="successful-completed">
         <barchart barchart-id="successful-completed"
                   barchart-title="{{ 'projects.sections.successful-completed.title' | translate }}"
                   barchart-description="{{ 'projects.sections.successful-completed.description' | translate }}"
+                  barchart-id-field="name"
+                  barchart-label-field="name"
+                  barchart-value-field="value"
                   barchart-cumul="{{ data.successfulCompleted.year }}"
                   barchart-data="{{ data.successfulCompleted.month }}" />
     </div>

@@ -11,14 +11,12 @@
                          piechart-select-data="{{ data.amount }}"/>
     </div>
     <div class="section col-sm-6" id="average-donation">
-        <!--<barchart barchart-id="average-donation"
-                  barchart-title="{{ 'money.sections.average-donation.title' | translate }}"
-                  barchart-description="{{ 'money.sections.average-donation.description' | translate }}"
-                  barchart-cumul="{{ data.averageDonation.year }}"
-                  barchart-data="{{ data.averageDonation.months }}" />-->
         <areachart areachart-id="average-donation"
                    areachart-title="{{ 'money.sections.average-donation.title' | translate }}"
                    areachart-description="{{ 'money.sections.average-donation.description' | translate }}"
+                   areachart-x-field="name"
+                   areachart-x-field="value"
+                   areachart-id-field="name"
                    areachart-cumul="{{ data.averageDonation.year }}"
                    areachart-data="{{ data.averageDonation.months }}" />
     </div>

@@ -7,6 +7,18 @@ body {
     color: #58595b;
     font-size: 9pt;
 }
+.global_loading {
+    background-color: #fff;
+    background-color: rgba(255,255,255,0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 62px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2001;
+}
 .navbar {
     min-height: 60px;
 }
@@ -102,8 +114,8 @@ body {
     background-color: #04a64b !important;
 }
 .navbar-brand img {
-    height: 50px;
-    margin-top: -10px;
+    height: 40px;
+    margin-top: -5px;
 }
 .container {
     padding-bottom: 70px;
@@ -193,20 +205,29 @@ body {
     color: #184f8c;
 }
 .barchart-cumul,
-.piechart-cumul {
+.piechart-cumul,
+.areachart-cumul {
     font-size: 50pt;
     font-weight: bold;
 }
-.projects .barchart-cumul {
+.projects .barchart-cumul,
+.projects .piechart-cumul,
+.projects .areachart-cumul {
     color: #28b1a6;
 }
-.money .barchart-cumul {
+.money .barchart-cumul,
+.money .piechart-cumul,
+.money .areachart-cumul {
     color: #7d3681;
 }
-.community .piechart-cumul {
+.community .barchart-cumul,
+.community .piechart-cumul,
+.community .areachart-cumul {
     color: #184f8c;
 }
-.rewards .piechart-cumul {
+.rewards .barchart-cumul,
+.rewards .piechart-cumul,
+.rewards .areachart-cumul {
     color: #04a64b;
 }
 .barTooltip {
@@ -258,4 +279,47 @@ body {
 .piechart-select-chart .sublabel {
     fill: #58595b;
     font-size: 9pt;
+}
+.areachart-chart .area {
+    stroke: none;
+    fill-opacity: 0.5;
+}
+.money .areachart-chart .area,
+.money .areachart-chart .dot {
+    fill: #7d3681;
+}
+.projects .areachart-chart .area,
+.projects .areachart-chart .dot {
+    fill: #28b1a6;
+}
+.community .areachart-chart .area,
+.community .areachart-chart .dot {
+    fill: #184f8c;
+}
+.rewards .areachart-chart .area,
+.rewards .areachart-chart .dot {
+    fill: #04a64b;
+}
+.areachart-chart .line {
+    stroke-width: 3;
+    fill: none;
+}
+.areachart-chart .dot {
+    stroke: none;
+}
+.money .areachart-chart .line {
+    stroke: #7d3681;
+}
+.projects .areachart-chart .line {
+    stroke: #28b1a6;
+}
+.community .areachart-chart .line {
+    stroke: #184f8c;
+}
+.rewards .areachart-chart .line {
+    stroke: #04a64b;
+}
+.areachart-chart .x.axis {
+    stroke-width: 1;
+    stroke: #58595b;
 }
