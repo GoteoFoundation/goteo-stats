@@ -41,7 +41,11 @@ body {
     margin-top: 10px;
 }
 .navbar-form {
-    margin-top: 15px;
+    margin-top: 23px !important;
+}
+.navbar-form select {
+    height: 25px;
+    max-width: 120px;
 }
 .navbar-form select,
 .dropdown-menu > li > a {
@@ -320,6 +324,15 @@ body {
     stroke: #04a64b;
 }
 .areachart-chart .x.axis {
-    stroke-width: 1;
-    stroke: #58595b;
+    stroke: none;
+    fill: none;
+}
+.areachart-chart .x.axis .tick line {
+    stroke:#58595b;
+}
+.areachart-chart .x.axis .tick text {
+    font-size: 9pt;
+    font-weight: 400;
+    fill: #58595b;
+    text-anchor: end !important;
 }

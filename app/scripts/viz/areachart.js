@@ -6,12 +6,13 @@ outliers.viz.AreaChart = function() {
   var container = "body",
     width = 500,
     height = 200,
-    margin = {"top": 10, "left": 10, "bottom": 10, "right": 10},
+    margin = {"top": 5, "left": 50, "bottom": 90, "right": 10},
     svgParent = null,
     svg = null,
     transitionDuration = 500,
     timeAxis = true,
-    dotRadius = 5;
+    dotRadius = 5,
+    tooltipFormat = d3.format("-.3s");;
 
   function area() {}
 
@@ -25,7 +26,6 @@ outliers.viz.AreaChart = function() {
    * @param {String} textField: name of the field where the text to be displayed on the label is.
    */
   area.render = function  (data, xField, yField, idField, textField) {
-    console.log(data);
 
     var x = timeAxis ? d3.time.scale() : d3.scale.linear(),
         y = d3.scale.linear();
@@ -66,13 +66,13 @@ outliers.viz.AreaChart = function() {
 
     var xAxis = d3.svg.axis()
       .scale(x)
-      .orient("bottom");
+      .tickValues(data.map(function (d) {
+        return xField ? d[xField] : i;
+      }))
+      .orient("bottom")
+      .tickFormat(timeAxis ? d3.time.format('%B %Y') : d3.format(',.0f'));
 
-    var yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left");
-
-    var area = d3.svg.area()
+    var areagen = d3.svg.area()
       .x(function(d, i) {
         return xField ? x(d[xField]) : x(i);
       })
@@ -95,14 +95,18 @@ outliers.viz.AreaChart = function() {
       .data([data]);
     renderedXAxis.exit()
       .remove();
-    renderedXAxis.transition()
-      .duration(transitionDuration)
-      .call(xAxis);
     renderedXAxis.enter()
       .append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + (height - margin.top - margin.bottom) + ")")
-      .call(xAxis);
+      .attr("transform", "translate(0," + (height - margin.top - margin.bottom) + ")");
+    renderedXAxis.transition()
+      .duration(transitionDuration)
+      .call(xAxis)
+      .selectAll('.tick text')
+      .attr("dx", "-.8em")
+      .attr("dy", ".15em")
+      .attr("transform", "rotate(-65)");
+
 
     var renderedArea = svg.selectAll(".area")
       .data([data])
@@ -110,11 +114,11 @@ outliers.viz.AreaChart = function() {
       .remove();
     renderedArea.transition()
       .duration(transitionDuration)
-      .attr("d", area);
+      .attr("d", areagen);
     renderedArea.enter()
       .append("path")
       .attr("class", "area")
-      .attr("d", area);
+      .attr("d", areagen);
     var renderedLine = svg.selectAll(".line")
       .data([data])
     renderedLine.exit()
@@ -150,7 +154,25 @@ outliers.viz.AreaChart = function() {
       .attr('cy', function(d) {
         return yField ? y(d[yField]) : y(d);
       })
-      .attr('r', dotRadius);
+      .attr('r', dotRadius)
+      .on("mouseover", function() {
+        console.log('mouseover');
+        $(this).tooltip('show');
+      })
+      .on("mouseout", function() {
+        console.log('mouseout');
+        $(this).tooltip('hide');
+      })
+      .each(function(d) {
+        console.log(d[textField]);
+        console.log(d[xField]);
+        $(this).tooltip({
+          placement: 'top',
+          container: 'body',
+          html: true,
+          title: (textField ? d[textField] : (xField ? d[xField] : i)) + '<br/>' + (tooltipFormat(yField ? d[yField] : d))
+        });
+      });
 
   };
 

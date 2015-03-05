@@ -17,7 +17,8 @@
           areachartData: '@',
           areachartXField: '@',
           areachartYField: '@',
-          areachartIdField: '@'
+          areachartIdField: '@',
+          areachartLabelField: '@'
         },
         link: function ($scope, elm, attrs) {
           var numberFormat = d3.format("-.3s");
@@ -31,6 +32,7 @@
           $scope.xField = attrs.areachartXField || 'name';
           $scope.yField = attrs.areachartYField || 'value';
           $scope.idField = attrs.areachartIdField || 'id';
+          $scope.labelField = attrs.areachartLabelField || 'labe';
 
           $timeout(function() {
             $scope.width = (elm[0].children[2].scrollWidth) * 0.9;
@@ -40,11 +42,11 @@
               .height($scope.width * 0.5)
               .transitionDuration(200);
             angular.element($window).on('resize', resize);
-            $scope.chart.render($scope.data, $scope.xField, $scope.yField, $scope.idField, $scope.xField);
+            $scope.chart.render($scope.data, $scope.xField, $scope.yField, $scope.idField, $scope.labelField);
           }, 500);
           var resize = function() {
             $scope.width = (elm[0].children[2].scrollWidth) * 0.9;
-            $scope.chart.resize($scope.width, $scope.width * 0.5, $scope.data, $scope.xField, $scope.yField, $scope.idField, $scope.xField);
+            $scope.chart.resize($scope.width, $scope.width * 0.5, $scope.data, $scope.xField, $scope.yField, $scope.idField, $scope.labelField);
           };
         }
       };

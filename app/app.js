@@ -14,17 +14,6 @@
     });
   }]);
 
-  /*app.config(['$translateProvider', function ($translateProvider) {
-    $translateProvider.useStaticFilesLoader({
-      prefix: 'locales/',
-      suffix: '.json'
-    })
-    var browserLocale = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage);
-    browserLocale = browserLocale.split('-')[0];
-    console.log(browserLocale);
-    $translateProvider.preferredLanguage(browserLocale);
-  }]);*/
-
   app.config([
     '$translateProvider',
     function ($translateProvider) {
@@ -34,8 +23,7 @@
         'en_UK': 'en',
         'es_ES': 'es'
       });
-      var browserLocale = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage);
-      browserLocale = browserLocale.split('-')[0];
+      var browserLocale = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage).split('-')[0];
       $translateProvider.preferredLanguage(browserLocale);
     }
   ]);
