@@ -135,17 +135,9 @@
 
   gulp.task('usemin', function() {
     return gulp.src('app/*.html')
-      .pipe(node_env !== 'development' ? usemin({
-        // css: [minifyCss()],
-        htmlmin: false, // Setting true will cause issues with JavaScript dependant on custom attributes.,
-        js: [annotate(), uglify({
-          mangle: false,
-          dead_code: true
-        })]
-      }) : gutil.noop())
-      .pipe(node_env === 'development' ? usemin({
+      .pipe(usemin({
         htmlmin: false // Setting true will cause issues with JavaScript dependant on custom attributes.,
-      }) : gutil.noop())
+      }))
       .pipe(gulp.dest(paths.dest));
   });
 
