@@ -1,5 +1,5 @@
 {
-  "title": "Goteo Statistics",
+  "title": "Goteo Estadísticas",
   "global": {
     "all": "Todas",
     "nodata": "No existen datos disponibles"
@@ -22,83 +22,200 @@
   "money": {
     "sections": {
       "amount": {
-        "title": "Subsección cantidades",
-        "description": "",
+        "title": "Título amount",
+        "description": "Descripción amount",
         "labels": {
-          "cash": "Efectivo",
-          "creditcard": "Tarjeta de crédito",
-          "fee": "Fee",
-          "matchfund": "Match Fund",
-          "matchfundpledge": "Match Fund Pledge",
-          "paypal": "PayPal"
+          "cash": "Etiqueta cash",
+          "creditcard": "Etiqueta creditcard",
+          "fee": "Etiqueta fee",
+          "matchfund": "Etiqueta matchfund",
+          "matchfundpledge": "Etiqueta matchfundpledge",
+          "paypal": "Etiqueta paypal"
         }
       },
       "average-donation": {
-        "title": "Donación media",
-        "description": ""
+        "title": "Título average-donation",
+        "description": "Descripción average-donation"
       },
       "average-donation-paypal": {
-        "title": "Donación media en PayPal",
-        "description": ""
+        "title": "Título average-donation-paypal",
+        "description": "Descripción average-donation-paypal"
       },
       "average-failed": {
-        "title": "Average failed",
-        "description": ""
+        "title": "Título average-failed",
+        "description": "Descripción average-failed"
       },
       "average-minimum": {
-        "title": "Average minimum",
-        "description": ""
+        "title": "Título average-minimum",
+        "description": "Descripción average-minimum"
       },
       "average-received": {
-        "title": "Average received",
-        "description": ""
+        "title": "Título average-received",
+        "description": "Descripción average-received"
       },
       "average-second-round": {
-        "title": "Average Second Round",
-        "description": ""
+        "title": "Título average-second-round",
+        "description": "Descripción average-second-round"
       },
       "pledged": {
-        "title": "Pledged",
-        "description": ""
+        "title": "Título pledged",
+        "description": "Descripción pledged"
       },
       "pledged-failed": {
-        "title": "Pledged Failed",
-        "description": ""
+        "title": "Título pledged-faild",
+        "description": "Descripción pledged-faild"
       },
       "pledged-successful": {
-        "title": "Pledged Successful",
-        "description": ""
+        "title": "Título pledged-successful",
+        "description": "Descripción pledged-successful"
       },
       "refunded": {
-        "title": "Refunded",
-        "description": ""
+        "title": "Título refunded",
+        "description": "Descripción refunded"
       }
     }
   },
   "projects": {
     "sections": {
+      "average-amount-successful": {
+        "title": "Título average-amount-successful",
+        "description": "Descripción average-amount-successful"
+      },
+      "average-posts-successful": {
+        "title": "Título average-posts-successful",
+        "description": "Descripción average-posts-successful"
+      },
       "failed": {
-        "title": "Proyectos fallidos",
-        "description": "Diagrama de barras para los proyectos fallidos cada mes."
+        "title": "Título failed",
+        "description": "Descripción failed"
+      },
+      "percentage-successful": {
+        "title": "Título percentage-successful",
+        "description": "Descripción percentage-successful"
+      },
+      "percentage-successful-completed": {
+        "title": "Título percentage-successful-completed",
+        "description": "Descripción percentage-successful-completed"
+      },
+      "published": {
+        "title": "Título published",
+        "description": "Descripción published"
+      },
+      "received": {
+        "title": "Título received",
+        "description": "Descripción received"
+      },
+      "successful": {
+        "title": "Título successful",
+        "description": "Descripción successful"
+      },
+      "successful-completed": {
+        "title": "Título successful-completed",
+        "description": "Descripción successful-completed"
       },
       "top10-collaborations": {
-        "title": "Proyectos con más colaboraciones",
-        "description": "Ranking con los proyectos que más colaboraciones han recibido."
+        "title": "Título top10-collaborations",
+        "description": "Descripción top10-collaborations"
       },
       "top10-donations": {
-        "title": "Proyectos con más donaciones",
-        "description": "Ranking con los proyectos que más donaciones han recibido."
+        "title": "Título top10-donations",
+        "description": "Descripción top10-donations"
       },
       "top10-receipts": {
-        "title": "Proyectos con más receipts",
-        "description": "Ranking con los proyectos que más receipts han recibido."
+        "title": "Título top10-receipts",
+        "description": "Descripción top10-receipts"
       }
     }
   },
   "community": {
-    "description": "Descripción de la sección Comunidad"
+    "sections": {
+      "categories": {
+        "title": "Título categories",
+        "description": "Descripción categories"
+      },
+      "top10-collaborators": {
+        "title": "Título top10-collaborators",
+        "description": "Descripción top10-collaborators"
+      },
+      "top10-collaborators": {
+        "title": "Título top10-donors",
+        "description": "Descripción top10-donors"
+      },
+      "top10-collaborators": {
+        "title": "Título top10-multidonors",
+        "description": "Descripción top10-multidonors"
+      },
+      "users": {
+        "title": "Título users",
+        "description": "Descripción users"
+      },
+      "average-donors": {
+        "title": "Título average-donors",
+        "description": "Descripción average-donors"
+      },
+      "collaborators": {
+        "title": "Título collaborators",
+        "description": "Descripción collaborators"
+      },
+      "creators-collaborators": {
+        "title": "Título creators-collaborators",
+        "description": "Descripción creators-collaborators"
+      },
+      "creators-donors": {
+        "title": "Título creators-donors",
+        "description": "Descripción creators-donors"
+      },
+      "donors": {
+        "title": "Título donors",
+        "description": "Descripción donors"
+      },
+      "donors-collaborators": {
+        "title": "Título donors-collaborators",
+        "description": "Descripción donors-collaborators"
+      },
+      "multidonors": {
+        "title": "Título multidonors",
+        "description": "Descripción multidonors"
+      },
+      "paypal-donors": {
+        "title": "Título paypal-donors",
+        "description": "Descripción paypal-donors"
+      },
+      "paypal-multidonors": {
+        "title": "Título paypal-multidonors",
+        "description": "Descripción paypal-multidonors"
+      }
+    }
   },
   "rewards": {
-    "description": "Descripción de la sección Recompensas"
+    "sections": {
+      "favorite-rewards": {
+        "title": "Título favorite-rewards",
+        "description": "Descripción favorite-rewards",
+        "labels": {
+          "product": "Etiqueta product",
+          "other": "Etiqueta other",
+          "money": "Etiqueta money",
+          "file": "Etiqueta file",
+          "thanks": "Etiqueta thanks",
+          "service": "Etiqueta service"
+        }
+      },
+      "rewards-per-amount": {
+        "title": "Título rewards-per-amount",
+        "description": "Descripción rewards-per-amount",
+        "labels": {
+          "rewards-less-than-15": "Etiqueta less-than-15",
+          "rewards-between-30-100": "Etiqueta between-30-100",
+          "rewards-between-15-30": "Etiqueta between-15-30",
+          "rewards-between-100-400": "Etiqueta between-100-400",
+          "rewards-more-than-400": "Etiqueta more-than-400"
+        }
+      },
+      "reward-refusal": {
+        "title": "Título reward-refusal",
+        "description": "Descripción reward-refusal"
+      }
+    }
   }
 }

@@ -132,6 +132,17 @@
             $scope.data.paypalDonors.months.push({id: k, name: $rootScope.getDate(i), value: currentData['paypal-donors']});
             $scope.data.paypalMultidonors.months.push({id: k, name: $rootScope.getDate(i), value: currentData['paypal-multidonors']});
             $scope.data.users.months.push({id: k, name: $rootScope.getDate(i), value: currentData.users});
+          } else {
+            $scope.data.averageDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.collaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.creatorsCollaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.creatorsDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.donors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.donorsCollaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.multidonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.paypalDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.paypalMultidonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.users.months.push({id: k, name: $rootScope.getDate(i), value: 0});
           }
         }
       };

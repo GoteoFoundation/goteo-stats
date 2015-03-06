@@ -22,83 +22,200 @@
   "money": {
     "sections": {
       "amount": {
-        "title": "Amount subsection",
-        "description": "",
+        "title": "Title amount",
+        "description": "Description amount",
         "labels": {
-          "cash": "Cash",
-          "creditcard": "Credit Card",
-          "fee": "Fee",
-          "matchfund": "Match Fund",
-          "matchfundpledge": "Match Fund Pledge",
-          "paypal": "PayPal"
+          "cash": "Label cash",
+          "creditcard": "Label creditcard",
+          "fee": "Label fee",
+          "matchfund": "Label matchfund",
+          "matchfundpledge": "Label matchfundpledge",
+          "paypal": "Label paypal"
         }
       },
       "average-donation": {
-        "title": "Average donation",
-        "description": ""
+        "title": "Title average-donation",
+        "description": "Description average-donation"
       },
       "average-donation-paypal": {
-        "title": "Average donation PayPal",
-        "description": ""
+        "title": "Title average-donation-paypal",
+        "description": "Description average-donation-paypal"
       },
       "average-failed": {
-        "title": "Average failed",
-        "description": ""
+        "title": "Title average-failed",
+        "description": "Description average-failed"
       },
       "average-minimum": {
-        "title": "Average minimum",
-        "description": ""
+        "title": "Title average-minimum",
+        "description": "Description average-minimum"
       },
       "average-received": {
-        "title": "Average received",
-        "description": ""
+        "title": "Title average-received",
+        "description": "Description average-received"
       },
       "average-second-round": {
-        "title": "Average Second Round",
-        "description": ""
+        "title": "Title average-second-round",
+        "description": "Description average-second-round"
       },
       "pledged": {
-        "title": "Pledged",
-        "description": ""
+        "title": "Title pledged",
+        "description": "Description pledged"
       },
       "pledged-failed": {
-        "title": "Pledged Failed",
-        "description": ""
+        "title": "Title pledged-faild",
+        "description": "Description pledged-faild"
       },
       "pledged-successful": {
-        "title": "Pledged Successful",
-        "description": ""
+        "title": "Title pledged-successful",
+        "description": "Description pledged-successful"
       },
       "refunded": {
-        "title": "Refunded",
-        "description": ""
+        "title": "Title refunded",
+        "description": "Description refunded"
       }
     }
   },
   "projects": {
     "sections": {
+      "average-amount-successful": {
+        "title": "Title average-amount-successful",
+        "description": "Description average-amount-successful"
+      },
+      "average-posts-successful": {
+        "title": "Title average-posts-successful",
+        "description": "Description average-posts-successful"
+      },
       "failed": {
-        "title": "",
-        "description": ""
+        "title": "Title failed",
+        "description": "Description failed"
+      },
+      "percentage-successful": {
+        "title": "Title percentage-successful",
+        "description": "Description percentage-successful"
+      },
+      "percentage-successful-completed": {
+        "title": "Title percentage-successful-completed",
+        "description": "Description percentage-successful-completed"
+      },
+      "published": {
+        "title": "Title published",
+        "description": "Description published"
+      },
+      "received": {
+        "title": "Title received",
+        "description": "Description received"
+      },
+      "successful": {
+        "title": "Title successful",
+        "description": "Description successful"
+      },
+      "successful-completed": {
+        "title": "Title successful-completed",
+        "description": "Description successful-completed"
       },
       "top10-collaborations": {
-        "title": "",
-        "description": ""
+        "title": "Title top10-collaborations",
+        "description": "Description top10-collaborations"
       },
       "top10-donations": {
-        "title": "",
-        "description": ""
+        "title": "Title top10-donations",
+        "description": "Description top10-donations"
       },
       "top10-receipts": {
-        "title": "",
-        "description": ""
+        "title": "Title top10-receipts",
+        "description": "Description top10-receipts"
       }
     }
   },
   "community": {
-    "description": "Community section description"
+    "sections": {
+      "categories": {
+        "title": "Title categories",
+        "description": "Description categories"
+      },
+      "top10-collaborators": {
+        "title": "Title top10-collaborators",
+        "description": "Description top10-collaborators"
+      },
+      "top10-collaborators": {
+        "title": "Title top10-donors",
+        "description": "Description top10-donors"
+      },
+      "top10-collaborators": {
+        "title": "Title top10-multidonors",
+        "description": "Description top10-multidonors"
+      },
+      "users": {
+        "title": "Title users",
+        "description": "Description users"
+      },
+      "average-donors": {
+        "title": "Title average-donors",
+        "description": "Description average-donors"
+      },
+      "collaborators": {
+        "title": "Title collaborators",
+        "description": "Description collaborators"
+      },
+      "creators-collaborators": {
+        "title": "Title creators-collaborators",
+        "description": "Description creators-collaborators"
+      },
+      "creators-donors": {
+        "title": "Title creators-donors",
+        "description": "Description creators-donors"
+      },
+      "donors": {
+        "title": "Title donors",
+        "description": "Description donors"
+      },
+      "donors-collaborators": {
+        "title": "Title donors-collaborators",
+        "description": "Description donors-collaborators"
+      },
+      "multidonors": {
+        "title": "Title multidonors",
+        "description": "Description multidonors"
+      },
+      "paypal-donors": {
+        "title": "Title paypal-donors",
+        "description": "Description paypal-donors"
+      },
+      "paypal-multidonors": {
+        "title": "Title paypal-multidonors",
+        "description": "Description paypal-multidonors"
+      }
+    }
   },
   "rewards": {
-    "description": "Rewards section description"
+    "sections": {
+      "favorite-rewards": {
+        "title": "Title favorite-rewards",
+        "description": "Description favorite-rewards",
+        "labels": {
+          "product": "Label product",
+          "other": "Label other",
+          "money": "Label money",
+          "file": "Label file",
+          "thanks": "Label thanks",
+          "service": "Label service"
+        }
+      },
+      "rewards-per-amount": {
+        "title": "Title rewards-per-amount",
+        "description": "Description rewards-per-amount",
+        "labels": {
+          "rewards-less-than-15": "Label less-than-15",
+          "rewards-between-30-100": "Label between-30-100",
+          "rewards-between-15-30": "Label between-15-30",
+          "rewards-between-100-400": "Label between-100-400",
+          "rewards-more-than-400": "Label more-than-400"
+        }
+      },
+      "reward-refusal": {
+        "title": "Title reward-refusal",
+        "description": "Description reward-refusal"
+      }
+    }
   }
 }

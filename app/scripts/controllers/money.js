@@ -107,40 +107,139 @@
         for(var i = 1; i < 13; i++) {
           var k = months[i-1] + ' ' + $rootScope.year;
           var currentData = moneyData.buckets[i.pad()];
-          temp = currentData['cash-amount'] + currentData['creditcard-amount'] + currentData['fee-amount'] +
-          currentData['matchfund-amount'] + currentData['matchfundpledge-amount'] + currentData['paypal-amount'];
-          datum = {select: k, data: []};
-          if (currentData['cash-amount'] > 0) {
-            datum.data.push({label: $translate.instant('money.sections.amount.labels.cash'), id: 'cash', value: currentData['cash-amount'] / temp});
+          if (currentData) {
+            temp = currentData['cash-amount'] + currentData['creditcard-amount'] + currentData['fee-amount'] +
+            currentData['matchfund-amount'] + currentData['matchfundpledge-amount'] + currentData['paypal-amount'];
+            datum = {select: k, data: []};
+            if (currentData['cash-amount'] > 0) {
+              datum.data.push({
+                label: $translate.instant('money.sections.amount.labels.cash'),
+                id: 'cash',
+                value: currentData['cash-amount'] / temp
+              });
+            }
+            if (currentData['creditcard-amount'] > 0) {
+              datum.data.push({
+                label: $translate.instant('money.sections.amount.labels.creditcard'),
+                id: 'creditcard',
+                value: currentData['creditcard-amount'] / temp
+              });
+            }
+            if (currentData['fee-amount'] > 0) {
+              datum.data.push({
+                label: $translate.instant('money.sections.amount.labels.fee'),
+                id: 'fee',
+                value: currentData['fee-amount'] / temp
+              });
+            }
+            if (currentData['matchfund-amount'] > 0) {
+              datum.data.push({
+                label: $translate.instant('money.sections.amount.labels.matchfund'),
+                id: 'matchfund',
+                value: currentData['matchfund-amount'] / temp
+              });
+            }
+            if (currentData['matchfundpledge-amount'] > 0) {
+              datum.data.push({
+                label: $translate.instant('money.sections.amount.labels.matchfundpledge'),
+                id: 'matchfundpledge',
+                value: currentData['matchfundpledge-amount'] / temp
+              });
+            }
+            if (currentData['paypal-amount'] > 0) {
+              datum.data.push({
+                label: $translate.instant('money.sections.amount.labels.paypal'),
+                id: 'paypal',
+                value: currentData['paypal-amount'] / temp
+              });
+            }
+            $scope.data.amount.push(datum);
+            $scope.data.averageDonation.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['average-donation']
+            });
+            $scope.data.averageDonationPaypal.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['average-donation-paypal']
+            });
+            $scope.data.averageFailed.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['average-failed']
+            });
+            $scope.data.averageMinimum.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['average-minimum']
+            });
+            $scope.data.averageReceived.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['average-received']
+            });
+            $scope.data.averageSecondRound.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['average-second-round']
+            });
+            $scope.data.pledged.months.push({id: k, name: $rootScope.getDate(i), value: currentData.pledged});
+            $scope.data.pledgedFailed.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['pledged-failed']
+            });
+            $scope.data.pledgedSuccessful.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['pledged-successful']
+            });
+            $scope.data.refunded.months.push({id: k, name: $rootScope.getDate(i), value: currentData.refunded});
+          } else {
+            $scope.data.averageDonation.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.averageDonationPaypal.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.averageFailed.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.averageMinimum.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.averageReceived.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.averageSecondRound.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.pledged.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.pledgedFailed.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.pledgedSuccessful.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.refunded.months.push({id: k, name: $rootScope.getDate(i), value: 0});
           }
-          if (currentData['creditcard-amount'] > 0) {
-            datum.data.push({label: $translate.instant('money.sections.amount.labels.creditcard'), id: 'creditcard', value: currentData['creditcard-amount'] / temp});
-          }
-          if (currentData['fee-amount'] > 0) {
-            datum.data.push({label: $translate.instant('money.sections.amount.labels.fee'), id: 'fee', value: currentData['fee-amount'] / temp});
-          }
-          if (currentData['matchfund-amount'] > 0) {
-            datum.data.push({label: $translate.instant('money.sections.amount.labels.matchfund'), id: 'matchfund', value: currentData['matchfund-amount'] / temp});
-          }
-          if (currentData['matchfundpledge-amount'] > 0) {
-            datum.data.push({label: $translate.instant('money.sections.amount.labels.matchfundpledge'), id: 'matchfundpledge', value: currentData['matchfundpledge-amount'] / temp});
-          }
-          if (currentData['paypal-amount'] > 0) {
-            datum.data.push({label: $translate.instant('money.sections.amount.labels.paypal'), id: 'paypal', value: currentData['paypal-amount'] / temp});
-          }
-          $scope.data.amount.push(datum);
-
-
-          $scope.data.averageDonation.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-donation']});
-          $scope.data.averageDonationPaypal.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-donation-paypal']});
-          $scope.data.averageFailed.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-failed']});
-          $scope.data.averageMinimum.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-minimum']});
-          $scope.data.averageReceived.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-received']});
-          $scope.data.averageSecondRound.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-second-round']});
-          $scope.data.pledged.months.push({id: k, name: $rootScope.getDate(i), value: currentData.pledged});
-          $scope.data.pledgedFailed.months.push({id: k, name: $rootScope.getDate(i), value: currentData['pledged-failed']});
-          $scope.data.pledgedSuccessful.months.push({id: k, name: $rootScope.getDate(i), value: currentData['pledged-successful']});
-          $scope.data.refunded.months.push({id: k, name: $rootScope.getDate(i), value: currentData.refunded});
         }
       };
       $scope.prepareData();
