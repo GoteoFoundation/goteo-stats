@@ -1,5 +1,5 @@
-<div class="projects">
-    <div class="section col-sm-6" id="average-amount-successful">
+<div class="projects" id="projects-container">
+    <div class="section col-sm-6 card" id="average-amount-successful">
         <areachart areachart-id="average-amount-successful"
                    areachart-title="{{ 'projects.sections.average-amount-successful.title' | translate }}"
                    areachart-description="{{ 'projects.sections.average-amount-successful.description' | translate }}"
@@ -10,7 +10,7 @@
                    areachart-cumul="{{ data.averageAmountSuccessful.year }}"
                    areachart-data="{{ data.averageAmountSuccessful.months }}" />
     </div>
-    <div class="section col-sm-6" id="average-posts-successful">
+    <div class="section col-sm-6 card" id="average-posts-successful">
         <areachart areachart-id="average-posts-successful"
                    areachart-title="{{ 'projects.sections.average-posts-successful.title' | translate }}"
                    areachart-description="{{ 'projects.sections.average-posts-successful.description' | translate }}"
@@ -21,56 +21,56 @@
                    areachart-cumul="{{ data.averagePostsSuccessful.year }}"
                    areachart-data="{{ data.averagePostsSuccessful.months }}" />
     </div>
-    <div class="section col-sm-6" id="failed">
+    <div class="section col-sm-6 card" id="failed">
         <barchart barchart-id="failed"
                   barchart-title="{{ 'projects.sections.failed.title' | translate }}"
                   barchart-description="{{ 'projects.sections.failed.description' | translate }}"
                   barchart-cumul="{{ data.failed.year }}"
                   barchart-data="{{ data.failed.months }}" />
     </div>
-    <div class="section col-sm-6" id="percentage-successful">
+    <div class="section col-sm-6 card" id="percentage-successful">
         <barchart barchart-id="percentage-successful"
                   barchart-title="{{ 'projects.sections.percentage-successful.title' | translate }}"
                   barchart-description="{{ 'projects.sections.percentage-successful.description' | translate }}"
                   barchart-cumul="{{ data.percentageSuccessful.year }}"
                   barchart-data="{{ data.percentageSuccessful.months }}" />
     </div>
-    <div class="section col-sm-6" id="percentage-successful-completed">
+    <div class="section col-sm-6 card" id="percentage-successful-completed">
         <barchart barchart-id="percentage-successful-completed"
                   barchart-title="{{ 'projects.sections.percentage-successful-completed.title' | translate }}"
                   barchart-description="{{ 'projects.sections.percentage-successful-completed.description' | translate }}"
                   barchart-cumul="{{ data.percentageSuccessfulCompleted.year }}"
                   barchart-data="{{ data.percentageSuccessfulCompleted.months }}" />
     </div>
-    <div class="section col-sm-6" id="published">
+    <div class="section col-sm-6 card" id="published">
         <barchart barchart-id="published"
                   barchart-title="{{ 'projects.sections.published.title' | translate }}"
                   barchart-description="{{ 'projects.sections.published.description' | translate }}"
                   barchart-cumul="{{ data.published.year }}"
                   barchart-data="{{ data.published.months }}" />
     </div>
-    <div class="section col-sm-6" id="received">
+    <div class="section col-sm-6 card" id="received">
         <barchart barchart-id="received"
                   barchart-title="{{ 'projects.sections.received.title' | translate }}"
                   barchart-description="{{ 'projects.sections.received.description' | translate }}"
                   barchart-cumul="{{ data.received.year }}"
                   barchart-data="{{ data.received.months }}" />
     </div>
-    <div class="section col-sm-6" id="successful">
+    <div class="section col-sm-6 card" id="successful">
         <barchart barchart-id="successful"
                   barchart-title="{{ 'projects.sections.successful.title' | translate }}"
                   barchart-description="{{ 'projects.sections.successful.description' | translate }}"
                   barchart-cumul="{{ data.successful.year }}"
                   barchart-data="{{ data.successful.months }}" />
     </div>
-    <div class="section col-sm-6" id="successful-completed">
+    <div class="section col-sm-6 card" id="successful-completed">
         <barchart barchart-id="successful-completed"
                   barchart-title="{{ 'projects.sections.successful-completed.title' | translate }}"
                   barchart-description="{{ 'projects.sections.successful-completed.description' | translate }}"
                   barchart-cumul="{{ data.successfulCompleted.year }}"
                   barchart-data="{{ data.successfulCompleted.months }}" />
     </div>
-    <div class="section col-sm-6" id="top10-collaborations">
+    <div class="section col-sm-6 card" id="top10-collaborations">
         <ranking ranking-id="top10-collaborations-ranking"
                  ranking-title="{{ 'projects.sections.top10-collaborations.title' | translate }}"
                  ranking-description="{{ 'projects.sections.top10-collaborations.description' | translate }}"
@@ -79,7 +79,7 @@
                  rankin-display-photo="false"
                  ranking-data="{{ data.top10Collaborations }}" />
     </div>
-    <div class="section col-sm-6" id="top10-donations">
+    <div class="section col-sm-6 card" id="top10-donations">
         <ranking ranking-id="top10-donations-ranking"
                  ranking-title="{{ 'projects.sections.top10-donations.title' | translate }}"
                  ranking-description="{{ 'projects.sections.top10-donations.description' | translate }}"
@@ -88,7 +88,7 @@
                  rankin-display-photo="false"
                  ranking-data="{{ data.top10Donations }}" />
     </div>
-    <div class="section col-sm-6" id="top10-receipts">
+    <div class="section col-sm-6 card" id="top10-receipts">
         <ranking ranking-id="top10-receipts-ranking"
                  ranking-title="{{ 'projects.sections.top10-receipts.title' | translate }}"
                  ranking-description="{{ 'projects.sections.top10-receipts.description' | translate }}"

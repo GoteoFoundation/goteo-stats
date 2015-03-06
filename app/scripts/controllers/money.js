@@ -23,13 +23,14 @@
   }]);
 
   app.controller('MoneyCtrl', [
+    '$timeout',
     '$translate',
     '$scope',
     '$rootScope',
     'GoteoApi',
     'categories',
     'moneyData',
-    function ($translate, $scope, $rootScope, GoteoApi, categories, moneyData) {
+    function ($timeout, $translate, $scope, $rootScope, GoteoApi, categories, moneyData) {
       $rootScope.categories = categories;
 
       /**
@@ -243,5 +244,10 @@
         }
       };
       $scope.prepareData();
+      $timeout(function() {
+        $('#money-container').isotope({
+          itemSelector : '.card'
+        });
+      }, 1000);
   }]);
 }).call(this);

@@ -23,13 +23,14 @@
   }]);
 
   app.controller('CommunityCtrl', [
+    '$timeout',
     '$translate',
     '$scope',
     '$rootScope',
     'GoteoApi',
     'categories',
     'communityData',
-    function ($translate, $scope, $rootScope, GoteoApi, categories, communityData) {
+    function ($timeout, $translate, $scope, $rootScope, GoteoApi, categories, communityData) {
       $rootScope.categories = categories;
 
       $scope.prepareData = function() {
@@ -147,5 +148,10 @@
         }
       };
       $scope.prepareData();
+      $timeout(function() {
+        $('#community-container').isotope({
+          itemSelector : '.card'
+        });
+      }, 1000);
   }]);
 }).call(this);

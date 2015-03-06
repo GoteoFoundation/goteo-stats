@@ -1,5 +1,5 @@
-<div class="money">
-    <div class="section col-sm-6" id="amount">
+<div class="money" id="money-container">
+    <div class="section col-sm-6 card" id="amount">
         <piechart-select piechart-select-id="amount"
                          piechart-select-title="{{ 'money.sections.amount.title' | translate }}"
                          piechart-select-description="{{ 'money.sections.amount.description' | translate }}"
@@ -10,7 +10,7 @@
                          piechart-select-is-percentage="false"
                          piechart-select-data="{{ data.amount }}"/>
     </div>
-    <div class="section col-sm-6" id="average-donation">
+    <div class="section col-sm-6 card" id="average-donation">
         <areachart areachart-id="average-donation"
                    areachart-title="{{ 'money.sections.average-donation.title' | translate }}"
                    areachart-description="{{ 'money.sections.average-donation.description' | translate }}"
@@ -21,63 +21,63 @@
                    areachart-cumul="{{ data.averageDonation.year }}"
                    areachart-data="{{ data.averageDonation.months }}" />
     </div>
-    <div class="section col-sm-6" id="average-donation-paypal">
+    <div class="section col-sm-6 card" id="average-donation-paypal">
         <barchart barchart-id="average-donation-paypal"
                   barchart-title="{{ 'money.sections.average-donation-paypal.title' | translate }}"
                   barchart-description="{{ 'money.sections.average-donation-paypal.description' | translate }}"
                   barchart-cumul="{{ data.averageDonationPaypal.year }}"
                   barchart-data="{{ data.averageDonationPaypal.months }}" />
     </div>
-    <div class="section col-sm-6" id="average-failed">
+    <div class="section col-sm-6 card" id="average-failed">
         <barchart barchart-id="average-failed"
                   barchart-title="{{ 'money.sections.average-failed.title' | translate }}"
                   barchart-description="{{ 'money.sections.average-failed.description' | translate }}"
                   barchart-cumul="{{ data.averageFailed.year }}"
                   barchart-data="{{ data.averageFailed.months }}" />
     </div>
-    <div class="section col-sm-6" id="average-minimum">
+    <div class="section col-sm-6 card" id="average-minimum">
         <barchart barchart-id="average-minimum"
                   barchart-title="{{ 'money.sections.average-minimum.title' | translate }}"
                   barchart-description="{{ 'money.sections.average-minimum.description' | translate }}"
                   barchart-cumul="{{ data.averageMinimum.year }}"
                   barchart-data="{{ data.averageMinimum.months }}" />
     </div>
-    <div class="section col-sm-6" id="average-received">
+    <div class="section col-sm-6 card" id="average-received">
         <barchart barchart-id="average-received"
                   barchart-title="{{ 'money.sections.average-received.title' | translate }}"
                   barchart-description="{{ 'money.sections.average-received.description' | translate }}"
                   barchart-cumul="{{ data.averageReceived.year }}"
                   barchart-data="{{ data.averageReceived.months }}" />
     </div>
-    <div class="section col-sm-6" id="average-secound-round">
+    <div class="section col-sm-6 card" id="average-secound-round">
         <barchart barchart-id="average-second-round"
                   barchart-title="{{ 'money.sections.average-second-round.title' | translate }}"
                   barchart-description="{{ 'money.sections.average-second-round.description' | translate }}"
                   barchart-cumul="{{ data.averageSecondRound.year }}"
                   barchart-data="{{ data.averageSecondRound.months }}" />
     </div>
-    <div class="section col-sm-6" id="pledged">
+    <div class="section col-sm-6 card" id="pledged">
         <barchart barchart-id="pledged"
                   barchart-title="{{ 'money.sections.pledged.title' | translate }}"
                   barchart-description="{{ 'money.sections.pledged.description' | translate }}"
                   barchart-cumul="{{ data.pledged.year }}"
                   barchart-data="{{ data.pledged.months }}" />
     </div>
-    <div class="section col-sm-6" id="pledged-failed">
+    <div class="section col-sm-6 card" id="pledged-failed">
         <barchart barchart-id="pledged-failed"
                   barchart-title="{{ 'money.sections.pledged-failed.title' | translate }}"
                   barchart-description="{{ 'money.sections.pledged-failed.description' | translate }}"
                   barchart-cumul="{{ data.pledgedFailed.year }}"
                   barchart-data="{{ data.pledgedFailed.months }}" />
     </div>
-    <div class="section col-sm-6" id="pledged-successful">
+    <div class="section col-sm-6 card" id="pledged-successful">
         <barchart barchart-id="pledged-successful"
                   barchart-title="{{ 'money.sections.pledged-successful.title' | translate }}"
                   barchart-description="{{ 'money.sections.pledged-successful.description' | translate }}"
                   barchart-cumul="{{ data.pledgedSuccessful.year }}"
                   barchart-data="{{ data.pledgedSuccessful.months }}" />
     </div>
-    <div class="section col-sm-6" id="refunded">
+    <div class="section col-sm-6 card" id="refunded">
         <barchart barchart-id="refunded"
                   barchart-title="{{ 'money.sections.refunded.title' | translate }}"
                   barchart-description="{{ 'money.sections.refunded.description' | translate }}"

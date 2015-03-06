@@ -1,5 +1,5 @@
-<div class="rewards">
-    <div class="section col-sm-6" id="favorite-rewards">
+<div class="rewards" id="rewards-container">
+    <div class="section col-sm-6 card" id="favorite-rewards">
         <piechart-select piechart-select-id="favorite-rewards"
                          piechart-select-title="{{ 'rewards.sections.favorite-rewards.title' | translate }}"
                          piechart-select-description="{{ 'rewards.sections.favorite-rewards.description' | translate }}"
@@ -10,7 +10,7 @@
                          piechart-select-is-percentage="false"
                          piechart-select-data="{{ data.favoriteRewards }}" />
     </div>
-    <div class="section col-sm-6" id="rewards-per-amount">
+    <div class="section col-sm-6 card" id="rewards-per-amount">
         <piechart-select piechart-select-id="rewards-per-amount"
                          piechart-select-title="{{ 'rewards.sections.rewards-per-amount.title' | translate }}"
                          piechart-select-description="{{ 'rewards.sections.rewards-per-amount.description' | translate }}"
@@ -21,7 +21,7 @@
                          piechart-select-is-percentage="false"
                          piechart-select-data="{{ data.rewardsPerAmount }}" />
     </div>
-    <div class="section col-sm-6" id="reward-refusal">
+    <div class="section col-sm-6 card" id="reward-refusal">
         <areachart areachart-id="reward-refusal"
                    areachart-title="{{ 'rewards.sections.reward-refusal.title' | translate }}"
                    areachart-description="{{ 'rewards.sections.reward-refusal.description' | translate }}"

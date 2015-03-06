@@ -1,5 +1,5 @@
-<div class="community">
-    <div class="section col-sm-6" id="categories">
+<div class="community" id="community-container">
+    <div class="section col-sm-6 card" id="categories">
         <piechart-select piechart-select-id="categories"
                          piechart-select-title="{{ 'community.sections.categories.title' | translate }}"
                          piechart-select-description="{{ 'community.sections.categories.description' | translate }}"
@@ -10,7 +10,7 @@
                          piechart-select-is-percentage="false"
                          piechart-select-data="{{ data.categories }}"/>
     </div>
-    <div class="section col-sm-6" id="top10-collaborators">
+    <div class="section col-sm-6 card" id="top10-collaborators">
         <ranking ranking-id="top10-collaborators-ranking"
                  ranking-title="{{ 'community.sections.top10-collaborators.title' | translate }}"
                  ranking-description="{{ 'community.sections.top10-collaborators.description' | translate }}"
@@ -19,7 +19,7 @@
                  rankin-display-photo="false"
                  ranking-data="{{ data.top10Collaborators }}" />
     </div>
-    <div class="section col-sm-6" id="top10-donors">
+    <div class="section col-sm-6 card" id="top10-donors">
         <ranking ranking-id="top10-donors-ranking"
                  ranking-title="{{ 'community.sections.top10-donors.title' | translate }}"
                  ranking-description="{{ 'community.sections.top10-donors.description' | translate }}"
@@ -28,7 +28,7 @@
                  rankin-display-photo="false"
                  ranking-data="{{ data.top10Donors }}" />
     </div>
-    <div class="section col-sm-6" id="top10-multidonors">
+    <div class="section col-sm-6 card" id="top10-multidonors">
         <ranking ranking-id="top10-multidonors-ranking"
                  ranking-title="{{ 'community.sections.top10-multidonors.title' | translate }}"
                  ranking-description="{{ 'community.sections.top10-multidonors.description' | translate }}"
@@ -37,7 +37,7 @@
                  rankin-display-photo="false"
                  ranking-data="{{ data.top10Multidonors }}" />
     </div>
-    <div class="section col-sm-6" id="users">
+    <div class="section col-sm-6 card" id="users">
         <areachart areachart-id="users"
                    areachart-title="{{ 'community.sections.users.title' | translate }}"
                    areachart-description="{{ 'community.sections.users.description' | translate }}"
@@ -48,7 +48,7 @@
                    areachart-cumul="{{ data.users.year }}"
                    areachart-data="{{ data.users.months }}" />
     </div>
-    <div class="section col-sm-6" id="average-donors">
+    <div class="section col-sm-6 card" id="average-donors">
         <areachart areachart-id="average-donors"
                    areachart-title="{{ 'community.sections.average-donors.title' | translate }}"
                    areachart-description="{{ 'community.sections.average-donors.description' | translate }}"
@@ -59,7 +59,7 @@
                    areachart-cumul="{{ data.averageDonors.year }}"
                    areachart-data="{{ data.averageDonors.months }}" />
     </div>
-    <div class="section col-sm-6" id="collaborators">
+    <div class="section col-sm-6 card" id="collaborators">
         <areachart areachart-id="collaborators"
                    areachart-title="{{ 'community.sections.collaborators.title' | translate }}"
                    areachart-description="{{ 'community.sections.collaborators.description' | translate }}"
@@ -70,7 +70,7 @@
                    areachart-cumul="{{ data.collaborators.year }}"
                    areachart-data="{{ data.collaborators.months }}" />
     </div>
-    <div class="section col-sm-6" id="creators-collaborators">
+    <div class="section col-sm-6 card" id="creators-collaborators">
         <areachart areachart-id="creators-collaborators"
                    areachart-title="{{ 'community.sections.creators-collaborators.title' | translate }}"
                    areachart-description="{{ 'community.sections.creators-collaborators.description' | translate }}"
@@ -81,7 +81,7 @@
                    areachart-cumul="{{ data.creatorsCollaborators.year }}"
                    areachart-data="{{ data.creatorsCollaborators.months }}" />
     </div>
-    <div class="section col-sm-6" id="creators-donors">
+    <div class="section col-sm-6 card" id="creators-donors">
         <areachart areachart-id="creators-donors"
                    areachart-title="{{ 'community.sections.creators-donors.title' | translate }}"
                    areachart-description="{{ 'community.sections.creators-donors.description' | translate }}"
@@ -92,7 +92,7 @@
                    areachart-cumul="{{ data.creatorsDonors.year }}"
                    areachart-data="{{ data.creatorsDonors.months }}" />
     </div>
-    <div class="section col-sm-6" id="donors">
+    <div class="section col-sm-6 card" id="donors">
         <areachart areachart-id="donors"
                    areachart-title="{{ 'community.sections.donors.title' | translate }}"
                    areachart-description="{{ 'community.sections.donors.description' | translate }}"
@@ -103,7 +103,7 @@
                    areachart-cumul="{{ data.donors.year }}"
                    areachart-data="{{ data.donors.months }}" />
     </div>
-    <div class="section col-sm-6" id="donors-collaborators">
+    <div class="section col-sm-6 card" id="donors-collaborators">
         <areachart areachart-id="donors-collaborators"
                    areachart-title="{{ 'community.sections.donors-collaborators.title' | translate }}"
                    areachart-description="{{ 'community.sections.donors-collaborators.description' | translate }}"
@@ -114,7 +114,7 @@
                    areachart-cumul="{{ data.donorsCollaborators.year }}"
                    areachart-data="{{ data.donorsCollaborators.months }}" />
     </div>
-    <div class="section col-sm-6" id="multidonors">
+    <div class="section col-sm-6 card" id="multidonors">
         <areachart areachart-id="multidonors"
                    areachart-title="{{ 'community.sections.multidonors.title' | translate }}"
                    areachart-description="{{ 'community.sections.multidonors.description' | translate }}"
@@ -125,7 +125,7 @@
                    areachart-cumul="{{ data.multidonors.year }}"
                    areachart-data="{{ data.multidonors.months }}" />
     </div>
-    <div class="section col-sm-6" id="paypal-donors">
+    <div class="section col-sm-6 card" id="paypal-donors">
         <areachart areachart-id="paypal-donors"
                    areachart-title="{{ 'community.sections.paypal-donors.title' | translate }}"
                    areachart-description="{{ 'community.sections.paypal-donors.description' | translate }}"
@@ -136,7 +136,7 @@
                    areachart-cumul="{{ data.paypalDonors.year }}"
                    areachart-data="{{ data.paypalDonors.months }}" />
     </div>
-    <div class="section col-sm-6" id="paypal-multidonors">
+    <div class="section col-sm-6 card" id="paypal-multidonors">
         <areachart areachart-id="paypal-multidonors"
                    areachart-title="{{ 'community.sections.paypal-multidonors.title' | translate }}"
                    areachart-description="{{ 'community.sections.paypal-multidonors.description' | translate }}"

@@ -23,13 +23,14 @@
   }]);
 
   app.controller('ProjectsCtrl', [
+    '$timeout',
     '$translate',
     '$scope',
     '$rootScope',
     'GoteoApi',
     'categories',
     'projectsData',
-    function ($translate, $scope, $rootScope, GoteoApi, categories, projectsData) {
+    function ($timeout, $translate, $scope, $rootScope, GoteoApi, categories, projectsData) {
       $rootScope.categories = categories;
 
       $scope.prepareData = function() {
@@ -145,5 +146,10 @@
         }
       };
       $scope.prepareData();
+      $timeout(function() {
+        $('#projects-container').isotope({
+          itemSelector : '.card'
+        });
+      }, 1000);
   }]);
 }).call(this);

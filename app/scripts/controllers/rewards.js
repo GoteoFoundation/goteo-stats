@@ -23,13 +23,14 @@
   }]);
 
   app.controller('RewardsCtrl', [
+    '$timeout',
     '$translate',
     '$scope',
     '$rootScope',
     'GoteoApi',
     'categories',
     'rewardsData',
-    function ($translate, $scope, $rootScope, GoteoApi, categories, rewardsData) {
+    function ($timeout, $translate, $scope, $rootScope, GoteoApi, categories, rewardsData) {
       $rootScope.categories = categories;
 
       $scope.prepareData = function() {
@@ -98,10 +99,12 @@
             $scope.data.rewardRefusal.months.push({id: k, name: $rootScope.getDate(i), value: 0});
           }
         }
-        /**
-         * rewards-per-amount // piechart
-         */
       };
       $scope.prepareData();
+      $timeout(function() {
+        $('#rewards-container').isotope({
+          itemSelector : '.card'
+        });
+      }, 1000);
   }]);
 }).call(this);
