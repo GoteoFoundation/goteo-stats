@@ -33,7 +33,7 @@
         if ($rootScope.category !== -1000) {
           params.category = $rootScope.category;
         }
-        if (type === 'money') {
+        if (type === 'money' || type === 'projects') {
           params.year = $rootScope.year;
         } else {
           params.from_date = $rootScope.year + '-01-01';
@@ -62,7 +62,7 @@
     };
 
     api.getProjects = function (params) {
-      var api_request = ApiService.get('/reports/projects/', params);
+      var api_request = ApiService.get('/digests/reports/projects/', params);
       var api_promise =  api_request(function (data) {
         return data;
       });
@@ -72,7 +72,7 @@
     };
 
     api.getCommunity = function (params) {
-      var api_request = ApiService.get('/reports/community/', params);
+      var api_request = ApiService.get('/digests/reports/community/', params);
       var api_promise = api_request(function (data) {
         return data;
       });
@@ -82,7 +82,7 @@
     };
 
     api.getRewards = function (params) {
-      var api_request = ApiService.get('/reports/rewards/', params);
+      var api_request = ApiService.get('/digests/reports/rewards/', params);
       return api_request(function (data) {
         return data;
       });
@@ -91,7 +91,6 @@
     api.getUser = function (id) {
       var api_request = ApiService.get('/users/' + id);
       return api_request(function (data) {
-        console.log("Get user " + id, data);
         return data;
       });
     };
@@ -99,7 +98,6 @@
     api.getUsers = function () {
       var api_request = ApiService.get('/users/');
       return api_request(function (data) {
-        console.log("Get users", data);
         return data;
       });
     };

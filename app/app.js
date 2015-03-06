@@ -80,6 +80,10 @@
         }
       };
 
+      $rootScope.getDate = function (i) {
+        return $rootScope.year + '-' + (i).pad() + '-01T00:00:00.000Z';
+      };
+
       $scope.$root.$on('$routeChangeStart', function(event, route) {
         $rootScope.globalLoading = true;
       });

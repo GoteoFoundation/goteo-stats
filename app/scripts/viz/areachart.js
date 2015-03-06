@@ -156,16 +156,12 @@ outliers.viz.AreaChart = function() {
       })
       .attr('r', dotRadius)
       .on("mouseover", function() {
-        console.log('mouseover');
         $(this).tooltip('show');
       })
       .on("mouseout", function() {
-        console.log('mouseout');
         $(this).tooltip('hide');
       })
       .each(function(d) {
-        console.log(d[textField]);
-        console.log(d[xField]);
         $(this).tooltip({
           placement: 'top',
           container: 'body',

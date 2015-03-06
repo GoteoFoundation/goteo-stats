@@ -35,12 +35,8 @@
       /**
        * Process data to be used in charts.
        */
-      var getDate = function (i) {
-        return $rootScope.year + '-' + (i).pad() + '-01T00:00:00.000Z';
-      };
-      var prepareData = function() {
-        var temp;
-        var datum;
+      $scope.prepareData = function() {
+        var temp, datum;
         $scope.data = {};
 
         $scope.data.averageDonation = {
@@ -68,11 +64,7 @@
           months: []
         };
         $scope.data.pledged = {
-          year: moneyData.global['pledged'],
-          months: []
-        };
-        $scope.data.pledged = {
-          year: moneyData.global['pledged'],
+          year: moneyData.global.pledged,
           months: []
         };
         $scope.data.pledgedFailed = {
@@ -84,7 +76,7 @@
           months: []
         };
         $scope.data.refunded = {
-          year: moneyData.global['refunded'],
+          year: moneyData.global.refunded,
           months: []
         };
         $scope.data.amount = [];
@@ -139,18 +131,18 @@
           $scope.data.amount.push(datum);
 
 
-          $scope.data.averageDonation.months.push({id: k, name: getDate(i), value: currentData['average-donation']});
-          $scope.data.averageDonationPaypal.months.push({id: k, name: getDate(i), value: currentData['average-donation-paypal']});
-          $scope.data.averageFailed.months.push({id: k, name: getDate(i), value: currentData['average-failed']});
-          $scope.data.averageMinimum.months.push({id: k, name: getDate(i), value: currentData['average-minimum']});
-          $scope.data.averageReceived.months.push({id: k, name: getDate(i), value: currentData['average-received']});
-          $scope.data.averageSecondRound.months.push({id: k, name: getDate(i), value: currentData['average-second-round']});
-          $scope.data.pledged.months.push({id: k, name: getDate(i), value: currentData['pledged']});
-          $scope.data.pledgedFailed.months.push({id: k, name: getDate(i), value: currentData['pledged-failed']});
-          $scope.data.pledgedSuccessful.months.push({id: k, name: getDate(i), value: currentData['pledged-successful']});
-          $scope.data.refunded.months.push({id: k, name: getDate(i), value: currentData['refunded']});
+          $scope.data.averageDonation.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-donation']});
+          $scope.data.averageDonationPaypal.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-donation-paypal']});
+          $scope.data.averageFailed.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-failed']});
+          $scope.data.averageMinimum.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-minimum']});
+          $scope.data.averageReceived.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-received']});
+          $scope.data.averageSecondRound.months.push({id: k, name: $rootScope.getDate(i), value: currentData['average-second-round']});
+          $scope.data.pledged.months.push({id: k, name: $rootScope.getDate(i), value: currentData.pledged});
+          $scope.data.pledgedFailed.months.push({id: k, name: $rootScope.getDate(i), value: currentData['pledged-failed']});
+          $scope.data.pledgedSuccessful.months.push({id: k, name: $rootScope.getDate(i), value: currentData['pledged-successful']});
+          $scope.data.refunded.months.push({id: k, name: $rootScope.getDate(i), value: currentData.refunded});
         }
       };
-      prepareData();
+      $scope.prepareData();
   }]);
 }).call(this);

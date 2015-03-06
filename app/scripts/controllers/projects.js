@@ -31,52 +31,119 @@
     'projectsData',
     function ($translate, $scope, $rootScope, GoteoApi, categories, projectsData) {
       $rootScope.categories = categories;
-      $scope.data = {};
-      $scope.data.top10Collaborations = projectsData['top10-collaborations'];
-      $scope.data.top10Donations = projectsData['top10-donations'];
-      $scope.data.top10Receipts = projectsData['top10-receipts'];
 
-      /* Fake data at the moment */
-      var capitalize = function (string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-      };
-      var randomSum = function(n,t){
+      $scope.prepareData = function() {
+        var temp, datum;
+        $scope.data = {};
+
+        // Display only anual rankings.
+        $scope.data.top10Collaborations = projectsData.global['top10-collaborations'];
+        $scope.data.top10Donations = projectsData.global['top10-donations'];
+        $scope.data.top10Receipts = projectsData.global['top10-receipts'];
+        $scope.data.averageAmountSuccessful = {
+          year: projectsData.global['average-amount-successful'],
+          months: []
+        };
+        $scope.data.averagePostsSuccessful = {
+          year: projectsData.global['average-posts-successful'],
+          months: []
+        };
+        $scope.data.failed = {
+          year: projectsData.global.failed,
+          months: []
+        };
+        $scope.data.percentageSuccessful = {
+          year: projectsData.global['percentage-successful'],
+          months: []
+        };
+        $scope.data.percentageSuccessfulCompleted = {
+          year: projectsData.global['percentage-successful-completed'],
+          months: []
+        };
+        $scope.data.published = {
+          year: projectsData.global.published,
+          months: []
+        };
+        $scope.data.received = {
+          year: projectsData.global.received,
+          months: []
+        };
+        $scope.data.successful = {
+          year: projectsData.global.successful,
+          months: []
+        };
+        $scope.data.successfulCompleted = {
+          year: projectsData.global['successful-completed'],
+          months: []
+        };
         moment.locale($rootScope.locale);
         var months = moment.months();
-        var max = n*(n+1)/2;
-        //if(t < max) return 'Input error';
-        var list = [], sum = 0,
-          i = n; while(i--){
-          var r = Math.random();
-          list.push({
-            name: capitalize(months[i]),
-            value: r});
-          sum += r;
+        for(var i = 1; i < 13; i++) {
+          var k = months[i - 1] + ' ' + $rootScope.year;
+          var currentData = projectsData.buckets[i.pad()];
+          if (currentData) {
+            $scope.data.averageAmountSuccessful.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['average-amount-successful']
+            });
+            $scope.data.averagePostsSuccessful.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['average-posts-successful']
+            });
+            $scope.data.failed.months.push({id: k, name: $rootScope.getDate(i), value: currentData.failed});
+            $scope.data.percentageSuccessful.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['percentage-successful']
+            });
+            $scope.data.percentageSuccessfulCompleted.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['percentage-successful-completed']
+            });
+            $scope.data.published.months.push({id: k, name: $rootScope.getDate(i), value: currentData.published});
+            $scope.data.received.months.push({id: k, name: $rootScope.getDate(i), value: currentData.received});
+            $scope.data.successful.months.push({id: k, name: $rootScope.getDate(i), value: currentData.successful});
+            $scope.data.successfulCompleted.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: currentData['successful-completed']
+            });
+          } else {
+            $scope.data.averageAmountSuccessful.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.averagePostsSuccessful.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.failed.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.percentageSuccessful.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.percentageSuccessfulCompleted.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+            $scope.data.published.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.received.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.successful.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.successfulCompleted.months.push({
+              id: k,
+              name: $rootScope.getDate(i),
+              value: 0
+            });
+          }
         }
-        var factor = t / sum;
-        sum = 0;
-        i = n; while(--i){
-          list[i].value = parseInt(factor * list[i].value);
-          sum += list[i].value;
-        }
-        list[0].value = t - sum;
-        return list.reverse();
       };
-
-      var generateRandomData = function(yearlyData) {
-        return {
-          year: yearlyData,
-          month: randomSum(12, yearlyData)
-        };
-      };
-      $scope.data.averageAmountSuccessful = generateRandomData(projectsData['average-amount-successful']);
-      $scope.data.averagePostsSuccessful = generateRandomData(projectsData['average-posts-successful']);
-      $scope.data.failed = generateRandomData(projectsData.failed);
-      $scope.data.percentageSuccessful = generateRandomData(projectsData['percentage-successful']);
-      $scope.data.percentageSuccessfulCompleted = generateRandomData(projectsData['percentage-successful-completed']);
-      $scope.data.published = generateRandomData(projectsData.published);
-      $scope.data.received = generateRandomData(projectsData.received);
-      $scope.data.successful = generateRandomData(projectsData.successful);
-      $scope.data.successfulCompleted = generateRandomData(projectsData['successful-completed']);
+      $scope.prepareData();
   }]);
 }).call(this);
