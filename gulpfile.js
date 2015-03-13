@@ -219,6 +219,7 @@
 
   gulp.task('copy', function() {
     return gulp.src([
+      'app/.htaccess',
       'app/*.{txt,ico,xml}',
       'app/views/**/*.html',
       'app/locales/**/*.json',
@@ -252,6 +253,15 @@
       .pipe(gulp.dest('public/'));
   });
 
+  gulp.task('copy_htaccess', function() {
+    return gulp.src([
+      '.tmp/.htaccess'
+    ], {
+      base: '.tmp/'
+    })
+      .pipe(gulp.dest('public/'));
+  });
+
   gulp.task('copy_index_html', function() {
     return gulp.src('public/index.html')
       .pipe(gulp.dest('public/'));
@@ -265,7 +275,8 @@
         'public/scripts/*.js',
         'public/locales/**/*.json',
         'public/views/**/*.html',
-        'public/*.html'
+        'public/*.html',
+        'public/*.js'
       ], {
         base: 'public/'
       })
@@ -297,8 +308,10 @@
       'replace',
       'rev',
       'min_css',
+      'copy_htaccess',
       'copy_index_html',
       'clean_tmp',
+      'compress',
       'notify_finished'
     );
   });
