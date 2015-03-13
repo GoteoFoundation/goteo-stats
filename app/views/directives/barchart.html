@@ -1,8 +1,9 @@
 <div class="barchart-wrapper">
     <h3 class="barchart-title">{{ title }}</h3>
-    <div class="col-sm-5">
-        <div class="barchart-description">{{ description }}</div>
-        <div class="barchart-cumul">{{ cumul }}</div>
+    <div>
+        <div class="barchart-description col-sm-7">{{ description }}</div>
+        <div ng-if="units" class="barchart-cumul col-sm-5">{{ cumul }} {{ units }}</div>
+        <div ng-if="!units" class="barchart-cumul col-sm-5">{{ cumul }}</div>
     </div>
-    <div class="barchart-chart col-sm-7" id="barchart-{{ id }}"></div>
+    <div class="barchart-chart" id="barchart-{{ id }}"></div>
 </div>

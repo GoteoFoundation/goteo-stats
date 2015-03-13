@@ -137,11 +137,11 @@
         "title": "Title top10-collaborators",
         "description": "Description top10-collaborators"
       },
-      "top10-collaborators": {
+      "top10-donors": {
         "title": "Title top10-donors",
         "description": "Description top10-donors"
       },
-      "top10-collaborators": {
+      "top10-multidonors": {
         "title": "Title top10-multidonors",
         "description": "Description top10-multidonors"
       },
@@ -191,15 +191,7 @@
     "sections": {
       "favorite-rewards": {
         "title": "Title favorite-rewards",
-        "description": "Description favorite-rewards",
-        "labels": {
-          "product": "Label product",
-          "other": "Label other",
-          "money": "Label money",
-          "file": "Label file",
-          "thanks": "Label thanks",
-          "service": "Label service"
-        }
+        "description": "Description favorite-rewards"
       },
       "rewards-per-amount": {
         "title": "Title rewards-per-amount",

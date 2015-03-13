@@ -29,7 +29,20 @@
                    areachart-x-field="value"
                    areachart-id-field="id"
                    areachart-label-field="id"
+                   areachart-unit="%"
                    areachart-cumul="{{ data.rewardRefusal.year }}"
                    areachart-data="{{ data.rewardRefusal.months }}" />
+    </div>
+    <div class="section col-sm-6 card" id="licenses">
+        <ranking ranking-id="licenses-ranking"
+                 ranking-title="{{ 'rewards.sections.licenses.title' | translate }}"
+                 ranking-description="{{ 'rewards.sections.licenses.description' | translate }}"
+                 ranking-name-field="name"
+                 ranking-value-field="total"
+                 ranking-url-field="url"
+                 ranking-display-photo="true"
+                 ranking-photo-field="svg-url"
+                 ranking-unit="%"
+                 ranking-data="{{ data.licenses }}" />
     </div>
 </div>

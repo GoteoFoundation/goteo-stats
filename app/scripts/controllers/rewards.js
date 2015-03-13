@@ -4,9 +4,10 @@
   var app = angular.module('goteoStatistics');
 
   app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/rewards', {
+    $routeProvider.when('/rewards/:locale/:year/:category', {
       templateUrl: 'views/rewards.html',
       controller: 'RewardsCtrl',
+      dependencies: [ 'locale', 'year', 'category' ],
       resolve: {
         categories: [
           'GoteoApi', function(GoteoApi) {
@@ -14,8 +15,21 @@
           }
         ],
         rewardsData: [
-          'GoteoApi', function(GoteoApi) {
-            return GoteoApi.getData('rewards');
+          '$route',
+          'GoteoApi', function($route, GoteoApi) {
+            var year = parseInt($route.current.params.year),
+              category = parseInt($route.current.params.category),
+              locale = $route.current.params.locale;
+            return GoteoApi.getData('rewards', locale, year, category);
+          }
+        ],
+        licensesData: [
+          '$route',
+          'GoteoApi', function($route, GoteoApi) {
+            var year = parseInt($route.current.params.year),
+              category = parseInt($route.current.params.category),
+              locale = $route.current.params.locale;
+            return GoteoApi.getData('licenses', locale, year, category);
           }
         ]
       }
@@ -27,15 +41,30 @@
     '$translate',
     '$scope',
     '$rootScope',
-    'GoteoApi',
+    '$routeParams',
     'categories',
     'rewardsData',
-    function ($timeout, $translate, $scope, $rootScope, GoteoApi, categories, rewardsData) {
+    'licensesData',
+    function ($timeout, $translate, $scope, $rootScope, $routeParams, categories, rewardsData, licensesData) {
       $rootScope.categories = categories;
+      $rootScope.year = $routeParams.year;
+      $rootScope.category = $routeParams.category;
+      $rootScope.locale = $routeParams.locale;
 
       $scope.prepareData = function() {
         var temp, datum;
         $scope.data = {};
+        $scope.data.licenses = [];
+        temp = 0;
+        for (var i = 0; i < licensesData.global.items.length; i++) {
+          temp += licensesData.global.items[i]['total-projects'];
+        }
+        for (var i = 0; i < licensesData.global.items.length; i++) {
+          licensesData.global.items[i].total = (licensesData.global.items[i]['total-projects'] / temp) * 100;
+        }
+        $scope.data.licenses = licensesData.global.items.sort(function(a, b) {
+          return b.total - a.total;
+        });
         $scope.data.favoriteRewards = [];
         $scope.data.rewardsPerAmount = [];
         $scope.data.rewardRefusal = {
@@ -43,12 +72,12 @@
           months: []
         };
         temp = 0;
-        for (var i = 0; i < rewardsData.global['favorite-rewards'].length; i++) {
+        for (i = 0; i < rewardsData.global['favorite-rewards'].length; i++) {
           temp += rewardsData.global['favorite-rewards'][i].total;
         }
         for (i = 0; i < rewardsData.global['favorite-rewards'].length; i++) {
           rewardsData.global['favorite-rewards'][i].total = rewardsData.global['favorite-rewards'][i].total / temp;
-          rewardsData.global['favorite-rewards'][i].label = $translate.instant('rewards.sections.favorite-rewards.labels.' + rewardsData.global['favorite-rewards'][i].icon);
+          rewardsData.global['favorite-rewards'][i].label = rewardsData.global['favorite-rewards'][i].name;
         }
         $scope.data.favoriteRewards.push({
           select: $rootScope.year,
@@ -80,7 +109,7 @@
             }
             for (i = 0; i < currentData['favorite-rewards'].length; i++) {
               currentData['favorite-rewards'][i].total = currentData['favorite-rewards'][i].total / temp;
-              currentData['favorite-rewards'][i].label = $translate.instant('rewards.sections.favorite-rewards.labels.' + currentData['favorite-rewards'][i].icon);
+              currentData['favorite-rewards'][i].label = currentData['favorite-rewards'][i].name;
             }
             $scope.data.favoriteRewards.push({ select: k, data: currentData['favorite-rewards']});
             temp = Object.keys(currentData['rewards-per-amount']).map(function(d) {

@@ -12,7 +12,8 @@ outliers.viz.AreaChart = function() {
     transitionDuration = 500,
     timeAxis = true,
     dotRadius = 5,
-    tooltipFormat = d3.format("-.3s");;
+    tooltipFormat = d3.format("-.3s"),
+    axisLabelFormat = timeAxis ? d3.time.format('%B %Y') : d3.format(',.0f');
 
   function area() {}
 
@@ -62,7 +63,7 @@ outliers.viz.AreaChart = function() {
     y.domain([0, d3.max(data, function (d) {
         return yField ? d[yField] : d;
       })])
-      .range([height - margin.top - margin.bottom, 0])
+      .range([height - (margin.top * 2) - margin.bottom, 0])
 
     var xAxis = d3.svg.axis()
       .scale(x)
@@ -70,13 +71,13 @@ outliers.viz.AreaChart = function() {
         return xField ? d[xField] : i;
       }))
       .orient("bottom")
-      .tickFormat(timeAxis ? d3.time.format('%B %Y') : d3.format(',.0f'));
+      .tickFormat(axisLabelFormat);
 
     var areagen = d3.svg.area()
       .x(function(d, i) {
         return xField ? x(d[xField]) : x(i);
       })
-      .y0(height - margin.top - margin.bottom)
+      .y0(height - (margin.top * 2) - margin.bottom)
       .y1(function(d) {
         return yField ? y(d[yField]) : y(d);
       })
@@ -98,7 +99,7 @@ outliers.viz.AreaChart = function() {
     renderedXAxis.enter()
       .append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + (height - margin.top - margin.bottom) + ")");
+      .attr("transform", "translate(0," + (height - (margin.top * 2) - margin.bottom) + ")");
     renderedXAxis.transition()
       .duration(transitionDuration)
       .call(xAxis)
@@ -185,7 +186,7 @@ outliers.viz.AreaChart = function() {
   area.resize = function (newWidth, newHeight, data, xField, yField, idField, textField) {
     width = newWidth;
     height = newHeight;
-    bar.render(data, xField, yField, idField, textField);
+    area.render(data, xField, yField, idField, textField);
   };
 
   /**
@@ -257,6 +258,18 @@ outliers.viz.AreaChart = function() {
   area.dotRadius = function (_) {
     if (!arguments.length) return dotRadius;
     dotRadius = _;
+    return area;
+  };
+
+  area.axisLabelFormat = function (_) {
+    if (!arguments.length) return axisLabelFormat;
+    axisLabelFormat = _;
+    return area;
+  };
+
+  area.tooltipFormat = function (_) {
+    if (!arguments.length) return tooltipFormat;
+    tooltipFormat = _;
     return area;
   };
 

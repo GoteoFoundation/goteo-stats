@@ -4,9 +4,10 @@
   var app = angular.module('goteoStatistics');
 
   app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/projects', {
+    $routeProvider.when('/projects/:locale/:year/:category', {
       templateUrl: 'views/projects.html',
       controller: 'ProjectsCtrl',
+      dependencies: [ 'locale', 'year', 'category' ],
       resolve: {
         categories: [
           'GoteoApi', function(GoteoApi) {
@@ -14,8 +15,12 @@
           }
         ],
         projectsData: [
-          'GoteoApi', function(GoteoApi) {
-            return GoteoApi.getData('projects');
+          '$route',
+          'GoteoApi', function($route, GoteoApi) {
+            var year = parseInt($route.current.params.year),
+              category = parseInt($route.current.params.category),
+              locale = $route.current.params.locale;
+            return GoteoApi.getData('projects', locale, year, category);
           }
         ]
       }
@@ -27,11 +32,14 @@
     '$translate',
     '$scope',
     '$rootScope',
-    'GoteoApi',
+    '$routeParams',
     'categories',
     'projectsData',
-    function ($timeout, $translate, $scope, $rootScope, GoteoApi, categories, projectsData) {
+    function ($timeout, $translate, $scope, $rootScope, $routeParams, categories, projectsData) {
       $rootScope.categories = categories;
+      $rootScope.year = $routeParams.year;
+      $rootScope.category = $routeParams.category;
+      $rootScope.locale = $routeParams.locale;
 
       $scope.prepareData = function() {
         var temp, datum;

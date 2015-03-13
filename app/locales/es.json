@@ -22,199 +22,191 @@
   "money": {
     "sections": {
       "amount": {
-        "title": "Título amount",
-        "description": "Descripción amount",
+        "title": "Aportaciones monetarias según origen",
+        "description": "Porcentaje de dinero por medio de pago",
         "labels": {
-          "cash": "Etiqueta cash",
-          "creditcard": "Etiqueta creditcard",
-          "fee": "Etiqueta fee",
-          "matchfund": "Etiqueta matchfund",
-          "matchfundpledge": "Etiqueta matchfundpledge",
-          "paypal": "Etiqueta paypal"
+          "cash": "Recaudación offline",
+          "creditcard": "Aportaciones individuales con tarjeta de crédito",
+          "fee": "Comisión en Goteo (QUITAR)",
+          "matchfund": "Dinero captado por Fundación Goteo para multiplicar aportes individuales",
+          "matchfundpledge": "Total de comprometido por captaciones externas (QUITAR)",
+          "paypal": "Aportaciones individuales con Paypal"
         }
       },
       "average-donation": {
-        "title": "Título average-donation",
-        "description": "Descripción average-donation"
+        "title": "Media de dinero recaudado",
+        "description": "Una de las medias más altas del mundo!"
       },
       "average-donation-paypal": {
-        "title": "Título average-donation-paypal",
-        "description": "Descripción average-donation-paypal"
+        "title": "Media de donaciones Paypal",
+        "description": "Donaciones realizadas por aportaciones Paypal"
       },
       "average-failed": {
-        "title": "Título average-failed",
-        "description": "Descripción average-failed"
+        "title": "Proyectos fallidos",
+        "description": "Media de recaudación en proyectos que han fallado"
       },
       "average-minimum": {
-        "title": "Título average-minimum",
-        "description": "Descripción average-minimum"
+        "title": "Cantidad mínima en proyectos exitosos",
+        "description": "Media de la cantidad mínima que piden los proyectos que han tenido éxito"
       },
       "average-received": {
-        "title": "Título average-received",
-        "description": "Descripción average-received"
+        "title": "Recaudado por proyectos exitosos",
+        "description": "Media de dinero recaudado por proyectos exitosos"
       },
       "average-second-round": {
-        "title": "Título average-second-round",
-        "description": "Descripción average-second-round"
+        "title": "Recaudación en segunda ronda",
+        "description": "Media de dinero conseguido por proyectos exitosos sólo en segunda ronda de financiación"
       },
       "pledged": {
-        "title": "Título pledged",
-        "description": "Descripción pledged"
+        "title": "Dinero recaudado",
+        "description": "Total de dinero recaudado por Goteo"
       },
       "pledged-failed": {
-        "title": "Título pledged-faild",
-        "description": "Descripción pledged-faild"
+        "title": "Porcentaje de recaudación en proyectos fallidos",
+        "description": "Porcentaje de recaudación (en base al mínimo requerido) que obtienen los proyectos fallidos"
       },
       "pledged-successful": {
-        "title": "Título pledged-successful",
-        "description": "Descripción pledged-successful"
+        "title": "Porcentaje de recaudación en proyectos exitosos",
+        "description": "Porcentaje de recaudación (en base al mínimo requerido) que obtienen los proyectos exitosos"
       },
       "refunded": {
-        "title": "Título refunded",
-        "description": "Descripción refunded"
+        "title": "Dinero reembolsado",
+        "description": "Total de dinero retornado por los proyectos fallidos"
       }
     }
   },
   "projects": {
     "sections": {
       "average-amount-successful": {
-        "title": "Título average-amount-successful",
-        "description": "Descripción average-amount-successful"
+        "title": "Recaudación en proyectos exitosos",
+        "description": "Media de dinero recaudado en proyectos exitosos"
       },
       "average-posts-successful": {
-        "title": "Título average-posts-successful",
-        "description": "Descripción average-posts-successful"
+        "title": "Comunicaciones en proyectos exitosos",
+        "description": "Media del número de mensajes publicados en el blog sobre el estado del proyecto"
       },
       "failed": {
-        "title": "Título failed",
-        "description": "Descripción failed"
+        "title": "Proyectos fallidos",
+        "description": "Número de proyectos publicados que no han conseguido financiación"
       },
       "percentage-successful": {
-        "title": "Título percentage-successful",
-        "description": "Descripción percentage-successful"
+        "title": "Porcentaje proyectos exitosos",
+        "description": "Porcentaje de proyectos que han tenido éxito"
       },
       "percentage-successful-completed": {
-        "title": "Título percentage-successful-completed",
-        "description": "Descripción percentage-successful-completed"
+        "title": "Porcentaje de proyectos exitosos finalizados",
+        "description": "Porcentaje de proyectos exitosos que ya no están en campaña"
       },
       "published": {
-        "title": "Título published",
-        "description": "Descripción published"
+        "title": "Proyectos publicados",
+        "description": "Número de proyectos publicados"
       },
       "received": {
-        "title": "Título received",
-        "description": "Descripción received"
+        "title": "Proyectos recibidos",
+        "description": "Número de proyectos recibidos por Goteo para su revisión y posterior publicación"
       },
       "successful": {
-        "title": "Título successful",
-        "description": "Descripción successful"
+        "title": "Proyectos exitosos",
+        "description": "Número de proyectos exitosos"
       },
       "successful-completed": {
-        "title": "Título successful-completed",
-        "description": "Descripción successful-completed"
+        "title": "Proyectos exitosos finalizados",
+        "description": "Número de proyectos exitosos que ya no están en campaña"
       },
       "top10-collaborations": {
-        "title": "Título top10-collaborations",
-        "description": "Descripción top10-collaborations"
+        "title": "Top colaboraciones",
+        "description": "Los 10 proyectos con más colaboraciones no monetarias"
       },
       "top10-donations": {
-        "title": "Título top10-donations",
-        "description": "Descripción top10-donations"
+        "title": "Top donaciones",
+        "description": "Los 10 proyectos con más donantes"
       },
       "top10-receipts": {
-        "title": "Título top10-receipts",
-        "description": "Descripción top10-receipts"
+        "title": "Top recaudado",
+        "description": "Los 10 proyectos con más recaudación"
       }
     }
   },
   "community": {
     "sections": {
       "categories": {
-        "title": "Título categories",
-        "description": "Descripción categories"
+        "title": "Categorías",
+        "description": "Áreas de interés donde se ubican los proyectos"
       },
       "top10-collaborators": {
-        "title": "Título top10-collaborators",
-        "description": "Descripción top10-collaborators"
+        "title": "Top colaboraciones",
+        "description": "Los 10 usuarios que más han colaborado no monetariamente con proyectos"
       },
-      "top10-collaborators": {
-        "title": "Título top10-donors",
-        "description": "Descripción top10-donors"
+      "top10-donors": {
+        "title": "Top donaciones",
+        "description": "Los 10 usuarios que más dinero han aportado en total"
       },
-      "top10-collaborators": {
-        "title": "Título top10-multidonors",
-        "description": "Descripción top10-multidonors"
+      "top10-multidonors": {
+        "title": "Top multi-donantes",
+        "description": "Los 10 usuarios que más proyectos distintos han aportado"
       },
       "users": {
-        "title": "Título users",
-        "description": "Descripción users"
+        "title": "Usuarios",
+        "description": "Número total de usuarios nuevos dados de alta durante ese periodo)"
       },
       "average-donors": {
-        "title": "Título average-donors",
-        "description": "Descripción average-donors"
+        "title": "Media de donantes en proyectos exitosos",
+        "description": "Numero medio de usuarios que contribuyen monetariamente en proyectos que han tenido éxito"
       },
       "collaborators": {
-        "title": "Título collaborators",
-        "description": "Descripción collaborators"
+        "title": "Colaboradores que aportan talento",
+        "description": "Numero total de colaboradores que contribuyen a los proyectos no monetariamente durante este periodo"
       },
       "creators-collaborators": {
-        "title": "Título creators-collaborators",
-        "description": "Descripción creators-collaborators"
+        "title": "Impulsores - colaboradores",
+        "description": "Número de impulsores que también colaboran con otros proyectos"
       },
       "creators-donors": {
-        "title": "Título creators-donors",
-        "description": "Descripción creators-donors"
+        "title": "Impulsores - donantes",
+        "description": "Número de impulsores que también hacen aportaciones monetarias en otros proyectos"
       },
       "donors": {
-        "title": "Título donors",
-        "description": "Descripción donors"
+        "title": "Donantes",
+        "description": "Número de usuarios que han hecho aportaciones durante este periodo"
       },
       "donors-collaborators": {
-        "title": "Título donors-collaborators",
-        "description": "Descripción donors-collaborators"
+        "title": "Donantes - colaboradores",
+        "description": "Número de donantes que también colaboran con otros proyectos"
       },
       "multidonors": {
-        "title": "Título multidonors",
-        "description": "Descripción multidonors"
+        "title": "Multi-donantes",
+        "description": "Número de usuarios que hacen aportaciones monetarias en más de un proyecto"
       },
       "paypal-donors": {
-        "title": "Título paypal-donors",
-        "description": "Descripción paypal-donors"
+        "title": "Donantes via Paypal",
+        "description": "Donantes que han usado el sistema de pago de Paypal"
       },
       "paypal-multidonors": {
-        "title": "Título paypal-multidonors",
-        "description": "Descripción paypal-multidonors"
+        "title": "Multi-donantes via Paypal",
+        "description": "Multi-donantes que han usado el sistema de pago de Paypal"
       }
     }
   },
   "rewards": {
     "sections": {
       "favorite-rewards": {
-        "title": "Título favorite-rewards",
-        "description": "Descripción favorite-rewards",
-        "labels": {
-          "product": "Etiqueta product",
-          "other": "Etiqueta other",
-          "money": "Etiqueta money",
-          "file": "Etiqueta file",
-          "thanks": "Etiqueta thanks",
-          "service": "Etiqueta service"
-        }
+        "title": "Recompensas favoritas",
+        "description": "Tipo de recompensas individuales más usadas en proyectos exitosos"
       },
       "rewards-per-amount": {
-        "title": "Título rewards-per-amount",
-        "description": "Descripción rewards-per-amount",
+        "title": "Recompensas según franjas monetarias",
+        "description": "Porcentaje de recompensas según la cantidad monetaria requerida en proyectos exitosos",
         "labels": {
-          "rewards-less-than-15": "Etiqueta less-than-15",
-          "rewards-between-30-100": "Etiqueta between-30-100",
-          "rewards-between-15-30": "Etiqueta between-15-30",
-          "rewards-between-100-400": "Etiqueta between-100-400",
-          "rewards-more-than-400": "Etiqueta more-than-400"
+          "rewards-less-than-15": "Recompensas de menos de 15 €",
+          "rewards-between-30-100": "Recompensas entre 30 y 100 €",
+          "rewards-between-15-30": "Recompensas etre 15 y 30 €",
+          "rewards-between-100-400": "Recompensas entre 100 y 400€",
+          "rewards-more-than-400": "Recompensas de más de 400 €"
         }
       },
       "reward-refusal": {
-        "title": "Título reward-refusal",
-        "description": "Descripción reward-refusal"
+        "title": "Renuncias a recompensas",
+        "description": "Porcentaje de donantes que renuncian a recompensas individuales o se conforman con un agradecimiento"
       }
     }
   }

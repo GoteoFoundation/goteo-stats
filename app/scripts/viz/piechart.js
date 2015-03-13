@@ -236,7 +236,7 @@ outliers.viz.PieChart = function() {
                 .append("text")
                 .attr("class", "pie sublabel")
                 .attr("d", "0.1em")
-                .attr("tspan-width", radius * 1.5)
+                .attr("tspan-width", radius * 1.3)
                 .style("text-anchor", "middle");
 
     selectedText.attr("transform", "translate(0," + (radius * 0.25) + ")")

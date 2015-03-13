@@ -4,7 +4,8 @@
   angular.module('goteoStatistics').directive('areachart', [
     '$window',
     '$timeout',
-    function ($window, $timeout) {
+    '$rootScope',
+    function ($window, $timeout, $rootScope) {
       return {
         restrict: 'E',
         templateUrl: 'views/directives/areachart.html',
@@ -18,35 +19,46 @@
           areachartXField: '@',
           areachartYField: '@',
           areachartIdField: '@',
-          areachartLabelField: '@'
+          areachartLabelField: '@',
+          areachartUnit: '@'
         },
         link: function ($scope, elm, attrs) {
-          var numberFormat = d3.format("-.3s");
           $scope.id = attrs.areachartId;
+          $scope.units = attrs.areachartUnit || null;
           $scope.title = attrs.areachartTitle;
           $scope.description = attrs.areachartDescription;
           var data1 = JSON.parse(attrs.areachartData),
               data2 = angular.fromJson(data1);
           $scope.data = data2;
-          $scope.cumul = numberFormat(parseFloat(attrs.areachartCumul));
           $scope.xField = attrs.areachartXField || 'name';
           $scope.yField = attrs.areachartYField || 'value';
           $scope.idField = attrs.areachartIdField || 'id';
-          $scope.labelField = attrs.areachartLabelField || 'labe';
+          $scope.labelField = attrs.areachartLabelField || 'label';
+
+          var numberFormat;
+          if($rootScope.isInt($scope.data[0][$scope.yField])){
+            numberFormat = $rootScope.currentd3locale.numberFormat(",");
+          } else {
+            numberFormat = $rootScope.currentd3locale.numberFormat("-,.1f");
+          }
+          var timeFormat = $rootScope.currentd3locale.timeFormat("%B %Y");
+          $scope.cumul = numberFormat(parseFloat(attrs.areachartCumul));
 
           $timeout(function() {
             $scope.width = (elm[0].children[2].scrollWidth) * 0.9;
             $scope.chart = outliers.viz.AreaChart()
               .container("#areachart-" + $scope.id)
               .width($scope.width)
-              .height($scope.width * 0.5)
-              .transitionDuration(200);
+              .height($scope.width * 0.6)
+              .transitionDuration(200)
+              .axisLabelFormat(timeFormat)
+              .tooltipFormat(numberFormat);
             angular.element($window).on('resize', resize);
             $scope.chart.render($scope.data, $scope.xField, $scope.yField, $scope.idField, $scope.labelField);
           }, 500);
           var resize = function() {
             $scope.width = (elm[0].children[2].scrollWidth) * 0.9;
-            $scope.chart.resize($scope.width, $scope.width * 0.5, $scope.data, $scope.xField, $scope.yField, $scope.idField, $scope.labelField);
+            $scope.chart.resize($scope.width, $scope.width * 0.6, $scope.data, $scope.xField, $scope.yField, $scope.idField, $scope.labelField);
           };
         }
       };

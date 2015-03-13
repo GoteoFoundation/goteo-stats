@@ -19,6 +19,7 @@
                    areachart-id-field="id"
                    areachart-label-field="id"
                    areachart-cumul="{{ data.averageDonation.year }}"
+                   areachart-unit="€"
                    areachart-data="{{ data.averageDonation.months }}" />
     </div>
     <div class="section col-sm-6 card" id="average-donation-paypal">
@@ -26,6 +27,7 @@
                   barchart-title="{{ 'money.sections.average-donation-paypal.title' | translate }}"
                   barchart-description="{{ 'money.sections.average-donation-paypal.description' | translate }}"
                   barchart-cumul="{{ data.averageDonationPaypal.year }}"
+                  barchart-unit="€"
                   barchart-data="{{ data.averageDonationPaypal.months }}" />
     </div>
     <div class="section col-sm-6 card" id="average-failed">
@@ -40,6 +42,7 @@
                   barchart-title="{{ 'money.sections.average-minimum.title' | translate }}"
                   barchart-description="{{ 'money.sections.average-minimum.description' | translate }}"
                   barchart-cumul="{{ data.averageMinimum.year }}"
+                  barchart-unit="€"
                   barchart-data="{{ data.averageMinimum.months }}" />
     </div>
     <div class="section col-sm-6 card" id="average-received">
@@ -47,6 +50,7 @@
                   barchart-title="{{ 'money.sections.average-received.title' | translate }}"
                   barchart-description="{{ 'money.sections.average-received.description' | translate }}"
                   barchart-cumul="{{ data.averageReceived.year }}"
+                  barchart-unit="€"
                   barchart-data="{{ data.averageReceived.months }}" />
     </div>
     <div class="section col-sm-6 card" id="average-secound-round">
@@ -54,6 +58,7 @@
                   barchart-title="{{ 'money.sections.average-second-round.title' | translate }}"
                   barchart-description="{{ 'money.sections.average-second-round.description' | translate }}"
                   barchart-cumul="{{ data.averageSecondRound.year }}"
+                  barchart-unit="€"
                   barchart-data="{{ data.averageSecondRound.months }}" />
     </div>
     <div class="section col-sm-6 card" id="pledged">
@@ -61,6 +66,7 @@
                   barchart-title="{{ 'money.sections.pledged.title' | translate }}"
                   barchart-description="{{ 'money.sections.pledged.description' | translate }}"
                   barchart-cumul="{{ data.pledged.year }}"
+                  barchart-unit="€"
                   barchart-data="{{ data.pledged.months }}" />
     </div>
     <div class="section col-sm-6 card" id="pledged-failed">
@@ -68,6 +74,7 @@
                   barchart-title="{{ 'money.sections.pledged-failed.title' | translate }}"
                   barchart-description="{{ 'money.sections.pledged-failed.description' | translate }}"
                   barchart-cumul="{{ data.pledgedFailed.year }}"
+                  barchart-unit="%"
                   barchart-data="{{ data.pledgedFailed.months }}" />
     </div>
     <div class="section col-sm-6 card" id="pledged-successful">
@@ -75,6 +82,7 @@
                   barchart-title="{{ 'money.sections.pledged-successful.title' | translate }}"
                   barchart-description="{{ 'money.sections.pledged-successful.description' | translate }}"
                   barchart-cumul="{{ data.pledgedSuccessful.year }}"
+                  barchart-unit="%"
                   barchart-data="{{ data.pledgedSuccessful.months }}" />
     </div>
     <div class="section col-sm-6 card" id="refunded">
@@ -82,6 +90,7 @@
                   barchart-title="{{ 'money.sections.refunded.title' | translate }}"
                   barchart-description="{{ 'money.sections.refunded.description' | translate }}"
                   barchart-cumul="{{ data.refunded.year }}"
+                  barchart-unit="€"
                   barchart-data="{{ data.refunded.months }}" />
     </div>
 </div>

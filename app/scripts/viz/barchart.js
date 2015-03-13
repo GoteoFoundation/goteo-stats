@@ -20,7 +20,8 @@ outliers.viz.BarChart = function() {
       maxOffset = Number.MIN_VALUE,
       labelPadding = 10,
       maxId = null,
-      formatNumbers = d3.format("-.2s");
+      formatNumbers = d3.format("-.2s"),
+      formatLabels = null;
 
   function bar() {}
 
@@ -116,7 +117,7 @@ outliers.viz.BarChart = function() {
       .style("font-size", width < 480 ? "5pt" : "7pt")
       .text(function (d, i) {
         if (textField) {
-          return d[textField];
+          return formatLabels ? formatLabels(new Date(d[textField])) : d[textField];
         } else {
           return i;
         }
@@ -133,7 +134,7 @@ outliers.viz.BarChart = function() {
           })
           .text(function (d, i) {
             if (textField) {
-              return d[textField];
+              return formatLabels ? formatLabels(new Date(d[textField])) : d[textField];
             } else {
               return i;
             }
@@ -210,22 +211,47 @@ outliers.viz.BarChart = function() {
              .remove();
     barLabels.transition()
              .duration(transitionDuration)
-             .attr("x", function (d) { return maxOffset + labelPadding + (valueField ? x(d[valueField]) : x(d)) - 2; })
              .attr("y", function (d) { return idField ? y(d[idField]) + (y.rangeBand() / 1.2) : y(i) + (y.rangeBand() / 1.2); })
-             .attr("text-anchor", "end")
-             .text(function (d) { return valueField ? formatNumbers(d[valueField]) : formatNumbers(d); });
+             .text(function (d) { return valueField ? formatNumbers(d[valueField]) : formatNumbers(d); })
+             .attr("text-anchor", function(d) {
+                d.barWidth = valueField ? x(d[valueField]) : x(d);
+                d.labelWidth = d3.select(this).node().getBBox().width;
+                return (d.labelWidth > d.barWidth) ? "start" : "end";
+              })
+              .attr("x", function (d) {
+                if (d.labelWidth > d.barWidth) {
+                  return maxOffset + labelPadding + (valueField ? x(d[valueField]) : x(d)) + 2;
+                } else {
+                  return maxOffset + labelPadding + (valueField ? x(d[valueField]) : x(d)) - 2;
+                }
+              })
+              .attr("class", function(d) {
+                return "barTooltip" + ((d.labelWidth > d.barWidth) ? " barTooltipOutside" : "");
+              });
     barLabels.enter()
       .append("text")
-      .attr("class", "barTooltip")
-      .attr("x", function (d) { return maxOffset + labelPadding + (valueField ? x(d[valueField]) : x(d)) - 2; })
       .attr("y", function (d) { return idField ? y(d[idField]) + (y.rangeBand() / 1.2) : y(i) + (y.rangeBand() / 1.2); })
-      .attr("text-anchor", "end")
       .text(function (d) {
         if (valueField) {
           return d[valueField] > 0 ? formatNumbers(d[valueField]) : "";
         } else {
           return d > 0 ? formatNumbers(d) : "";
         }
+      })
+      .attr("text-anchor", function(d) {
+        d.barWidth = valueField ? x(d[valueField]) : x(d);
+        d.labelWidth = d3.select(this).node().getBBox().width;
+        return (d.labelWidth > d.barWidth) ? "start" : "end";
+      })
+      .attr("x", function (d) {
+        if (d.labelWidth > d.barWidth) {
+          return maxOffset + labelPadding + (valueField ? x(d[valueField]) : x(d)) + 2;
+        } else {
+          return maxOffset + labelPadding + (valueField ? x(d[valueField]) : x(d)) - 2;
+        }
+      })
+      .attr("class", function(d) {
+        return "barTooltip" + ((d.labelWidth > d.barWidth) ? " barTooltipOutside" : "");
       });
   };
 
@@ -338,6 +364,12 @@ outliers.viz.BarChart = function() {
   bar.formatNumbers = function (_) {
     if (!arguments.length) return formatNumbers;
     formatNumbers = _;
+    return bar;
+  };
+
+  bar.formatLabels = function (_) {
+    if (!arguments.length) return formatLabels;
+    formatLabels = _;
     return bar;
   };
 

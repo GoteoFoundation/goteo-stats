@@ -27,19 +27,14 @@
       });
     };
 
-    api.getData = function (type) {
+    api.getData = function (type, locale, year, category) {
         var params = {};
 
-        if ($rootScope.category !== -1000) {
-          params.category = $rootScope.category;
+        if (category !== -1000) {
+          params.category = category;
         }
-        if (type === 'money' || type === 'projects') {
-          params.year = $rootScope.year;
-        } else {
-          params.from_date = $rootScope.year + '-01-01';
-          params.to_date = $rootScope.year + '-12-31';
-        }
-        params.lang = $rootScope.locale;
+        params.year = year;
+        params.lang = locale;
         if (type === 'money') {
           return api.getMoney(params);
         } else if (type === 'projects') {
@@ -48,6 +43,8 @@
           return api.getCommunity(params);
         } else if (type === 'rewards') {
           return api.getRewards(params);
+        } else if (type === 'licenses') {
+          return api.getLicenses(params);
         }
     };
 
@@ -88,15 +85,8 @@
       });
     };
 
-    api.getUser = function (id) {
-      var api_request = ApiService.get('/users/' + id);
-      return api_request(function (data) {
-        return data;
-      });
-    };
-
-    api.getUsers = function () {
-      var api_request = ApiService.get('/users/');
+    api.getLicenses = function (params) {
+      var api_request = ApiService.get('/digests/licenses/', params);
       return api_request(function (data) {
         return data;
       });

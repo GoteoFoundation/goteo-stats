@@ -7,6 +7,7 @@
                    areachart-x-field="value"
                    areachart-id-field="id"
                    areachart-label-field="id"
+                   areachart-unit="€"
                    areachart-cumul="{{ data.averageAmountSuccessful.year }}"
                    areachart-data="{{ data.averageAmountSuccessful.months }}" />
     </div>
@@ -33,6 +34,7 @@
                   barchart-title="{{ 'projects.sections.percentage-successful.title' | translate }}"
                   barchart-description="{{ 'projects.sections.percentage-successful.description' | translate }}"
                   barchart-cumul="{{ data.percentageSuccessful.year }}"
+                  barchart-unit="%"
                   barchart-data="{{ data.percentageSuccessful.months }}" />
     </div>
     <div class="section col-sm-6 card" id="percentage-successful-completed">
@@ -40,6 +42,7 @@
                   barchart-title="{{ 'projects.sections.percentage-successful-completed.title' | translate }}"
                   barchart-description="{{ 'projects.sections.percentage-successful-completed.description' | translate }}"
                   barchart-cumul="{{ data.percentageSuccessfulCompleted.year }}"
+                  barchart-unit="%"
                   barchart-data="{{ data.percentageSuccessfulCompleted.months }}" />
     </div>
     <div class="section col-sm-6 card" id="published">
@@ -74,27 +77,36 @@
         <ranking ranking-id="top10-collaborations-ranking"
                  ranking-title="{{ 'projects.sections.top10-collaborations.title' | translate }}"
                  ranking-description="{{ 'projects.sections.top10-collaborations.description' | translate }}"
-                 ranking-name-field="project"
+                 ranking-name-field="name"
                  ranking-value-field="total"
-                 rankin-display-photo="false"
+                 ranking-url-field="url"
+                 ranking-display-photo="true"
+                 ranking-photo-field="image-url"
+                 ranking-show-value="false"
                  ranking-data="{{ data.top10Collaborations }}" />
     </div>
     <div class="section col-sm-6 card" id="top10-donations">
         <ranking ranking-id="top10-donations-ranking"
                  ranking-title="{{ 'projects.sections.top10-donations.title' | translate }}"
                  ranking-description="{{ 'projects.sections.top10-donations.description' | translate }}"
-                 ranking-name-field="project"
+                 ranking-name-field="name"
                  ranking-value-field="total"
-                 rankin-display-photo="false"
+                 ranking-url-field="url"
+                 ranking-display-photo="true"
+                 ranking-photo-field="image-url"
+                 ranking-show-value="false"
                  ranking-data="{{ data.top10Donations }}" />
     </div>
     <div class="section col-sm-6 card" id="top10-receipts">
         <ranking ranking-id="top10-receipts-ranking"
                  ranking-title="{{ 'projects.sections.top10-receipts.title' | translate }}"
                  ranking-description="{{ 'projects.sections.top10-receipts.description' | translate }}"
-                 ranking-name-field="project"
+                 ranking-name-field="name"
                  ranking-value-field="amount"
-                 rankin-display-photo="false"
+                 ranking-url-field="url"
+                 ranking-display-photo="true"
+                 ranking-photo-field="image-url"
+                 ranking-show-value="false"
                  ranking-data="{{ data.top10Receipts }}" />
     </div>
 </div>

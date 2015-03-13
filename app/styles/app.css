@@ -8,12 +8,11 @@ body {
     font-size: 9pt;
 }
 .global_loading {
-    background-color: #fff;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.3);
     width: 100%;
     height: 100%;
     position: fixed;
-    top: 62px;
+    top: 61px;
     left: 0;
     bottom: 0;
     right: 0;
@@ -197,7 +196,14 @@ body {
 }
 .ranking-item-name,
 .ranking-item-value {
-    line-height: 35px;
+    line-height: 1.1em;
+    padding-top: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.ranking-item-photo {
+    max-height: 70px;
+    max-width: 70px;
 }
 .ranking-item-value {
     font-weight: bold;
@@ -211,7 +217,8 @@ body {
 .barchart-cumul,
 .piechart-cumul,
 .areachart-cumul {
-    font-size: 50pt;
+    font-size: 20pt;
+    font-size: 2.5vw;
     font-weight: bold;
 }
 .projects .barchart-cumul,
@@ -241,7 +248,8 @@ body {
 .money .barTooltip {
     fill: #fff;
 }
-.barchart-chart .barLabels {
+.barchart-chart .barLabels,
+.barTooltip.barTooltipOutside {
     fill: #58595b;
     font-size: 9pt !important;
 }
@@ -282,7 +290,7 @@ body {
 .piechart-chart .sublabel,
 .piechart-select-chart .sublabel {
     fill: #58595b;
-    font-size: 9pt;
+    font-size: 11pt;
 }
 .areachart-chart .area {
     stroke: none;

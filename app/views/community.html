@@ -14,27 +14,30 @@
         <ranking ranking-id="top10-collaborators-ranking"
                  ranking-title="{{ 'community.sections.top10-collaborators.title' | translate }}"
                  ranking-description="{{ 'community.sections.top10-collaborators.description' | translate }}"
-                 ranking-name-field="user"
+                 ranking-name-field="name"
                  ranking-value-field="interactions"
-                 rankin-display-photo="false"
+                 ranking-display-photo="true"
+                 ranking-photo-field="profile-image-url"
                  ranking-data="{{ data.top10Collaborators }}" />
     </div>
     <div class="section col-sm-6 card" id="top10-donors">
         <ranking ranking-id="top10-donors-ranking"
                  ranking-title="{{ 'community.sections.top10-donors.title' | translate }}"
                  ranking-description="{{ 'community.sections.top10-donors.description' | translate }}"
-                 ranking-name-field="user"
+                 ranking-name-field="name"
                  ranking-value-field="amount"
-                 rankin-display-photo="false"
+                 ranking-display-photo="true"
+                 ranking-photo-field="profile-image-url"
                  ranking-data="{{ data.top10Donors }}" />
     </div>
     <div class="section col-sm-6 card" id="top10-multidonors">
         <ranking ranking-id="top10-multidonors-ranking"
                  ranking-title="{{ 'community.sections.top10-multidonors.title' | translate }}"
                  ranking-description="{{ 'community.sections.top10-multidonors.description' | translate }}"
-                 ranking-name-field="user"
+                 ranking-name-field="name"
                  ranking-value-field="amount"
-                 rankin-display-photo="false"
+                 ranking-display-photo="true"
+                 ranking-photo-field="profile-image-url"
                  ranking-data="{{ data.top10Multidonors }}" />
     </div>
     <div class="section col-sm-6 card" id="users">
@@ -135,16 +138,5 @@
                    areachart-label-field="id"
                    areachart-cumul="{{ data.paypalDonors.year }}"
                    areachart-data="{{ data.paypalDonors.months }}" />
-    </div>
-    <div class="section col-sm-6 card" id="paypal-multidonors">
-        <areachart areachart-id="paypal-multidonors"
-                   areachart-title="{{ 'community.sections.paypal-multidonors.title' | translate }}"
-                   areachart-description="{{ 'community.sections.paypal-multidonors.description' | translate }}"
-                   areachart-x-field="name"
-                   areachart-x-field="value"
-                   areachart-id-field="id"
-                   areachart-label-field="id"
-                   areachart-cumul="{{ data.paypalMultidonors.year }}"
-                   areachart-data="{{ data.paypalMultidonors.months }}" />
     </div>
 </div>

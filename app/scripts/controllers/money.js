@@ -4,9 +4,10 @@
   var app = angular.module('goteoStatistics');
 
   app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/', {
+    $routeProvider.when('/money/:locale/:year/:category', {
       templateUrl: 'views/money.html',
       controller: 'MoneyCtrl',
+      dependencies: [ 'locale', 'year', 'category' ],
       resolve: {
         categories: [
           'GoteoApi', function(GoteoApi) {
@@ -14,8 +15,12 @@
           }
         ],
         moneyData: [
-          'GoteoApi', function(GoteoApi) {
-            return GoteoApi.getData('money');
+          '$route',
+          'GoteoApi', function($route, GoteoApi) {
+            var year = parseInt($route.current.params.year),
+              category = parseInt($route.current.params.category),
+              locale = $route.current.params.locale;
+            return GoteoApi.getData('money', locale, year, category);
           }
         ]
       }
@@ -27,11 +32,14 @@
     '$translate',
     '$scope',
     '$rootScope',
-    'GoteoApi',
+    '$routeParams',
     'categories',
     'moneyData',
-    function ($timeout, $translate, $scope, $rootScope, GoteoApi, categories, moneyData) {
+    function ($timeout, $translate, $scope, $rootScope, $routeParams, categories, moneyData) {
       $rootScope.categories = categories;
+      $rootScope.year = $routeParams.year;
+      $rootScope.category = $routeParams.category;
+      $rootScope.locale = $routeParams.locale;
 
       /**
        * Process data to be used in charts.
@@ -69,11 +77,11 @@
           months: []
         };
         $scope.data.pledgedFailed = {
-          year: moneyData.global['pledged-failed'],
+          year: moneyData.global['percentage-pledged-failed'],
           months: []
         };
         $scope.data.pledgedSuccessful = {
-          year: moneyData.global['pledged-successful'],
+          year: moneyData.global['percentage-pledged-successful'],
           months: []
         };
         $scope.data.refunded = {
@@ -81,8 +89,8 @@
           months: []
         };
         $scope.data.amount = [];
-        temp = moneyData.global['cash-amount'] + moneyData.global['creditcard-amount'] + moneyData.global['fee-amount'] +
-          moneyData.global['matchfund-amount'] + moneyData.global['matchfundpledge-amount'] + moneyData.global['paypal-amount'];
+        temp = moneyData.global['cash-amount'] + moneyData.global['creditcard-amount'] +
+          moneyData.global['matchfund-amount'] + moneyData.global['paypal-amount'];
         datum = {select: $rootScope.year, data: []};
         if (moneyData.global['cash-amount'] > 0) {
           datum.data.push({label: $translate.instant('money.sections.amount.labels.cash'), id: 'cash', value: moneyData.global['cash-amount'] / temp});
@@ -90,14 +98,8 @@
         if (moneyData.global['creditcard-amount'] > 0) {
           datum.data.push({label: $translate.instant('money.sections.amount.labels.creditcard'), id: 'creditcard', value: moneyData.global['creditcard-amount'] / temp});
         }
-        if (moneyData.global['fee-amount'] > 0) {
-          datum.data.push({label: $translate.instant('money.sections.amount.labels.fee'), id: 'fee', value: moneyData.global['fee-amount'] / temp});
-        }
         if (moneyData.global['matchfund-amount'] > 0) {
           datum.data.push({label: $translate.instant('money.sections.amount.labels.matchfund'), id: 'matchfund', value: moneyData.global['matchfund-amount'] / temp});
-        }
-        if (moneyData.global['matchfundpledge-amount'] > 0) {
-          datum.data.push({label: $translate.instant('money.sections.amount.labels.matchfundpledge'), id: 'matchfundpledge', value: moneyData.global['matchfundpledge-amount'] / temp});
         }
         if (moneyData.global['paypal-amount'] > 0) {
           datum.data.push({label: $translate.instant('money.sections.amount.labels.paypal'), id: 'paypal', value: moneyData.global['paypal-amount'] / temp});
@@ -126,25 +128,11 @@
                 value: currentData['creditcard-amount'] / temp
               });
             }
-            if (currentData['fee-amount'] > 0) {
-              datum.data.push({
-                label: $translate.instant('money.sections.amount.labels.fee'),
-                id: 'fee',
-                value: currentData['fee-amount'] / temp
-              });
-            }
             if (currentData['matchfund-amount'] > 0) {
               datum.data.push({
                 label: $translate.instant('money.sections.amount.labels.matchfund'),
                 id: 'matchfund',
                 value: currentData['matchfund-amount'] / temp
-              });
-            }
-            if (currentData['matchfundpledge-amount'] > 0) {
-              datum.data.push({
-                label: $translate.instant('money.sections.amount.labels.matchfundpledge'),
-                id: 'matchfundpledge',
-                value: currentData['matchfundpledge-amount'] / temp
               });
             }
             if (currentData['paypal-amount'] > 0) {
@@ -189,12 +177,12 @@
             $scope.data.pledgedFailed.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: currentData['pledged-failed']
+              value: currentData['percentage-pledged-failed']
             });
             $scope.data.pledgedSuccessful.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: currentData['pledged-successful']
+              value: currentData['percentage-pledged-successful']
             });
             $scope.data.refunded.months.push({id: k, name: $rootScope.getDate(i), value: currentData.refunded});
           } else {

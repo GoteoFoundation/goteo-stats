@@ -8,8 +8,23 @@
     'angularSpinner'
   ]);
 
+  app.config([
+    '$locationProvider',
+    function ($locationProvider) {
+      $locationProvider.html5Mode(true);
+      $locationProvider.hashPrefix('!');
+    }
+  ]);
+
   app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.otherwise({
+    $routeProvider.when('/',{
+      redirectTo: function(routeParams, path, search) {
+        var currentYear = moment().year();
+        var preferredLanguage = ((navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage)).split('-')[0] || 'es');
+        return '/money/' + preferredLanguage + '/' + currentYear + '/-1000';
+      }
+    })
+    .otherwise({
       redirectTo: '/'
     });
   }]);
@@ -23,8 +38,6 @@
         'en_UK': 'en',
         'es_ES': 'es'
       });
-      var browserLocale = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage).split('-')[0];
-      $translateProvider.preferredLanguage(browserLocale);
     }
   ]);
   app.factory('customLoader', function ($http, $q) {
@@ -44,27 +57,85 @@
     };
   });
 
+  app.run(['$rootScope',
+    '$translate',
+    '$route',
+    function($rootScope, $translate, $route) {
+      // D3.js locales.
+      $rootScope.d3locales = {};
+      $rootScope.d3locales.en = d3.locale({
+        "decimal": ".",
+        "thousands": ",",
+        "grouping": [3],
+        "currency": ["$", ""],
+        "dateTime": "%a %b %e %X %Y",
+        "date": "%m/%d/%Y",
+        "time": "%H:%M:%S",
+        "periods": ["AM", "PM"],
+        "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "shortDays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        "shortMonths": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      });
+      $rootScope.d3locales.es = d3.locale({
+        "decimal": ",",
+        "thousands": ".",
+        "grouping": [3],
+        "currency": ["", "€"],
+        "dateTime": "%a %b %e %X %Y",
+        "date": "%d/%m/%Y",
+        "time": "%H:%M:%S",
+        "periods": ["AM", "PM"],
+        "days": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+        "shortDays": ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+        "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        "shortMonths": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+      });
+      $rootScope.isInt = function(value) {
+        return !isNaN(value) &&
+          parseInt(Number(value)) == value &&
+          !isNaN(parseInt(value, 10));
+      };
+
+      var browserLocale = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage).split('-')[0];
+      $rootScope.locale = browserLocale || 'es';
+      $rootScope.currentd3locale = $rootScope.d3locales[$rootScope.locale];
+      $translate.use($rootScope.locale);
+
+      $route.reload();
+  }]);
+
   app.controller('goteoStatisticsCtrl', [
     '$translate',
     '$scope',
     '$rootScope',
     '$location',
-    '$route',
-    function($translate, $scope, $rootScope, $location, $route) {
+    function($translate, $scope, $rootScope, $location) {
       $scope.changeLanguage = function (langKey) {
         $rootScope.locale = langKey;
-        $translate.use(langKey);
+        //$translate.use(langKey);
       };
-      $scope.updateData = function () {
-        $route.reload();
+      $scope.updateYear = function() {
+        var path = $location.path().split('/');
+        path[3] = $rootScope.year;
+        $location.path(path.join('/'));
       };
-      $scope.$watch(function () {
+      $scope.updateCategory = function() {
+        var path = $location.path().split('/');
+        path[4] = $rootScope.category;
+        $location.path(path.join('/'));
+      };
+      $scope.$watch(function() {
         return $rootScope.locale;
-      }, function (locale) {
-        $scope.updateData();
+      }, function (langKey) {
+        var path = $location.path().split('/');
+        path[2] = langKey;
+        $rootScope.currentd3locale = $rootScope.d3locales[langKey];
+        $translate.use(langKey);
+        $location.path(path.join('/'));
       });
       $scope.isActive = function(route) {
-        return route === $location.path();
+        return route === $location.path().split('/')[1];
       };
       var range = function(from, to, step) {
         if(typeof from== 'number'){
@@ -84,19 +155,20 @@
         return $rootScope.year + '-' + (i).pad() + '-01T00:00:00.000Z';
       };
 
-      $scope.$root.$on('$routeChangeStart', function(event, route) {
+      $scope.$root.$on('$routeChangeStart', function(event, next, current) {
+        $rootScope.locale = next.params.locale;
+        $translate.use($rootScope.locale);
         $rootScope.globalLoading = true;
       });
-      $scope.$root.$on('$routeChangeSuccess', function(event, route) {
+      $scope.$root.$on('$routeChangeSuccess', function() {
         $rootScope.globalLoading = false;
       });
 
       // Load initial data.
       $rootScope.years = range(2011, moment().year());
-      var tempLocale = (navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage)).split('-')[0];
-      tempLocale = tempLocale || 'es';
-      $rootScope.locale = tempLocale;
+      /*var browserLocale = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage).split('-')[0];
+      $rootScope.locale = browserLocale || 'es';
       $rootScope.category = -1000;
-      $rootScope.year = moment().year();
+      $rootScope.year = moment().year();*/
   }]);
 }).call(this);

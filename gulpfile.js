@@ -312,6 +312,7 @@
       'app/views/**/*.html',
       'app/locales/**/*.json',
       'app/*.html',
+      'app/*.js',
     ], ['build']);
   });
 

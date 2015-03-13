@@ -4,9 +4,10 @@
   var app = angular.module('goteoStatistics');
 
   app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/community', {
+    $routeProvider.when('/community/:locale/:year/:category', {
       templateUrl: 'views/community.html',
       controller: 'CommunityCtrl',
+      dependencies: [ 'locale', 'year', 'category' ],
       resolve: {
         categories: [
           'GoteoApi', function(GoteoApi) {
@@ -14,8 +15,12 @@
           }
         ],
         communityData: [
-          'GoteoApi', function(GoteoApi) {
-            return GoteoApi.getData('community');
+          '$route',
+          'GoteoApi', function($route, GoteoApi) {
+            var year = parseInt($route.current.params.year),
+              category = parseInt($route.current.params.category),
+              locale = $route.current.params.locale;
+            return GoteoApi.getData('community', locale, year, category);
           }
         ]
       }
@@ -27,11 +32,14 @@
     '$translate',
     '$scope',
     '$rootScope',
-    'GoteoApi',
+    '$routeParams',
     'categories',
     'communityData',
-    function ($timeout, $translate, $scope, $rootScope, GoteoApi, categories, communityData) {
+    function ($timeout, $translate, $scope, $rootScope, $routeParams, categories, communityData) {
       $rootScope.categories = categories;
+      $rootScope.year = $routeParams.year;
+      $rootScope.category = $routeParams.category;
+      $rootScope.locale = $routeParams.locale;
 
       $scope.prepareData = function() {
         var temp;
@@ -91,10 +99,6 @@
           year: communityData.global['paypal-donors'],
           months: []
         };
-        $scope.data.paypalMultidonors = {
-          year: communityData.global['paypal-multidonors'],
-          months: []
-        };
         $scope.data.users = {
           year: communityData.global.users,
           months: []
@@ -131,7 +135,6 @@
             $scope.data.donorsCollaborators.months.push({id: k, name: $rootScope.getDate(i), value: currentData['donors-collaborators']});
             $scope.data.multidonors.months.push({id: k, name: $rootScope.getDate(i), value: currentData.multidonors});
             $scope.data.paypalDonors.months.push({id: k, name: $rootScope.getDate(i), value: currentData['paypal-donors']});
-            $scope.data.paypalMultidonors.months.push({id: k, name: $rootScope.getDate(i), value: currentData['paypal-multidonors']});
             $scope.data.users.months.push({id: k, name: $rootScope.getDate(i), value: currentData.users});
           } else {
             $scope.data.averageDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
@@ -142,7 +145,6 @@
             $scope.data.donorsCollaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0});
             $scope.data.multidonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
             $scope.data.paypalDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.paypalMultidonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
             $scope.data.users.months.push({id: k, name: $rootScope.getDate(i), value: 0});
           }
         }
