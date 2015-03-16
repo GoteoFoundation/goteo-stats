@@ -6,7 +6,7 @@
             <div class="ranking-position col-sm-1">{{ $index + 1 }}</div>
             <img ng-if="displayPhoto" ng-src="{{ datum[photoField] }}" class="ranking-item-photo col-sm-3" />
             <div ng-if="!urlField" class="ranking-item-name" ng-class="{'col-sm-7': !displayPhoto, 'col-sm-5': displayPhoto}">{{ datum[nameField] }}</div>
-            <div ng-if="urlField" class="ranking-item-name" ng-class="{'col-sm-7': !displayPhoto && showValue, 'col-sm-5': displayPhoto && showValue, 'col-sm-8': displayPhoto && !showValue, 'col-sm-10': !displayPhoto && !showValue}"><a ng-href="{{ datum[urlField] }}">{{ datum[nameField] }}</a></div>
+            <div ng-if="urlField" class="ranking-item-name" ng-class="{'col-sm-7': !displayPhoto && showValue, 'col-sm-5': displayPhoto && showValue, 'col-sm-8': displayPhoto && !showValue, 'col-sm-10': !displayPhoto && !showValue}"><a ng-href="{{ datum[urlField] }}" target="_blank">{{ datum[nameField] }}</a></div>
             <div ng-if="units" ng-if="showValue" class="ranking-item-value col-sm-3">{{ numberFormat(datum[valueField]) }} {{ units }}</div>
             <div ng-if="!units" ng-if="showValue" class="ranking-item-value col-sm-3">{{ numberFormat(datum[valueField]) }}</div>
         </li>

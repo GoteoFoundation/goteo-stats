@@ -22,6 +22,7 @@
           rankingData: '@'
         },
         link: function ($scope, elm, attrs) {
+          console.log(attrs);
           $scope.title = attrs.rankingTitle;
           $scope.description = attrs.rankingDescription;
           $scope.units = attrs.rankingUnit || null;
