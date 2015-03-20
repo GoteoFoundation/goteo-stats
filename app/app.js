@@ -20,6 +20,7 @@
     $routeProvider.when('/',{
       redirectTo: function() {
         var preferredLanguage = ((navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage)).split('-')[0] || 'es');
+        if(preferredLanguage != 'en' || preferredLanguage != 'es') preferredLanguage = 'en';
         return '/home/' + preferredLanguage;
       }
     })
