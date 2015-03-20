@@ -2,7 +2,7 @@
     <h3 class="piechart-title">{{ title }}</h3>
     <div class="col-sm-5">
         <div class="piechart-description">{{ description }}</div>
-        <div ng-if="cumul" class="piechart-cumul">{{ cumul }}</div>
+        <div ng-if="cumul" class="piechart-cumul">{{ cumul }} {{ units }}</div>
     </div>
     <div class="piechart-chart col-sm-7" id="piechart-{{ id }}"></div>
 </div>

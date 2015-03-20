@@ -22,7 +22,7 @@
   "home": {
     "title": "Goteo es más que crowdfunding",
     "description_1": "Goteo es el barómetro de las necesidades de una sociedad más colaborativa y transparente. Lo dicen nuestros datos, que también estamos compartiendo en formato abierto.",
-    "description_2":"Echad un vistazo a nuestras estadísticas o acceded a nuestra <a href=\"http://developers.goteo.org/\">API</a> para crear nuevas aplicaciones, análisis y visualizaciones."
+    "description_2":"Te invitamos a hechar un vistazo a nuestras estadísticas visualizando los datos por secciones, años o categorias. También puedes acceder directamente a nuestra <a href=\"http://developers.goteo.org/\">API</a> para crear nuevas aplicaciones, análisis y visualizaciones."
   },
   "money": {
     "sections": {
@@ -43,7 +43,7 @@
         "description": "Cantidad de dinero captada por Fundación Goteo para multiplicar aportes individuales"
       },
       "average-donation": {
-        "title": "Media de dinero recaudado",
+        "title": "Aporte medio a proyectos",
         "description": "Una de las medias más altas del mundo!"
       },
       "average-donation-paypal": {
@@ -213,9 +213,13 @@
           "rewards-more-than-400": "Recompensas de más de 400 €"
         }
       },
-      "reward-refusal": {
+      "percentage-reward-refusal": {
         "title": "Renuncias a recompensas",
         "description": "Porcentaje de donantes que renuncian a recompensas individuales o se conforman con un agradecimiento"
+      },
+      "licenses": {
+        "title" : "Licencias más utilizadas",
+        "description" : "Todos los proyectos en Goteo comparten el conocimiento que tienen y crean bajo licencias libres/abiertas"
       }
     }
   }

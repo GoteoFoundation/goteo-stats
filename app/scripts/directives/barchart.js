@@ -20,7 +20,8 @@
           barchartValueField: '@',
           barchartLabelField: '@',
           barchartUnit: '@',
-          barchartLabelFormat: '@'
+          barchartLabelFormat: '@',
+          // barchartNumberFormat: '@'
         },
         link: function ($scope, elm, attrs) {
 
@@ -37,7 +38,10 @@
           $scope.labelFormat = attrs.barchartLabelFormat || '%B %Y';
 
           var numberFormat;
-          if($rootScope.isInt($scope.data[0][$scope.valueField])){
+          if(attrs.barchartNumberFormat) {
+            numberFormat = $rootScope.currentd3locale.numberFormat(attrs.barchartNumberFormat);
+          }
+          else if($rootScope.isInt($scope.data[0][$scope.valueField])){
             numberFormat = $rootScope.currentd3locale.numberFormat(",");
           } else {
             numberFormat = $rootScope.currentd3locale.numberFormat("-,.1f");

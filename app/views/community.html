@@ -45,6 +45,7 @@ Usuarios
                  ranking-description="{{ 'community.sections.top10-donors.description' | translate }}"
                  ranking-name-field="name"
                  ranking-value-field="amount"
+                 ranking-unit="€"
                  ranking-display-photo="true"
                  ranking-photo-field="profile-image-url"
                  ranking-data="{{ data.top10Donors }}" />
@@ -55,7 +56,7 @@ Usuarios
                  ranking-title="{{ 'community.sections.top10-multidonors.title' | translate }}"
                  ranking-description="{{ 'community.sections.top10-multidonors.description' | translate }}"
                  ranking-name-field="name"
-                 ranking-value-field="amount"
+                 ranking-value-field="contributions"
                  ranking-display-photo="true"
                  ranking-photo-field="profile-image-url"
                  ranking-data="{{ data.top10Multidonors }}" />
@@ -144,6 +145,7 @@ Usuarios
                    areachart-data="{{ data.creatorsDonors.months }}" />
     </div>
     <!-- Donantes via Paypal -->
+    <!--
     <div class="section col-sm-6 card" id="paypal-donors">
         <areachart areachart-id="paypal-donors"
                    areachart-title="{{ 'community.sections.paypal-donors.title' | translate }}"
@@ -155,6 +157,7 @@ Usuarios
                    areachart-cumul="{{ data.paypalDonors.year }}"
                    areachart-data="{{ data.paypalDonors.months }}" />
     </div>
+    -->
     <!-- Usuarios -->
     <div class="section col-sm-6 card" id="users">
         <areachart areachart-id="users"
