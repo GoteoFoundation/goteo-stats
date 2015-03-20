@@ -47,17 +47,17 @@
                                 </ul>
                             </li>
                         </ul>
-                        <form class="nav navbar-form navbar-right">
+                        <form class="nav navbar-form navbar-right" ng-hide="isActive('home')">
                             <div class="form-group">
                                 <label for="yearSelector">{{'selector.year' | translate}}</label>
                                 <select id="yearSelector" class="form-control" data-ng-model="$root.year" ng-change="updateYear()">
-                                    <option ng-repeat="y in $root.years" value="{{y}}" label="{{y}}" ng-selected="year === y">{{y}}</option>
+                                    <option ng-repeat="y in $root.years" value="{{y}}" label="{{y}}" ng-selected="$root.year === y">{{y}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="categorySelector">{{'selector.category' | translate}}</label>
                                 <select id="categorySelector" class="form-control" data-ng-model="$root.category" ng-change="updateCategory()">
-                                    <option ng-repeat="c in $root.categories" value="{{c.id}}" label="{{c.name}}" ng-selected="category === c.id">{{c.category}}</option>
+                                    <option ng-repeat="c in $root.categories" value="{{c.id}}" label="{{c.name}}" ng-selected="$root.category === c.id">{{c.name}}</option>
                                 </select>
                             </div>
                         </form>
@@ -103,6 +103,7 @@
         <script src="scripts/directives/piechart.js"></script>
         <script src="scripts/directives/piechart-select.js"></script>
         <script src="scripts/directives/areachart.js"></script>
+        <script src="scripts/controllers/home.js"></script>
         <script src="scripts/controllers/money.js"></script>
         <script src="scripts/controllers/projects.js"></script>
         <script src="scripts/controllers/community.js"></script>

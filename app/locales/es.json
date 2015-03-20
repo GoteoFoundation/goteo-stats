@@ -19,6 +19,11 @@
     "year": "Año",
     "category": "Categoría"
   },
+  "home": {
+    "title": "Goteo es más que crowdfunding",
+    "description_1": "Goteo es el barómetro de las necesidades de una sociedad más colaborativa y transparente. Lo dicen nuestros datos, que también estamos compartiendo en formato abierto.",
+    "description_2":"Echad un vistazo a nuestras estadísticas o acceded a nuestra <a href=\"http://developers.goteo.org/\">API</a> para crear nuevas aplicaciones, análisis y visualizaciones."
+  },
   "money": {
     "sections": {
       "amount": {
@@ -32,6 +37,10 @@
           "matchfundpledge": "Total de comprometido por captaciones externas (QUITAR)",
           "paypal": "Aportaciones individuales con Paypal"
         }
+      },
+      "matchfund-amount": {
+        "title": "Dinero captado por Fundación Goteo",
+        "description": "Cantidad de dinero captada por Fundación Goteo para multiplicar aportes individuales"
       },
       "average-donation": {
         "title": "Media de dinero recaudado",

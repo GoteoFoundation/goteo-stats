@@ -18,10 +18,9 @@
 
   app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/',{
-      redirectTo: function(routeParams, path, search) {
-        var currentYear = moment().year();
+      redirectTo: function() {
         var preferredLanguage = ((navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage)).split('-')[0] || 'es');
-        return '/money/' + preferredLanguage + '/' + currentYear + '/-1000';
+        return '/home/' + preferredLanguage;
       }
     })
     .otherwise({

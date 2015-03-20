@@ -19,7 +19,8 @@
           barchartIdField: '@',
           barchartValueField: '@',
           barchartLabelField: '@',
-          barchartUnit: '@'
+          barchartUnit: '@',
+          barchartLabelFormat: '@'
         },
         link: function ($scope, elm, attrs) {
 
@@ -33,6 +34,7 @@
           $scope.idField = attrs.barchartIdField || 'id';
           $scope.labelField = attrs.barchartLabelField || 'name';
           $scope.valueField = attrs.barchartValueField || 'value';
+          $scope.labelFormat = attrs.barchartLabelFormat || '%B %Y';
 
           var numberFormat;
           if($rootScope.isInt($scope.data[0][$scope.valueField])){
@@ -40,7 +42,7 @@
           } else {
             numberFormat = $rootScope.currentd3locale.numberFormat("-,.1f");
           }
-          var timeFormat = $rootScope.currentd3locale.timeFormat("%B %Y");
+          var timeFormat = $rootScope.currentd3locale.timeFormat($scope.labelFormat);
 
           $scope.cumul = numberFormat(parseFloat(attrs.barchartCumul));
 

@@ -11,6 +11,7 @@ outliers.viz.AreaChart = function() {
     svg = null,
     transitionDuration = 500,
     timeAxis = true,
+    isYear = false,
     dotRadius = 5,
     tooltipFormat = d3.format("-.3s"),
     axisLabelFormat = timeAxis ? d3.time.format('%B %Y') : d3.format(',.0f');
@@ -38,6 +39,8 @@ outliers.viz.AreaChart = function() {
         }
       });
     }
+
+    if (isYear) { margin.bottom = margin.bottom * 0.5; }
 
     svgParent = d3.select(container)
       .selectAll("svg")
@@ -270,6 +273,12 @@ outliers.viz.AreaChart = function() {
   area.tooltipFormat = function (_) {
     if (!arguments.length) return tooltipFormat;
     tooltipFormat = _;
+    return area;
+  };
+
+  area.isYear = function (_) {
+    if (!arguments.length) return isYear;
+    isYear = _;
     return area;
   };
 

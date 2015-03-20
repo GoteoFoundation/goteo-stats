@@ -88,6 +88,20 @@ body {
 .navbar-default .navbar-nav > .active.rewards-link > a:focus {
     color: #ffffff;
 }
+.home-description-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.home-description {
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 5px 15px;
+}
+.home-description h3 {
+    font-weight: 700;
+}
 .money-link > a:hover,
 .money-link > a:focus,
 .navbar-default .navbar-nav > .active.money-link > a,
@@ -218,7 +232,7 @@ body {
 .piechart-cumul,
 .areachart-cumul {
     font-size: 20pt;
-    font-size: 2.5vw;
+    font-size: 2vw;
     font-weight: bold;
 }
 .projects .barchart-cumul,

@@ -30,10 +30,12 @@
     api.getData = function (type, locale, year, category) {
         var params = {};
 
-        if (category !== -1000) {
-          params.category = category;
+        if (type !== 'summary') {
+          params.year = year;
+          if (category !== -1000) {
+            params.category = category;
+          }
         }
-        params.year = year;
         params.lang = locale;
         if (type === 'money') {
           return api.getMoney(params);
@@ -45,6 +47,8 @@
           return api.getRewards(params);
         } else if (type === 'licenses') {
           return api.getLicenses(params);
+        } else if (type === 'summary') {
+          return api.getSummary(params);
         }
     };
 
@@ -87,6 +91,13 @@
 
     api.getLicenses = function (params) {
       var api_request = ApiService.get('/digests/licenses/', params);
+      return api_request(function (data) {
+        return data;
+      });
+    };
+
+    api.getSummary = function (params) {
+      var api_request = ApiService.get('/digests/reports/summary/', params);
       return api_request(function (data) {
         return data;
       });

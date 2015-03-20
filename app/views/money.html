@@ -1,12 +1,16 @@
 <div class="money" id="money-container">
     <!-- Dinero recaudado -->
     <div class="section col-sm-6 card" id="pledged">
-        <barchart barchart-id="pledged"
-                  barchart-title="{{ 'money.sections.pledged.title' | translate }}"
-                  barchart-description="{{ 'money.sections.pledged.description' | translate }}"
-                  barchart-cumul="{{ data.pledged.year }}"
-                  barchart-unit="€"
-                  barchart-data="{{ data.pledged.months }}" />
+        <areachart areachart-id="pledged"
+                   areachart-title="{{ 'money.sections.pledged.title' | translate }}"
+                   areachart-description="{{ 'money.sections.pledged.description' | translate }}"
+                   areachart-x-field="name"
+                   areachart-x-field="value"
+                   areachart-id-field="id"
+                   areachart-label-field="id"
+                   areachart-cumul="{{ data.pledged.year }}"
+                   areachart-unit="€"
+                  areachart-data="{{ data.pledged.months }}" />
     </div>
     <!-- Media de dinero recaudado -->
     <div class="section col-sm-6 card" id="average-donation">
@@ -23,12 +27,16 @@
     </div>
     <!-- Recaudado por proyectos exitosos -->
     <div class="section col-sm-6 card" id="average-received">
-        <barchart barchart-id="average-received"
-                  barchart-title="{{ 'money.sections.average-received.title' | translate }}"
-                  barchart-description="{{ 'money.sections.average-received.description' | translate }}"
-                  barchart-cumul="{{ data.averageReceived.year }}"
-                  barchart-unit="€"
-                  barchart-data="{{ data.averageReceived.months }}" />
+        <areachart areachart-id="average-received"
+                   areachart-title="{{ 'money.sections.average-received.title' | translate }}"
+                   areachart-description="{{ 'money.sections.average-received.description' | translate }}"
+                   areachart-x-field="name"
+                   areachart-x-field="value"
+                   areachart-id-field="id"
+                   areachart-label-field="id"
+                   areachart-cumul="{{ data.averageReceived.year }}"
+                   areachart-unit="€"
+                   areachart-data="{{ data.averageReceived.months }}" />
     </div>
     <!-- Aportaciones monetarias según origen -->
     <div class="section col-sm-6 card" id="amount">

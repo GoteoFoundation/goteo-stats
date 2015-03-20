@@ -19,6 +19,11 @@
     "year": "Year",
     "category": "Category"
   },
+  "home": {
+    "title": "Goteo es más que crowdfunding",
+    "description_1": "Goteo es el barómetro de las necesidades de una sociedad más colaborativa y transparente. Lo dicen nuestros datos, que también estamos compartiendo en formato abierto.",
+    "description_2":"Echad un vistazo a nuestras estadísticas o acceded a nuestra <a href=\"http://developers.goteo.org/\">API</a> para crear nuevas aplicaciones, análisis y visualizaciones."
+  },
   "money": {
     "sections": {
       "amount": {
@@ -32,6 +37,10 @@
           "matchfundpledge": "Label matchfundpledge",
           "paypal": "Label paypal"
         }
+      },
+      "matchfund-amount": {
+        "title": "Title matchfund-amount",
+        "description": "Description matchfund-amount"
       },
       "average-donation": {
         "title": "Title average-donation",

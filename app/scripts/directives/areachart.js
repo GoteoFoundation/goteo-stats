@@ -20,7 +20,9 @@
           areachartYField: '@',
           areachartIdField: '@',
           areachartLabelField: '@',
-          areachartUnit: '@'
+          areachartUnit: '@',
+          areachartXFormat: '@',
+          areachartIsYear: '@'
         },
         link: function ($scope, elm, attrs) {
           $scope.id = attrs.areachartId;
@@ -34,6 +36,8 @@
           $scope.yField = attrs.areachartYField || 'value';
           $scope.idField = attrs.areachartIdField || 'id';
           $scope.labelField = attrs.areachartLabelField || 'label';
+          $scope.xFormat = attrs.areachartXFormat || '%B %Y';
+          $scope.isYear = attrs.areachartIsYear ? eval(attrs.areachartIsYear) : false;
 
           var numberFormat;
           if($rootScope.isInt($scope.data[0][$scope.yField])){
@@ -41,7 +45,7 @@
           } else {
             numberFormat = $rootScope.currentd3locale.numberFormat("-,.1f");
           }
-          var timeFormat = $rootScope.currentd3locale.timeFormat("%B %Y");
+          var timeFormat = $rootScope.currentd3locale.timeFormat($scope.xFormat);
           $scope.cumul = numberFormat(parseFloat(attrs.areachartCumul));
 
           $timeout(function() {
@@ -52,7 +56,8 @@
               .height($scope.width * 0.6)
               .transitionDuration(200)
               .axisLabelFormat(timeFormat)
-              .tooltipFormat(numberFormat);
+              .tooltipFormat(numberFormat)
+              .isYear($scope.isYear);
             angular.element($window).on('resize', resize);
             $scope.chart.render($scope.data, $scope.xField, $scope.yField, $scope.idField, $scope.labelField);
           }, 500);
