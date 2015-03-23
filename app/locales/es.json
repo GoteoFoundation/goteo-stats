@@ -38,7 +38,7 @@
           "paypal": "Aportaciones individuales con Paypal"
         }
       },
-      "matchfund-amount": {
+      "matchfundpledge-amount": {
         "title": "Dinero captado por Fundación Goteo",
         "description": "Cantidad de dinero captada por Fundación Goteo para multiplicar aportes individuales"
       },

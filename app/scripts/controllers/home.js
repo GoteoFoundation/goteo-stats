@@ -54,8 +54,8 @@
           year: homeData.global['average-donation'],
           months: []
         };
-        $scope.data.matchfundAmount = {
-          year: homeData.global['matchfund-amount'],
+        $scope.data.matchfundPledgeAmount = {
+          year: homeData.global['matchfundpledge-amount'],
           months: []
         };
         $scope.data.users = {
@@ -150,12 +150,12 @@
               name: k,
               value: currentData['average-donation']
             });
-            console.log(currentData['matchfund-amount'], homeData.global['matchfund-amount'], (100 * currentData['matchfund-amount'] / homeData.global['matchfund-amount']))
-            $scope.data.matchfundAmount.months.push({
+            // console.log(currentData['matchfundpledge-amount'], homeData.global['matchfundpledge-amount'], (100 * currentData['matchfundpledge-amount'] / homeData.global['matchfundpledge-amount']))
+            $scope.data.matchfundPledgeAmount.months.push({
               id: k,
               name: k,
-              // value: currentData['matchfund-amount']
-              value: parseFloat(currentData['matchfund-amount'] / homeData.global['matchfund-amount'])
+              // value: currentData['matchfundpledge-amount']
+              value: parseFloat(currentData['matchfundpledge-amount'] / homeData.global['matchfundpledge-amount'])
             });
             $scope.data.users.months.push({id: k, name: k, value: currentData.users});
             // $scope.data.successful.months.push({id: k, name: k, value: currentData['projects-successful'] / currentData['projects-published']));
