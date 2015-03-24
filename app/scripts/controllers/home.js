@@ -37,7 +37,7 @@
       $rootScope.categories = categories;
       $rootScope.locale = $routeParams.locale;
       $rootScope.category = $rootScope.category || -1000;
-      $rootScope.year = $rootScope.year || moment().year();
+      $rootScope.year = $rootScope.year || (moment().year() - 1);
 
       /**
        * Process data to be used in charts.
