@@ -41,8 +41,7 @@
           barchartValueField: '@',
           barchartLabelField: '@',
           barchartUnit: '@',
-          barchartLabelFormat: '@',
-          // barchartNumberFormat: '@'
+          barchartLabelFormat: '@'
         },
         link: function ($scope, elm, attrs) {
 

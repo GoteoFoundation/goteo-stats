@@ -424,12 +424,28 @@ outliers.viz.PieChart = function() {
     return piechart;
   };
 
+  /**
+   * If x is provided, sets the condition to consider data as percentages to it. If not
+   * returns its current value.
+   *
+   * @param {Boolean} _ data should be considered as percentage?
+   *
+   * @return {Object} the modified pie chart
+   */
   piechart.isPercentage = function(x) {
     if (!arguments.length) return isPercentage;
     isPercentage = x;
     return piechart;
   };
 
+  /**
+   * If x is provided, sets the function to format numbers to it. If not
+   * returns its current value.
+   *
+   * @param {Function} _ function to format numbers
+   *
+   * @return {Object} the modified pie chart
+   */
   piechart.format = function(x) {
     if (!arguments.length) return format;
     format = x;

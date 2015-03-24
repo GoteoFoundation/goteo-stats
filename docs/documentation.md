@@ -363,7 +363,7 @@ Request to the `/digests/reports/summary` endpoint.
 
 ### app/scripts/viz/areachart.js<a name="viz_areachart"></a>
 
-##### outliers.viz.AreaChart 
+##### outliers.viz.AreaChart
 Outliers' Area Chart component.
 
 Usage:
@@ -425,7 +425,7 @@ be rendered. If not returns its current value.
 
 ###### Params:
 
-* **String** *_* selector of the container where the chart will be rendered. 
+* **String** *_* selector of the container where the chart will be rendered.
 
 ###### Return:
 
@@ -438,7 +438,7 @@ returns its current value..
 
 ###### Params:
 
-* **Number** *_* width of the pie chart. 
+* **Number** *_* width of the pie chart.
 
 ###### Return:
 
@@ -451,7 +451,7 @@ returns its current value..
 
 ###### Params:
 
-* **Number** *_* width of the pie chart. 
+* **Number** *_* width of the pie chart.
 
 ###### Return:
 
@@ -464,7 +464,7 @@ returns its current value.
 
 ###### Params:
 
-* **Number** *x:* number of milliseconds a transition must take. 
+* **Number** *x:* number of milliseconds a transition must take.
 
 ###### Return:
 
@@ -477,7 +477,7 @@ returns its current value.
 
 ###### Params:
 
-* **Boolean** *_* set X axis as a time axis. 
+* **Boolean** *_* set X axis as a time axis.
 
 ###### Return:
 
@@ -490,7 +490,7 @@ returns its current value.
 
 ###### Params:
 
-* **Number** *_* dot radius. 
+* **Number** *_* dot radius.
 
 ###### Return:
 
@@ -503,7 +503,7 @@ returns its current value.
 
 ###### Params:
 
-* **Function** *_* axis label format. 
+* **Function** *_* axis label format.
 
 ###### Return:
 
@@ -516,7 +516,7 @@ returns its current value.
 
 ###### Params:
 
-* **Function** *_* tooltip format. 
+* **Function** *_* tooltip format.
 
 ###### Return:
 
@@ -529,7 +529,7 @@ instead of months to it. If not returns its current value.
 
 ###### Params:
 
-* **Boolean** *_* True if the data to display are years. 
+* **Boolean** *_* True if the data to display are years.
 
 ###### Return:
 
@@ -540,7 +540,7 @@ instead of months to it. If not returns its current value.
 
 ### app/scripts/viz/barchart.js<a name="viz_barchart"></a>
 
-##### outliers.viz.BarChart 
+##### outliers.viz.BarChart
 Outliers' Bar Chart component.
 
 Usage:
@@ -601,7 +601,7 @@ be rendered. If not returns its current value.
 
 ###### Params:
 
-* **String** *_* selector of the container where the chart will be rendered. 
+* **String** *_* selector of the container where the chart will be rendered.
 
 ###### Return:
 
@@ -614,7 +614,7 @@ returns its current value..
 
 ###### Params:
 
-* **Number** *_* width of the pie chart. 
+* **Number** *_* width of the pie chart.
 
 ###### Return:
 
@@ -627,7 +627,7 @@ returns its current value..
 
 ###### Params:
 
-* **Number** *_* width of the pie chart. 
+* **Number** *_* width of the pie chart.
 
 ###### Return:
 
@@ -640,7 +640,7 @@ returns its current value.
 
 ###### Params:
 
-* **Number** *_* number of milliseconds a transition must take. 
+* **Number** *_* number of milliseconds a transition must take.
 
 ###### Return:
 
@@ -653,7 +653,7 @@ returns its current value.
 
 ###### Params:
 
-* **Number** *_* number of milliseconds a transition must take. 
+* **Number** *_* number of milliseconds a transition must take.
 
 ###### Return:
 
@@ -666,7 +666,7 @@ returns its current value.
 
 ###### Params:
 
-* **Number** *_* number of milliseconds a transition must take. 
+* **Number** *_* number of milliseconds a transition must take.
 
 ###### Return:
 
@@ -679,7 +679,7 @@ returns its current value.
 
 ###### Params:
 
-* **Number** *_* number of milliseconds a transition must take 
+* **Number** *_* number of milliseconds a transition must take
 
 ###### Return:
 
@@ -692,7 +692,7 @@ returns its current value.
 
 ###### Params:
 
-* **Function** *_* function to format the numbers on the mouseover tooltip. 
+* **Function** *_* function to format the numbers on the mouseover tooltip.
 
 ###### Return:
 
@@ -705,7 +705,7 @@ returns its current value.
 
 ###### Params:
 
-* **Function** *_* function to format the labels. 
+* **Function** *_* function to format the labels.
 
 ###### Return:
 
@@ -716,7 +716,7 @@ returns its current value.
 
 ### app/scripts/viz/piechart.js<a name="viz_piechart"></a>
 
-##### outliers.viz.PieChart 
+##### outliers.viz.PieChart
 Outliers' Pie Chart component.
 
 Usage:
@@ -776,7 +776,7 @@ be rendered. If not returns its current value.
 
 ###### Params:
 
-* **String** *x* selector of the container where the chart will be rendered. 
+* **String** *x* selector of the container where the chart will be rendered.
 
 ###### Return:
 
@@ -792,7 +792,7 @@ defined margins.
 
 ###### Params:
 
-* **Number** *_* width of the pie chart. 
+* **Number** *_* width of the pie chart.
 
 ###### Return:
 
@@ -807,7 +807,7 @@ The expected object must have the following fields: top, bottom, left and right.
 
 ###### Params:
 
-* **Object** *_* margins of the pie chart. 
+* **Object** *_* margins of the pie chart.
 
 ###### Return:
 
@@ -820,7 +820,7 @@ returns its current value.
 
 ###### Params:
 
-* **Number** *_* size of the outer radius of the pie chart. 
+* **Number** *_* size of the outer radius of the pie chart.
 
 ###### Return:
 
@@ -833,7 +833,7 @@ returns its current value.
 
 ###### Params:
 
-* **Number** *_* size of the inner radius of the pie chart. 
+* **Number** *_* size of the inner radius of the pie chart.
 
 ###### Return:
 
@@ -846,7 +846,7 @@ returns its current value.
 
 ###### Params:
 
-* **Number** *_* number of milliseconds a transition must take. 
+* **Number** *_* number of milliseconds a transition must take.
 
 ###### Return:
 
@@ -859,7 +859,33 @@ returns its current value.
 
 ###### Params:
 
-* **Number** *_* padding between arcs. 
+* **Number** *_* padding between arcs.
+
+###### Return:
+
+* **Object** the modified pie chart
+
+##### isPercentage(_)
+
+If x is provided, sets the condition to consider data as percentages to it. If not
+returns its current value.
+
+###### Params:
+
+* **Boolean** *_* data should be considered as percentage?
+
+###### Return:
+
+* **Object** the modified pie chart
+
+##### format(_)
+
+If x is provided, sets the function to format numbers to it. If not
+returns its current value.
+
+###### Params:
+
+* **Function** *_* function to format numbers
 
 ###### Return:
 
@@ -882,7 +908,7 @@ Function to add zeros to the left of a number.
 
 ###### Return:
 
-* **string** 
+* **string**
 
 ##### roundedRect(x, y, w, h, r, tl, tr, bl, br)
 

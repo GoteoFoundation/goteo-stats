@@ -122,7 +122,6 @@
     function($translate, $scope, $rootScope, $location) {
       $scope.changeLanguage = function (langKey) {
         $rootScope.locale = langKey;
-        //$translate.use(langKey);
       };
       /**
        * When a new year is selected, we need to change to the route with the new year
