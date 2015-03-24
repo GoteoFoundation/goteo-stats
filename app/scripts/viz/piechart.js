@@ -1,25 +1,37 @@
+/**
+ * @class outliers.viz.PieChart
+ *
+ * Outliers' Pie Chart component.
+ *
+ * Usage:
+ *
+ * Instance the object:
+ *
+ *      pc = new outliers.viz.PieChart()
+ *                         .container("#miPieChart")
+ *                         .side(500)
+ *                         .transitionDuration(200);
+ *
+ * Render the chart:
+ *
+ *      var chartData = [
+ *                      {id: 1, label: "Elem 1", fraction: 0.25},
+ *                      {id: 2, label: "Elem 2", fraction: 0.10},
+ *                      {id: 3, label: "Elem 3", fraction: 0.15},
+ *                      {id: 4, label: "Elem 4", fraction: 0.5}
+ *                    ];
+ *      pc.render(chartData, "fraction", "id", "label")
+ */
 'use strict';
 
 var outliers = outliers || {'version':0.1, 'controller':{}, 'viz': {} ,'utils': {}};
 
 /**
-* Outliers Pie Chart component.
-*
-* Usage:
-*  1) Instance the object:
-*    pc = new xingviz.viz.basic.PieChart()
-*                              .container("#miPieChart")
-*                              .side(500)
-*                              .transitionDuration(200);
-*  2) Render the chart:
-*    var chartData = [
-*                      {id: 1, label: "Elem 1", fraction: 0.25},
-*                      {id: 2, label: "Elem 2", fraction: 0.10},
-*                      {id: 3, label: "Elem 3", fraction: 0.15},
-*                      {id: 4, label: "Elem 4", fraction: 0.5}
-*                    ];
-*    pc.render(prepareData(), "fraction", "id", "label")
-*/
+ * Pie chart object
+ *
+ * @return {Object} the pie chart object.
+ * @constructor
+ */
 outliers.viz.PieChart = function() {
   var container = "body",
       side = 500,
@@ -52,10 +64,10 @@ outliers.viz.PieChart = function() {
   /**
   * Renders the pie chart with the provided data.
   *
-  * @param {Object[]} newData: THE DATA (mandatory)
-  * @param {String} valueField: name of the field where the value to be displayed is.
-  * @param {String} idField: name of the field where the ID of every datum is.
-  * @param {String} textField: name of the field where the text to be displayed on the label is.
+  * @param {Array} newData THE DATA (mandatory)
+  * @param {String} valueField name of the field where the value to be displayed is.
+  * @param {String} idField name of the field where the ID of every datum is.
+  * @param {String} textField name of the field where the text to be displayed on the label is.
   */
   piechart.render = function(newData, valueField, idField, textField) {
     data = newData;
@@ -269,11 +281,11 @@ outliers.viz.PieChart = function() {
   /**
   * Resizes all the chart elements according to the new side provided.
   *
-  * @param {Number} newSide: new width of the chart.
-  * @param {Object[]} data: THE DATA (mandatory)
-  * @param {String} valueField: name of the field where the value to be displayed is.
-  * @param {String} idField: name of the field where the ID of every datum is.
-  * @param {String} textField: name of the field where the text to be displayed on the label is.
+  * @param {Number} newSide new width of the chart.
+  * @param {Array} data THE DATA (mandatory)
+  * @param {String} valueField name of the field where the value to be displayed is.
+  * @param {String} idField name of the field where the ID of every datum is.
+  * @param {String} textField name of the field where the text to be displayed on the label is.
   */
   piechart.resize = function(newSide, data, valueField, idField, textField) {
     side = newSide;
@@ -293,7 +305,9 @@ outliers.viz.PieChart = function() {
   * If x is provided, sets the selector of the container where the pie chart will
   * be rendered. If not returns its current value.
   *
-  * @param {String} x: selector of the container where the chart will be rendered.
+  * @param {String} x selector of the container where the chart will be rendered.
+   *
+   * @return {Object} the modified pie chart
   */
   piechart.container = function(x) {
     if (!arguments.length) return container;
@@ -308,7 +322,9 @@ outliers.viz.PieChart = function() {
   * Radius will be calculated taking into consideration both the provided side and the
   * defined margins.
   *
-  * @param {Number} x: width of the pie chart.
+  * @param {Number} _ width of the pie chart.
+   *
+   * @return {Object} the modified pie chart
   */
   piechart.side = function(x) {
     if (!arguments.length) return side;
@@ -331,7 +347,9 @@ outliers.viz.PieChart = function() {
   *
   * The expected object must have the following fields: top, bottom, left and right.
   *
-  * @param {Object} x: margins of the pie chart.
+  * @param {Object} _ margins of the pie chart.
+   *
+   * @return {Object} the modified pie chart
   */
   piechart.margin = function(x) {
     if (!arguments.length) return margin;
@@ -352,7 +370,9 @@ outliers.viz.PieChart = function() {
   * If x is provided, sets the outer radius of the pie chart to it. If not
   * returns its current value.
   *
-  * @param {Number} x: size of the outer radius of the pie chart.
+  * @param {Number} _ size of the outer radius of the pie chart.
+   *
+   * @return {Object} the modified pie chart
   */
   piechart.outerRadius = function(x) {
     if (!arguments.length) return outerRadius;
@@ -365,7 +385,9 @@ outliers.viz.PieChart = function() {
   * If x is provided, sets the inner radius of the pie chart to it. If not
   * returns its current value.
   *
-  * @param {Number} x: size of the inner radius of the pie chart.
+  * @param {Number} _ size of the inner radius of the pie chart.
+   *
+   * @return {Object} the modified pie chart
   */
   piechart.innerRadius = function(x) {
     if (!arguments.length) return innerRadius;
@@ -378,7 +400,9 @@ outliers.viz.PieChart = function() {
   * If x is provided, sets the transition duration of the pie chart to it. If not
   * returns its current value.
   *
-  * @param {Number} x: number of milliseconds a transition must take.
+  * @param {Number} _ number of milliseconds a transition must take.
+   *
+   * @return {Object} the modified pie chart
   */
   piechart.transitionDuration = function(x) {
     if (!arguments.length) return transitionDuration;
@@ -390,7 +414,9 @@ outliers.viz.PieChart = function() {
    * If x is provided, sets the arc padding of the pie chart to it. If not
    * returns its current value.
    *
-   * @param {Number} x: padding between arcs.
+   * @param {Number} _ padding between arcs.
+   *
+   * @return {Object} the modified pie chart
    */
   piechart.arcPadding = function(x) {
     if (!arguments.length) return arcPadding;

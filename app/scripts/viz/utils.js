@@ -1,5 +1,16 @@
+/**
+ * Auxiliary functions and methods.
+ *
+ */
+
 'use strict';
 
+/**
+ * Function to add zeros to the left of a number.
+ *
+ * @param {Number} size maximum number of zeros to display on the left
+ * @return {string}
+ */
 Number.prototype.pad = function(size) {
   var s = String(this);
   while (s.length < (size || 2)) {s = "0" + s;}
@@ -8,34 +19,20 @@ Number.prototype.pad = function(size) {
 
 var outliers = outliers || {'version':0.1, 'controller':{}, 'viz': {} ,'utils': {}};
 
-outliers.utils.getStyleRuleValue = function (style, selector, sheet) {
-  var sheets = typeof sheet !== 'undefined' ? [sheet] : document.styleSheets;
-  for (var i = 0, l = sheets.length; i < l; i++) {
-    sheet = sheets[i];
-    if (/^.*\/app.css$/.test(sheet.href)) {
-      if( !sheet.cssRules ) { continue; }
-      for (var j = 0, k = sheet.cssRules.length; j < k; j++) {
-        var rule = sheet.cssRules[j];
-        if(rule.selectorText) {
-          if (rule.selectorText.split(',').indexOf(selector) !== -1) {
-              return rule.style[style];
-          }
-        }
-      }
-    }
-  }
-  return null;
-};
-
-/** x: x-coordinate
-    y: y-coordinate
-    w: width
-    h: height
-    r: corner radius
-    tl: top_left rounded?
-    tr: top_right rounded?
-    bl: bottom_left rounded?
-    br: bottom_right rounded? */
+/**
+ * Function to generate the SVG path `d` attribute content to draw a rounded rectangle.
+ *
+ * @param {Number} x X coordinate
+ * @param {Number} y Y coordinate
+ * @param {Number} w bar width
+ * @param {Number} h bar height
+ * @param {Number} r corner radius
+ * @param {Boolean} tl top-left corner should be rounded?
+ * @param {Boolean} tr top-right corner should be rounded?
+ * @param {Boolean} bl bottom-left corner should be rounded?
+ * @param {Boolean} br bottom-right corner should be rounded?
+ * @return {string} the value to insert in the `d` attribute of the path element
+ */
 outliers.utils.roundedRect = function (x, y, w, h, r, tl, tr, bl, br) {
     var retval;
     retval  = "M" + (x + r) + "," + y;
@@ -55,10 +52,22 @@ outliers.utils.roundedRect = function (x, y, w, h, r, tl, tr, bl, br) {
     return retval;
 };
 
+/**
+ * Removes from a string rare symbols.
+ *
+ * @param {String} _ a string to be cleaned
+ * @return {String} the provided string without rare symbols
+ */
 outliers.utils.stringCleaner = function (_) {
   return _.replace(/[.*+?#^=!:${}()|\[\]\s\/\\]/g, "_");
 };
 
+/**
+ * Wraps the labels to fit in the provided width.
+ *
+ * @param {Array} data array of data elements
+ * @param {Number} widthField width of the field
+ */
 outliers.utils.wrap = function (data, widthField) {
   data.each(function() {
     var label = d3.select(this),

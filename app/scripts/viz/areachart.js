@@ -1,7 +1,38 @@
+/**
+ * @class outliers.viz.AreaChart
+ *
+ * Outliers' Area Chart component.
+ *
+ * Usage:
+ *
+ * Instance the object:
+ *
+ *      ac = new outliers.viz.AreaChart()
+ *                         .container("#miAreaChart")
+ *                         .width(500)
+ *                         .height(250);
+ *
+ * Render the chart:
+ *
+ *      var chartData = [
+ *                      {id: 1, value: 100},
+ *                      {id: 2, value: 5},
+ *                      {id: 3, value: 25},
+ *                      {id: 4, value: 57}
+ *                    ];
+ *      ac.render(chartData, "value", "id", "id")
+ */
+
 'use strict';
 
 var outliers = outliers || {'version':0.1, 'controller':{}, 'viz': {} ,'utils': {}};
 
+/**
+ * Area Chart object
+ *
+ * @return {Object} the area chart object.
+ * @constructor
+ */
 outliers.viz.AreaChart = function() {
   var container = "body",
     width = 500,
@@ -21,11 +52,12 @@ outliers.viz.AreaChart = function() {
   /**
    * Renders the bar chart with the provided data.
    *
-   * @param {Object[]} data: THE DATA (mandatory)
-   * @param {String} xField: name of the field where the X value is.
-   * @param {String} yField: name of the field where the Y value is.
-   * @param {String} idField: name of the field where the ID of every datum is.
-   * @param {String} textField: name of the field where the text to be displayed on the label is.
+   * @param {Array} data THE DATA (mandatory)
+   * @param {String} xField name of the field where the X value is.
+   * @param {String} yField name of the field where the Y value is.
+   * @param {String} idField name of the field where the ID of every datum is.
+   * @param {String} textField name of the field where the text to be displayed on the label is.
+   *
    */
   area.render = function  (data, xField, yField, idField, textField) {
 
@@ -179,12 +211,13 @@ outliers.viz.AreaChart = function() {
   /**
    * Resizes all the chart elements according to the new width provided.
    *
-   * @param {Number} newWidth: new width of the chart.
-   * @param {Number} newHeight: new height of the chart.
-   * @param {Object[]} data: THE DATA (mandatory)
-   * @param {String} valueField: name of the field where the value to be displayed is.
-   * @param {String} idField: name of the field where the ID of every datum is.
-   * @param {String} textField: name of the field where the text to be displayed on the label is.
+   * @param {Number} newWidth new width of the chart.
+   * @param {Number} newHeight new height of the chart.
+   * @param {Array} data THE DATA (mandatory)
+   * @param {String} valueField name of the field where the value to be displayed is.
+   * @param {String} idField name of the field where the ID of every datum is.
+   * @param {String} textField name of the field where the text to be displayed on the label is.
+   *
    */
   area.resize = function (newWidth, newHeight, data, xField, yField, idField, textField) {
     width = newWidth;
@@ -196,7 +229,9 @@ outliers.viz.AreaChart = function() {
    * If x is provided, sets the selector of the container where the area chart will
    * be rendered. If not returns its current value.
    *
-   * @param {String} x: selector of the container where the chart will be rendered.
+   * @param {String} _ selector of the container where the chart will be rendered.
+   *
+   * @return {Object} the modified area chart object
    */
   area.container = function (_) {
     if (!arguments.length) return container;
@@ -208,7 +243,9 @@ outliers.viz.AreaChart = function() {
    * If x is provided, sets the width of the area chart to it. If not
    * returns its current value..
    *
-   * @param {Number} x: width of the pie chart.
+   * @param {Number} _ width of the pie chart.
+   *
+   * @return {Object} the modified area chart object
    */
   area.width = function (_) {
     if (!arguments.length) return width;
@@ -220,7 +257,9 @@ outliers.viz.AreaChart = function() {
    * If x is provided, sets the height of the area chart to it. If not
    * returns its current value..
    *
-   * @param {Number} x: width of the pie chart.
+   * @param {Number} _ width of the pie chart.
+   *
+   * @return {Object} the modified area chart object
    */
   area.height = function (_) {
     if (!arguments.length) return height;
@@ -233,6 +272,8 @@ outliers.viz.AreaChart = function() {
    * returns its current value.
    *
    * @param {Number} x: number of milliseconds a transition must take.
+   *
+   * @return {Object} the modified area chart object
    */
   area.transitionDuration = function (_) {
     if (!arguments.length) return transitionDuration;
@@ -244,7 +285,9 @@ outliers.viz.AreaChart = function() {
    * If x is provided, sets the condition to draw the X axis as a time scale to it. If not
    * returns its current value.
    *
-   * @param {Boolean} x: set X axis as a time axis..
+   * @param {Boolean} _ set X axis as a time axis.
+   *
+   * @return {Object} the modified area chart object
    */
   area.timeAxis = function (_) {
     if (!arguments.length) return timeAxis;
@@ -256,7 +299,9 @@ outliers.viz.AreaChart = function() {
    * If x is provided, sets the dot radius to it. If not
    * returns its current value.
    *
-   * @param {Number} x: dot radius.
+   * @param {Number} _ dot radius.
+   *
+   * @return {Object} the modified area chart object
    */
   area.dotRadius = function (_) {
     if (!arguments.length) return dotRadius;
@@ -264,18 +309,42 @@ outliers.viz.AreaChart = function() {
     return area;
   };
 
+  /**
+   * If x is provided, sets the axis label format to it. If not
+   * returns its current value.
+   *
+   * @param {Function} _ axis label format.
+   *
+   * @return {Object} the modified area chart object
+   */
   area.axisLabelFormat = function (_) {
     if (!arguments.length) return axisLabelFormat;
     axisLabelFormat = _;
     return area;
   };
 
+  /**
+   * If x is provided, sets the tooltip format to it. If not
+   * returns its current value.
+   *
+   * @param {Function} _ tooltip format.
+   *
+   * @return {Object} the modified area chart object
+   */
   area.tooltipFormat = function (_) {
     if (!arguments.length) return tooltipFormat;
     tooltipFormat = _;
     return area;
   };
 
+  /**
+   * If x is provided, sets the condition indicating the data to display are years
+   * instead of months to it. If not returns its current value.
+   *
+   * @param {Boolean} _ True if the data to display are years.
+   *
+   * @return {Object} the modified area chart object
+   */
   area.isYear = function (_) {
     if (!arguments.length) return isYear;
     isYear = _;

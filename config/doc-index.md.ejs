@@ -1,0 +1,3 @@
+<? docfiles.forEach(function(doc) { ?>
+[<?= doc.filename ?>](#<?= doc.filename.split('/').slice(-2).join('_').split('.')[0] ?>)
+<? }) ?>

@@ -36,6 +36,9 @@
     });
   }]);
 
+  /**
+   * `/rewards` controller
+   */
   app.controller('RewardsCtrl', [
     '$timeout',
     '$translate',
@@ -51,6 +54,9 @@
       $rootScope.category = $routeParams.category;
       $rootScope.locale = $routeParams.locale;
 
+      /**
+       * Process data to be used in charts.
+       */
       $scope.prepareData = function() {
         var temp, datum;
         $scope.data = {};

@@ -1,6 +1,26 @@
 (function () {
   'use strict';
 
+  /**
+   * piechart directive
+   *
+   * Attributes:
+   *
+   * * **piechart-id** {String} id of the chart
+   * * **piechart-title** {String} title text of the chart
+   * * **piechart-description** {String} description text of the chart
+   * * **piechart-cumul** {Number} cumulative value to display
+   * * **piechart-data** {Array} data array
+   * * **piechart-value-field** {String} name of the field to use as value. Default: `value`
+   * * **piechart-id-field** {String} name of the field to use as unique id. Default: `id`
+   * * **piechart-label-field** {String} name of the field to use as label. Default `name`
+   * * **piechart-is-percentage** {Boolean} True if data is already provided as percentage
+   *
+   * Example:
+   *
+   *     <piechart piechart-id="mipiechart" piechart-data="[{"id":2,"name":"Social","percentage-users":7.06,"users":0.19181286549707602},{"id":11,"name":"Cultural","percentage-users":6.43,"users":0.17485380116959065},{"id":7,"name":"Tecnológico","percentage-users":4.97,"users":0.13508771929824562},...]" />
+   *
+   */
   angular.module('goteoStatistics').directive('piechart', [
     '$window',
     '$timeout',
@@ -25,7 +45,7 @@
           $scope.id = attrs.piechartId;
           $scope.idField = attrs.piechartIdField || 'id';
           $scope.valueField = attrs.piechartValueField || 'value';
-          $scope.labelField = attrs.piechartLabelField || 'nae';
+          $scope.labelField = attrs.piechartLabelField || 'name';
           $scope.title = attrs.piechartTitle;
           $scope.isPercentage = attrs.piechartIsPercentage ? eval(attrs.piechartIsPercentage) : true;
           $scope.description = attrs.piechartDescription;

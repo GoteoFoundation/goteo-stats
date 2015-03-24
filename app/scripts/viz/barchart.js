@@ -1,7 +1,38 @@
+/**
+ * @class outliers.viz.BarChart
+ *
+ * Outliers' Bar Chart component.
+ *
+ * Usage:
+ *
+ * Instance the object:
+ *
+ *      bc = new outliers.viz.BarChart()
+ *                         .container("#miAreaChart")
+ *                         .width(500)
+ *                         .height(250);
+ *
+ * Render the chart:
+ *
+ *      var chartData = [
+ *                      {id: 1, value: 100},
+ *                      {id: 2, value: 5},
+ *                      {id: 3, value: 25},
+ *                      {id: 4, value: 57}
+ *                    ];
+ *      bc.render(chartData, "value", "id", "id")
+ */
+
 'use strict';
 
 var outliers = outliers || {'version':0.1, 'controller':{}, 'viz': {} ,'utils': {}};
 
+/**
+ * Bar Chart object.
+ *
+ * @return {Object} the bar chart object.
+ * @constructor
+ */
 outliers.viz.BarChart = function() {
   var container = "body",
       width = 500,
@@ -28,10 +59,10 @@ outliers.viz.BarChart = function() {
   /**
   * Renders the bar chart with the provided data.
   *
-  * @param {Object[]} data: THE DATA (mandatory)
-  * @param {String} valueField: name of the field where the value to be displayed is.
-  * @param {String} idField: name of the field where the ID of every datum is.
-  * @param {String} textField: name of the field where the text to be displayed on the label is.
+  * @param {Array} data THE DATA (mandatory)
+  * @param {String} valueField name of the field where the value to be displayed is.
+  * @param {String} idField name of the field where the ID of every datum is.
+  * @param {String} textField name of the field where the text to be displayed on the label is.
   */
   bar.render = function  (data, valueField, idField, textField) {
     function rightRoundedRect(x, y, width, height) {
@@ -258,12 +289,12 @@ outliers.viz.BarChart = function() {
   /**
   * Resizes all the chart elements according to the new width provided.
   *
-  * @param {Number} newWidth: new width of the chart.
-  * @param {Number} newHeight: new height of the chart.
-  * @param {Object[]} data: THE DATA (mandatory)
-  * @param {String} valueField: name of the field where the value to be displayed is.
-  * @param {String} idField: name of the field where the ID of every datum is.
-  * @param {String} textField: name of the field where the text to be displayed on the label is.
+  * @param {Number} newWidth new width of the chart.
+  * @param {Number} newHeight new height of the chart.
+  * @param {Array} data THE DATA (mandatory)
+  * @param {String} valueField name of the field where the value to be displayed is.
+  * @param {String} idField name of the field where the ID of every datum is.
+  * @param {String} textField name of the field where the text to be displayed on the label is.
   */
   bar.resize = function (newWidth, newHeight, data, valueField, idField, textField) {
     width = newWidth;
@@ -275,7 +306,9 @@ outliers.viz.BarChart = function() {
   * If x is provided, sets the selector of the container where the bar chart will
   * be rendered. If not returns its current value.
   *
-  * @param {String} x: selector of the container where the chart will be rendered.
+  * @param {String} _ selector of the container where the chart will be rendered.
+   *
+   * @return {Object} the modified bar chart object
   */
   bar.container = function (_) {
     if (!arguments.length) return container;
@@ -287,7 +320,9 @@ outliers.viz.BarChart = function() {
   * If x is provided, sets the width of the bar chart to it. If not
   * returns its current value..
   *
-  * @param {Number} x: width of the pie chart.
+  * @param {Number} _ width of the pie chart.
+   *
+   * @return {Object} the modified bar chart object
   */
   bar.width = function (_) {
     if (!arguments.length) return width;
@@ -299,7 +334,9 @@ outliers.viz.BarChart = function() {
   * If x is provided, sets the height of the bar chart to it. If not
   * returns its current value..
   *
-  * @param {Number} x: width of the pie chart.
+  * @param {Number} _ width of the pie chart.
+   *
+   * @return {Object} the modified bar chart object
   */
   bar.height = function (_) {
     if (!arguments.length) return height;
@@ -311,7 +348,9 @@ outliers.viz.BarChart = function() {
   * If x is provided, sets the transition duration of the bar chart to it. If not
   * returns its current value.
   *
-  * @param {Number} x: number of milliseconds a transition must take.
+  * @param {Number} _ number of milliseconds a transition must take.
+   *
+   * @return {Object} the modified bar chart object
   */
   bar.transitionDuration = function (_) {
     if (!arguments.length) return transitionDuration;
@@ -323,7 +362,9 @@ outliers.viz.BarChart = function() {
   * If x is provided, sets the padding of the columns in the bar chart to it. If not
   * returns its current value.
   *
-  * @param {Number} x: number of milliseconds a transition must take.
+  * @param {Number} _ number of milliseconds a transition must take.
+   *
+   * @return {Object} the modified bar chart object
   */
   bar.roundBands = function (_) {
     if (!arguments.length) return roundBands;
@@ -335,7 +376,9 @@ outliers.viz.BarChart = function() {
   * If x is provided, sets the labels padding of the bar chart to it. If not
   * returns its current value.
   *
-  * @param {Number} x: number of milliseconds a transition must take.
+  * @param {Number} _ number of milliseconds a transition must take.
+   *
+   * @return {Object} the modified bar chart object
   */
   bar.labelPadding = function (_) {
     if (!arguments.length) return labelPadding;
@@ -347,7 +390,9 @@ outliers.viz.BarChart = function() {
   * If x is provided, sets the corner radius of the bars of the pie chart to it. If not
   * returns its current value.
   *
-  * @param {Number} x: number of milliseconds a transition must take.
+  * @param {Number} _ number of milliseconds a transition must take
+  *
+  * @return {Object} the modified bar chart object
   */
   bar.cornerRadius = function (_) {
     if (!arguments.length) return cornerRadius;
@@ -359,7 +404,9 @@ outliers.viz.BarChart = function() {
    * If x is provided, sets the function to format the numbers on the mouseover tooltip. If not
    * returns its current value.
    *
-   * @param {Function} x: function to format the numbers on the mouseover tooltip.
+   * @param {Function} _ function to format the numbers on the mouseover tooltip.
+   *
+   * @return {Object} the modified bar chart object
    */
   bar.formatNumbers = function (_) {
     if (!arguments.length) return formatNumbers;
@@ -367,6 +414,14 @@ outliers.viz.BarChart = function() {
     return bar;
   };
 
+  /**
+   * If x is provided, sets the function to format the labels to it. If not
+   * returns its current value.
+   *
+   * @param {Function} _ function to format the labels.
+   *
+   * @return {Object} the modified bar chart object
+   */
   bar.formatLabels = function (_) {
     if (!arguments.length) return formatLabels;
     formatLabels = _;

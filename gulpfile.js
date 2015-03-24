@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var paths, gulp, jshint, csslint, stylish, svgmin, imagemin, usemin, prefixer, bowerJSON, fs, replace, runSequence, authors, dependencies, languages, clean, jsonlint, node_env, less, revall, extend, uglify, minifyCss, minifyHtml, annotate, gutil, rename, gzip, notify;
+  var paths, gulp, jshint, csslint, stylish, svgmin, imagemin, usemin, prefixer, bowerJSON, fs, replace, runSequence, authors, dependencies, languages, clean, jsonlint, node_env, less, revall, extend, uglify, minifyCss, minifyHtml, annotate, gutil, rename, gzip, notify, markdox, concat;
 
   gulp = require('gulp');
   runSequence = require('run-sequence');
@@ -29,6 +29,8 @@
   rename      = require("gulp-rename");
   gzip        = require('gulp-gzip');
   notify      = require("gulp-notify");
+  markdox     = require("gulp-markdox");
+  concat      = require("gulp-concat");
 
   /* File Paths
    *
@@ -284,6 +286,52 @@
         .pipe(gulp.dest('public/'));
     }
   );
+
+  gulp.task('gen_docs_content', function() {
+    gulp.src('app/scripts/**/*.js')
+      .pipe(markdox({
+        template: 'config/doc-template.md.ejs'
+      }))
+      .pipe(concat('content.md'))
+      .pipe(gulp.dest('.tmp'));
+  });
+  gulp.task('gen_docs_index', function() {
+    gulp.src('app/scripts/**/*.js')
+      .pipe(markdox({
+        template: 'config/doc-index.md.ejs'
+      }))
+      .pipe(concat('index.md'))
+      .pipe(gulp.dest('.tmp'));
+  });
+
+  gulp.task('merge_docs', function(){
+    gulp.src(['README.md', '.tmp/index.md', '.tmp/content.md'])
+      .pipe(concat('documentation.md'))
+      .pipe(gulp.dest('docs'));
+  });
+
+  gulp.task('clean_docs', function() {
+    return gulp.src(['docs'], {
+      read: false
+    })
+      .pipe(clean());
+  });
+
+  gulp.task('clean_tmp_docs', function() {
+    return gulp.src(['.tmp'], {
+      read: false
+    })
+      .pipe(clean());
+  });
+
+  gulp.task('docs', function() {
+    return runSequence(
+      'clean_docs',
+      'gen_docs_index',
+      'gen_docs_content',
+      'merge_docs'
+    );
+  });
 
   gulp.task('notify_finished', function() {
     return gulp.src("public/index.html")

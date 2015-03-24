@@ -27,6 +27,9 @@
     });
   }]);
 
+  /**
+   * `/money` controller
+   */
   app.controller('MoneyCtrl', [
     '$timeout',
     '$translate',

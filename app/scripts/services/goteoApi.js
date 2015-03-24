@@ -1,8 +1,13 @@
+
+
 (function() {
   'use strict';
 
   var app = angular.module('goteoStatistics');
 
+  /**
+   * Angular service to interact with Goteo's API.
+   */
   app.service('GoteoApi', [
     'ApiService',
     '$rootScope',
@@ -27,6 +32,15 @@
       });
     };
 
+      /**
+       * Data request generic function.
+       *
+       * @param {String} type type of data to retrieve. Valid types are: `money`, `projects`, `community`, `rewards`, `licenses` and `summary`.
+       * @param {String} locale language of the API response
+       * @param {Number} year year we want to retrieve the data for
+       * @param {Number} category category we want to retrieve the data for
+       * @return {Object} result of the request to the API
+       */
     api.getData = function (type, locale, year, category) {
         var params = {};
 
@@ -52,6 +66,12 @@
         }
     };
 
+      /**
+       * Request to the `/digests/reports/money` endpoint.
+       *
+       * @param {Object} params API parameters
+       * @return {Object} API response
+       */
     api.getMoney = function (params) {
       var api_request = ApiService.get('/digests/reports/money/', params);
       var api_promise = api_request(function (data) {
@@ -62,6 +82,12 @@
       });
     };
 
+      /**
+       * Request to the `/digests/reports/projects` endpoint.
+       *
+       * @param {Object} params API parameters
+       * @return {Object} API response
+       */
     api.getProjects = function (params) {
       var api_request = ApiService.get('/digests/reports/projects/', params);
       var api_promise =  api_request(function (data) {
@@ -72,6 +98,12 @@
       });
     };
 
+      /**
+       * Request to the `/digests/reports/community` endpoint.
+       *
+       * @param {Object} params API parameters
+       * @return API response
+       */
     api.getCommunity = function (params) {
       var api_request = ApiService.get('/digests/reports/community/', params);
       var api_promise = api_request(function (data) {
@@ -82,6 +114,12 @@
       });
     };
 
+      /**
+       * Request to the `/digests/reports/rewards` endpoint.
+       *
+       * @param {Object} params API parameters
+       * @return {Object} API response
+       */
     api.getRewards = function (params) {
       var api_request = ApiService.get('/digests/reports/rewards/', params);
       return api_request(function (data) {
@@ -89,6 +127,12 @@
       });
     };
 
+      /**
+       * Request to the `/digests/licenses` endpoint.
+       *
+       * @param {Object} params API parameters
+       * @return {Object} API response
+       */
     api.getLicenses = function (params) {
       var api_request = ApiService.get('/digests/licenses/', params);
       return api_request(function (data) {
@@ -96,6 +140,12 @@
       });
     };
 
+      /**
+       * Request to the `/digests/reports/summary` endpoint.
+       *
+       * @param {Object} params API parameters
+       * @return {Object} API response
+       */
     api.getSummary = function (params) {
       var api_request = ApiService.get('/digests/reports/summary/', params);
       return api_request(function (data) {

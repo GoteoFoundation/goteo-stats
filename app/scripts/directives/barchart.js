@@ -1,6 +1,27 @@
 (function () {
   'use strict';
 
+  /**
+   * barchart directive
+   *
+   * Attributes:
+   *
+   * * **barchart-id** {String} id of the chart
+   * * **barchart-title** {String} title text of the chart
+   * * **barchart-description** {String} description text of the chart
+   * * **barchart-cumul** {Number} cumulative value to display
+   * * **barchart-data** {Array} data array
+   * * **barchart-value-field** {String} name of the field to use as value. Default: `value`
+   * * **barchart-id-field** {String} name of the field to use as unique id. Default: `id`
+   * * **barchart-label-field** {String} name of the field to use as label. Default: `name`
+   * * **barchart-label-format** {String} format pattern to use for the label. Default: `%B %Y`
+   * * **barchart-unit** {String} units of the data
+   *
+   * Example:
+   *
+   *     <barchart barchart-id="mibarchart" barchart-data="[{"id":"enero 2015","name":"2015-01-01T00:00:00.000Z","value":60},{"id":"febrero 2015","name":"2015-02-01T00:00:00.000Z","value":33.33},{"id":"marzo 2015","name":"2015-03-01T00:00:00.000Z","value":0}" />
+   *
+   */
   angular.module('goteoStatistics').directive('barchart', [
     '$window',
     '$timeout',

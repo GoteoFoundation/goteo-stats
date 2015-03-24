@@ -27,6 +27,10 @@
     });
   }]);
 
+  /**
+   * `/community` controller
+   *
+   */
   app.controller('CommunityCtrl', [
     '$timeout',
     '$translate',
@@ -41,6 +45,9 @@
       $rootScope.category = $routeParams.category;
       $rootScope.locale = $routeParams.locale;
 
+      /**
+       * Process data to be used in charts.
+       */
       $scope.prepareData = function() {
         var temp;
 

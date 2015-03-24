@@ -1,6 +1,29 @@
 (function () {
   'use strict';
 
+  /**
+   * areachart directive
+   *
+   * Attributes:
+   *
+   * * **areachart-id** {String} id of the chart
+   * * **areachart-title** {String} title text of the chart
+   * * **areachart-description** {String} description text of the chart
+   * * **areachart-cumul** {Number} cumulative value to display
+   * * **areachart-data** {Array} data array
+   * * **areachart-x-field** {String} name of the field to use as X value. Default: `name`
+   * * **areachart-y-field** {String} name of the field to use as Y value. Default: `value`
+   * * **areachart-id-field** {String} name of the field to use as unique id. Default: `id`
+   * * **areachart-label-field** {String} name of the field to use as label. Default: `label`
+   * * **areachart-unit** {String} units of the data
+   * * **areachart-x-format** {String} format pattern to use for the X axis. Default: `%B %Y`
+   * * **areachart-is-year** {Boolean} True if each datum represents a year
+   *
+   * Example:
+   *
+   *     <areachart areachart-id="miAreaChart" areachart-data="[{"id":"2011","name":"2011","value":141},{"id":"2012","name":"2012","value":397},{"id":"2013","name":"2013","value":735},{"id":"2014","name":"2014","value":509},{"id":"2015","name":"2015","value":179}]" />
+   *
+   */
   angular.module('goteoStatistics').directive('areachart', [
     '$window',
     '$timeout',

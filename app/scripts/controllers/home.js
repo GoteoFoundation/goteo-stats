@@ -25,6 +25,9 @@
     });
   }]);
 
+  /**
+   * `/home` controller
+   */
   app.controller('HomeCtrl', [
     '$timeout',
     '$translate',

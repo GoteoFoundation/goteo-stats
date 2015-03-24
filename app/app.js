@@ -28,6 +28,9 @@
     });
   }]);
 
+  /**
+   * i18n handling. Language files are located in the path `app/locales`
+   */
   app.config([
     '$translateProvider',
     function ($translateProvider) {
@@ -56,6 +59,9 @@
     };
   });
 
+  /**
+   * When the application starts, we need to add the needed locales to D3.js. We will also detect the user's locale.
+   */
   app.run(['$rootScope',
     '$translate',
     '$route',
@@ -104,6 +110,9 @@
       $route.reload();
   }]);
 
+  /**
+   * Application main controller
+   */
   app.controller('goteoStatisticsCtrl', [
     '$translate',
     '$scope',
@@ -114,16 +123,25 @@
         $rootScope.locale = langKey;
         //$translate.use(langKey);
       };
+      /**
+       * When a new year is selected, we need to change to the route with the new year
+       */
       $scope.updateYear = function() {
         var path = $location.path().split('/');
         path[3] = $rootScope.year;
         $location.path(path.join('/'));
       };
+      /**
+       * When a new category is selected, we need to change to the route with the new category
+       */
       $scope.updateCategory = function() {
         var path = $location.path().split('/');
         path[4] = $rootScope.category;
         $location.path(path.join('/'));
       };
+      /**
+       * When locale changes, we need to change to the route with the new locale
+       */
       $scope.$watch(function() {
         return $rootScope.locale;
       }, function (langKey) {
@@ -165,9 +183,5 @@
 
       // Load initial data.
       $rootScope.years = range(2011, moment().year());
-      /*var browserLocale = navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage).split('-')[0];
-      $rootScope.locale = browserLocale || 'es';
-      $rootScope.category = -1000;
-      $rootScope.year = moment().year();*/
   }]);
 }).call(this);

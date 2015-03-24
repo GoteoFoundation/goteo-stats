@@ -1,6 +1,28 @@
 (function () {
   'use strict';
 
+  /**
+   * piechart-select directive
+   *
+   * Attributes:
+   *
+   * * **piechart-select-id** {String} id of the chart
+   * * **piechart-select-title** {String} title text of the chart
+   * * **piechart-select-description** {String} description text of the chart
+   * * **piechart-select-cumul** {Number} cumulative value to display
+   * * **piechart-select-data** {Array} data array
+   * * **piechart-select-value-field** {String} name of the field to use as value. Default: `value`
+   * * **piechart-select-id-field** {String} name of the field to use as unique id. Default: `id`
+   * * **piechart-select-label-field** {String} name of the field to use as label. Default: `label`
+   * * **piechart-select-is-percentage** {Boolean} True if data is already provided as percentage
+   * * **piechart-select-select-field** {String} name of the field to identify different sets of data. Default: `select`
+   * * **piechart-select-data-field** {String} name of the field where each set of data is. Default: `data`
+   *
+   * Example:
+   *
+   *     <piechart-select piechart-select-id="mipiechart" piechart-select-data="{"select": "2015", "data":[{"id":2,"name":"Social","percentage-users":7.06,"users":0.19181286549707602},{"id":11,"name":"Cultural","percentage-users":6.43,"users":0.17485380116959065},{"id":7,"name":"Tecnológico","percentage-users":4.97,"users":0.13508771929824562},...]}" />
+   *
+   */
   angular.module('goteoStatistics').directive('piechartSelect', [
     '$window',
     '$timeout',
