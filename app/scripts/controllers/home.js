@@ -73,6 +73,10 @@
           year: homeData.global['projects-received'],
           months: []
         };
+        $scope.data.successful = {
+          year: homeData.global['projects-successful'] / (homeData.global['projects-successful'] + homeData.global['projects-failed']),
+          months: []
+        };
         $scope.data.failed = {
           year: homeData.global['projects-failed'],
           months: []
@@ -149,12 +153,17 @@
               name: k,
               value: currentData['average-donation']
             });
+            console.log(currentData['matchfund-amount'], homeData.global['matchfund-amount'], (100 * currentData['matchfund-amount'] / homeData.global['matchfund-amount']))
             $scope.data.matchfundAmount.months.push({
               id: k,
               name: k,
-              value: currentData['matchfund-amount']
+              // value: currentData['matchfund-amount']
+              value: parseFloat(currentData['matchfund-amount'] / homeData.global['matchfund-amount'])
             });
             $scope.data.users.months.push({id: k, name: k, value: currentData.users});
+            // $scope.data.successful.months.push({id: k, name: k, value: currentData['projects-successful'] / currentData['projects-published']));
+            // Algunos proyectos pueden estar en campaña
+            $scope.data.successful.months.push({id: k, name: k, value: currentData['projects-successful'] /  (currentData['projects-successful'] + currentData['projects-failed'])});
             $scope.data.failed.months.push({id: k, name: k, value: currentData['projects-failed']});
             $scope.data.received.months.push({id: k, name: k, value: currentData['projects-received']});
             $scope.data.published.months.push({id: k, name: k, value: currentData['projects-published']});

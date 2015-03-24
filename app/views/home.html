@@ -36,7 +36,8 @@
                    areachart-unit="€"
                    areachart-data="{{ data.averageDonation.months }}" />
     </div>
-    <!-- Media de dinero recaudado -->
+    <!-- Dinero captado -->
+    <!--
     <div class="money section col-sm-6 card" id="matchfund-amount">
         <areachart areachart-id="matchfund-amount"
                    areachart-title="{{ 'money.sections.matchfund-amount.title' | translate }}"
@@ -50,20 +51,39 @@
                    areachart-cumul="{{ data.matchfundAmount.year }}"
                    areachart-unit="€"
                    areachart-data="{{ data.matchfundAmount.months }}" />
+    -->
+    <!-- Dinero captado -->
+    <div class="money section col-sm-6 card" id="matchfund-amount">
+        <piechart piechart-id="matchfund-amount"
+                   piechart-title="{{ 'money.sections.matchfund-amount.title' | translate }}"
+                   piechart-description="{{ 'money.sections.matchfund-amount.description' | translate }}"
+                   piechart-value-format=".2%"
+                   piechart-cumul="{{ data.matchfundAmount.year }}"
+                   piechart-unit="€"
+                   piechart-is-percentage="false"
+                   piechart-data="{{ data.matchfundAmount.months }}" />
     </div>
-    <!-- Usuarios -->
-    <div class="community section col-sm-6 card" id="users">
-        <areachart areachart-id="users"
-                   areachart-title="{{ 'community.sections.users.title' | translate }}"
-                   areachart-description="{{ 'community.sections.users.description' | translate }}"
-                   areachart-x-field="name"
-                   areachart-x-field="value"
-                   areachart-id-field="id"
-                   areachart-label-field="id"
-                   areachart-x-format="%Y"
-                   areachart-is-year="true"
-                   areachart-cumul="{{ data.users.year }}"
-                   areachart-data="{{ data.users.months }}" />
+    <!-- Categorías -->
+    <div class="community section col-sm-6 card" id="categories">
+        <piechart-select piechart-select-id="categories"
+                         piechart-select-title="{{ 'community.sections.categories.title' | translate }}"
+                         piechart-select-description="{{ 'community.sections.categories.description' | translate }}"
+                         piechart-select-select-field="select"
+                         piechart-select-id-field="id"
+                         piechart-select-value-field="users"
+                         piechart-select-label-field="name"
+                         piechart-select-is-percentage="false"
+                         piechart-select-data="{{ data.categories }}"/>
+    </div>
+    <!-- Proyectos exitosos -->
+    <div class="projects section col-sm-6 card" id="successful">
+        <barchart barchart-id="successful"
+                  barchart-title="{{ 'projects.sections.successful.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.successful.description' | translate }}"
+                  barchart-label-format="%Y"
+                  barchart-number-format=".2%"
+                  barchart-cumul="{{ data.successful.year }}"
+                  barchart-data="{{ data.successful.months }}" />
     </div>
     <!-- Proyectos recibidos -->
     <div class="projects section col-sm-6 card" id="received">
@@ -82,27 +102,6 @@
                   barchart-label-format="%Y"
                   barchart-cumul="{{ data.published.year }}"
                   barchart-data="{{ data.published.months }}" />
-    </div>
-    <!-- Proyectos fallidos -->
-    <div class="projects section col-sm-6 card" id="failed">
-        <barchart barchart-id="failed"
-                  barchart-title="{{ 'projects.sections.failed.title' | translate }}"
-                  barchart-description="{{ 'projects.sections.failed.description' | translate }}"
-                  barchart-label-format="%Y"
-                  barchart-cumul="{{ data.failed.year }}"
-                  barchart-data="{{ data.failed.months }}" />
-    </div>
-    <!-- Categorías -->
-    <div class="community section col-sm-6 card" id="categories">
-        <piechart-select piechart-select-id="categories"
-                         piechart-select-title="{{ 'community.sections.categories.title' | translate }}"
-                         piechart-select-description="{{ 'community.sections.categories.description' | translate }}"
-                         piechart-select-select-field="select"
-                         piechart-select-id-field="id"
-                         piechart-select-value-field="users"
-                         piechart-select-label-field="name"
-                         piechart-select-is-percentage="false"
-                         piechart-select-data="{{ data.categories }}"/>
     </div>
     <!-- Top colaboraciones -->
     <div class="projects section col-sm-6 card" id="top10-collaborations">

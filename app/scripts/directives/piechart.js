@@ -24,7 +24,8 @@
   angular.module('goteoStatistics').directive('piechart', [
     '$window',
     '$timeout',
-    function ($window, $timeout) {
+    '$rootScope',
+    function ($window, $timeout, $rootScope) {
       return {
         restrict: 'E',
         templateUrl: 'views/directives/piechart.html',
@@ -41,7 +42,13 @@
           piechartIsPercentage: '@'
         },
         link: function ($scope, elm, attrs) {
-          var numberFormat = d3.format("-.3s");
+          // var numberFormat = d3.format("-.3s");
+          var numberFormat = $rootScope.currentd3locale.numberFormat(",");
+          var valueFormat = numberFormat;
+          if(attrs.piechartValueFormat) {
+            valueFormat = $rootScope.currentd3locale.numberFormat(attrs.piechartValueFormat);
+          }
+          $scope.units = attrs.piechartUnit || null;
           $scope.id = attrs.piechartId;
           $scope.idField = attrs.piechartIdField || 'id';
           $scope.valueField = attrs.piechartValueField || 'value';
@@ -64,6 +71,7 @@
               .side($scope.width)
               .arcPadding(0.02)
               .isPercentage($scope.isPercentage)
+              .format(valueFormat)
               .transitionDuration(200);
             angular.element($window).on('resize', resize);
             $scope.chart.render($scope.data, $scope.valueField, $scope.idField, $scope.labelField);

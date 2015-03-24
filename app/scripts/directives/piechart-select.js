@@ -26,7 +26,8 @@
   angular.module('goteoStatistics').directive('piechartSelect', [
     '$window',
     '$timeout',
-    function ($window, $timeout) {
+    '$rootScope',
+    function ($window, $timeout, $rootScope) {
       return {
         restrict: 'E',
         templateUrl: 'views/directives/piechart-select.html',
@@ -44,7 +45,8 @@
           piechartSelectSelectField: '@'
         },
         link: function ($scope, elm, attrs) {
-          var numberFormat = d3.format("-.3s");
+          // var numberFormat = d3.format("-.3s");
+          var numberFormat = $rootScope.currentd3locale.numberFormat(".1%");
           $scope.id = attrs.piechartSelectId;
           $scope.dataField = attrs.piechartSelectDataField || 'data';
           $scope.selectField = attrs.piechartSelectSelectField || 'select';
@@ -95,6 +97,7 @@
               .side($scope.width)
               .arcPadding(0.02)
               .isPercentage($scope.isPercentage)
+              .format(numberFormat)
               .transitionDuration(500);
             angular.element($window).on('resize', resize);
             $scope.chart.render($scope.data[$scope.selected][$scope.dataField], $scope.valueField, $scope.idField, $scope.labelField);

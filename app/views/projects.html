@@ -5,7 +5,7 @@
                   barchart-title="{{ 'projects.sections.percentage-successful-completed.title' | translate }}"
                   barchart-description="{{ 'projects.sections.percentage-successful-completed.description' | translate }}"
                   barchart-cumul="{{ data.percentageSuccessfulCompleted.year }}"
-                  barchart-unit="%"
+                  barchart-number-format=".2%"
                   barchart-data="{{ data.percentageSuccessfulCompleted.months }}" />
     </div>
     <!-- Proyectos recibidos -->
@@ -110,7 +110,7 @@
                   barchart-title="{{ 'projects.sections.percentage-successful.title' | translate }}"
                   barchart-description="{{ 'projects.sections.percentage-successful.description' | translate }}"
                   barchart-cumul="{{ data.percentageSuccessful.year }}"
-                  barchart-unit="%"
+                  barchart-number-format=".2%"
                   barchart-data="{{ data.percentageSuccessful.months }}" />
     </div>
 </div>

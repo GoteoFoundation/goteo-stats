@@ -68,11 +68,11 @@
           months: []
         };
         $scope.data.percentageSuccessful = {
-          year: projectsData.global['percentage-successful'],
+          year: projectsData.global['percentage-successful'] / 100,
           months: []
         };
         $scope.data.percentageSuccessfulCompleted = {
-          year: projectsData.global['percentage-successful-completed'],
+          year: projectsData.global['percentage-successful-completed'] / 100,
           months: []
         };
         $scope.data.published = {
@@ -111,12 +111,12 @@
             $scope.data.percentageSuccessful.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: currentData['percentage-successful']
+              value: currentData['percentage-successful'] / 100
             });
             $scope.data.percentageSuccessfulCompleted.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: currentData['percentage-successful-completed']
+              value: currentData['percentage-successful-completed'] / 100
             });
             $scope.data.published.months.push({id: k, name: $rootScope.getDate(i), value: currentData.published});
             $scope.data.received.months.push({id: k, name: $rootScope.getDate(i), value: currentData.received});

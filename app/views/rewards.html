@@ -21,17 +21,17 @@
                          piechart-select-is-percentage="false"
                          piechart-select-data="{{ data.rewardsPerAmount }}" />
     </div>
-    <div class="section col-sm-6 card" id="reward-refusal">
-        <areachart areachart-id="reward-refusal"
-                   areachart-title="{{ 'rewards.sections.reward-refusal.title' | translate }}"
-                   areachart-description="{{ 'rewards.sections.reward-refusal.description' | translate }}"
+    <div class="section col-sm-6 card" id="percentage-reward-refusal">
+        <areachart areachart-id="percentage-reward-refusal"
+                   areachart-title="{{ 'rewards.sections.percentage-reward-refusal.title' | translate }}"
+                   areachart-description="{{ 'rewards.sections.percentage-reward-refusal.description' | translate }}"
                    areachart-x-field="name"
                    areachart-x-field="value"
                    areachart-id-field="id"
                    areachart-label-field="id"
                    areachart-unit="%"
-                   areachart-cumul="{{ data.rewardRefusal.year }}"
-                   areachart-data="{{ data.rewardRefusal.months }}" />
+                   areachart-cumul="{{ data.percentageRewardRefusal.year }}"
+                   areachart-data="{{ data.percentageRewardRefusal.months }}" />
     </div>
     <div class="section col-sm-6 card" id="licenses">
         <ranking ranking-id="licenses-ranking"

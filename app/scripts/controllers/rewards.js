@@ -77,6 +77,10 @@
           year: rewardsData.global['reward-refusal'],
           months: []
         };
+        $scope.data.percentageRewardRefusal = {
+          year: rewardsData.global['percentage-reward-refusal'],
+          months: []
+        };
         temp = 0;
         for (i = 0; i < rewardsData.global['favorite-rewards'].length; i++) {
           temp += rewardsData.global['favorite-rewards'][i].total;
@@ -110,12 +114,12 @@
           var currentData = rewardsData.buckets[i.pad()];
           if (currentData) {
             temp = 0;
-            for (var i = 0; i < currentData['favorite-rewards'].length; i++) {
-              temp += currentData['favorite-rewards'][i].total;
+            for (var n = 0; n < currentData['favorite-rewards'].length; n++) {
+              temp += currentData['favorite-rewards'][n].total;
             }
-            for (i = 0; i < currentData['favorite-rewards'].length; i++) {
-              currentData['favorite-rewards'][i].total = currentData['favorite-rewards'][i].total / temp;
-              currentData['favorite-rewards'][i].label = currentData['favorite-rewards'][i].name;
+            for (var n = 0; n < currentData['favorite-rewards'].length; n++) {
+              currentData['favorite-rewards'][n].total = currentData['favorite-rewards'][n].total / temp;
+              currentData['favorite-rewards'][n].label = currentData['favorite-rewards'][n].name;
             }
             $scope.data.favoriteRewards.push({ select: k, data: currentData['favorite-rewards']});
             temp = Object.keys(currentData['rewards-per-amount']).map(function(d) {
@@ -130,8 +134,10 @@
             });
             $scope.data.rewardsPerAmount.push({ select: k, data: datum });
             $scope.data.rewardRefusal.months.push({id: k, name: $rootScope.getDate(i), value: currentData['reward-refusal']});
+            $scope.data.percentageRewardRefusal.months.push({id: k, name: $rootScope.getDate(i), value: currentData['percentage-reward-refusal']});
           } else {
             $scope.data.rewardRefusal.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.percentageRewardRefusal.months.push({id: k, name: $rootScope.getDate(i), value: 0});
           }
         }
       };

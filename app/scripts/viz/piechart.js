@@ -430,5 +430,11 @@ outliers.viz.PieChart = function() {
     return piechart;
   };
 
+  piechart.format = function(x) {
+    if (!arguments.length) return format;
+    format = x;
+    return piechart;
+  };
+
   return piechart;
 };
