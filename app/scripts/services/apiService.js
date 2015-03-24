@@ -15,7 +15,7 @@
     var request = function(url, method, data, params) {
       params = params || {};
       data = data || {};
-      url = '//api.goteo.org:80/v1' + url;
+      url = '//api.goteo.org/v1' + url;
       return function(success, error) {
         return $http({method: method,
           url: url,
