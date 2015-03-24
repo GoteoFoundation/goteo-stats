@@ -33,9 +33,9 @@
     "imagemin-jpegtran": "^4.1.0",
     "imagemin-optipng": "^4.2.0",
     "jshint-stylish": "^1.0.1",
-    "karma": "~0.10",
+    "karma": "^0.10.10",
     "karma-junit-reporter": "^0.2.2",
-    "protractor": "^1.1.1",
+    "protractor": "^1.8.0",
     "run-sequence": "^1.0.2",
     "shelljs": "^0.2.6"
   },
