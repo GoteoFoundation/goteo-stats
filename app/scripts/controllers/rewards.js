@@ -141,7 +141,7 @@
             if (i > 1) {
               var previousData = rewardsData.buckets[(i-1).pad()];
               if (previousData) {
-                var prevK = months[i-2] + ' ' + $rootScope.year + ' 2';
+                var prevK = 'FAKE';
                 $scope.data.percentageRewardRefusal.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
               }
             }

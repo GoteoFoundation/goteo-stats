@@ -168,7 +168,11 @@ outliers.viz.AreaChart = function() {
       .attr("d", line);
 
     var renderedDot = svg.selectAll('.dot')
-      .data(data, function (d, i) {
+      .data(data.filter(function (d) {
+        // NOTE: Fake dots shouldn't be displayed
+        return d.id !== 'FAKE';
+      }),
+      function (d, i) {
         return idField ? d[idField] : i;
       });
     renderedDot.exit()

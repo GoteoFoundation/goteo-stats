@@ -194,7 +194,7 @@
             if (i > 1) {
               var previousData = moneyData.buckets[(i-1).pad()];
               if (previousData) {
-                var prevK = months[i-2] + ' ' + $rootScope.year + ' 2';
+                var prevK = 'FAKE';
                 $scope.data.pledged.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
                 $scope.data.averageDonation.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
                 $scope.data.averageReceived.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
