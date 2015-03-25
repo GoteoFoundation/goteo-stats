@@ -155,6 +155,9 @@
         $('#rewards-container').isotope({
           itemSelector : '.card'
         });
+        //hack if the user is comming for the first time into this controller
+        $('#categorySelector').val($rootScope.category);
+
       }, 1000);
   }]);
 }).call(this);

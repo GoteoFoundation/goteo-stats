@@ -20,7 +20,7 @@
     $routeProvider.when('/',{
       redirectTo: function() {
         var preferredLanguage = ((navigator.languages ? navigator.languages[0] : (navigator.language || navigator.userLanguage)).split('-')[0] || 'es');
-        if(preferredLanguage != 'en' || preferredLanguage != 'es') preferredLanguage = 'en';
+        if(preferredLanguage != 'en' || preferredLanguage != 'es') preferredLanguage = 'es';
         return '/home/' + preferredLanguage;
       }
     })
@@ -176,12 +176,20 @@
         $rootScope.locale = next.params.locale;
         $translate.use($rootScope.locale);
         $rootScope.globalLoading = true;
+        // console.log('start route', $rootScope.year, $scope.year);
       });
       $scope.$root.$on('$routeChangeSuccess', function() {
         $rootScope.globalLoading = false;
+        // console.log('end route', $rootScope.year, $rootScope.category);
+
+        // hack to force the update of the year selector after changing rout
+        // (allways resets the value)
+        $('#yearSelector').val($rootScope.year);
+        $('#categorySelector').val($rootScope.category);
       });
 
       // Load initial data.
       $rootScope.years = range(2011, moment().year());
+
   }]);
 }).call(this);
