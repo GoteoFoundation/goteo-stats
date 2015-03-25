@@ -358,3 +358,34 @@ body {
     fill: #58595b;
     text-anchor: end !important;
 }
+
+ footer {
+    background-color:#58595B;
+    max-width:100%;
+    font-family: "Gotham SSm A","Gotham SSm B","Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding:0;
+ }
+
+ footer .container {
+    padding:0 20px;
+ }
+
+ footer ul{
+    margin: 20px 0;
+    width:100%;
+    list-style: none;
+ }
+
+footer ul li {
+    line-height: 1.42857;
+    color:#999;
+    display: inline;
+}
+footer ul li a {
+    color: #FFF !important;
+}
+footer ul li + li {
+  margin-left: 20px;
+}

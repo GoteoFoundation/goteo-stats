@@ -7,6 +7,7 @@
         </div>
     </div>
     <!-- Dinero recaudado -->
+    <!--
     <div class="money section col-sm-6 card" id="pledged">
         <areachart areachart-id="pledged"
                    areachart-title="{{ 'money.sections.pledged.title' | translate }}"
@@ -20,6 +21,18 @@
                    areachart-cumul="{{ data.pledged.year }}"
                    areachart-unit="€"
                    areachart-data="{{ data.pledged.months }}" />
+    </div>
+    -->
+    <!-- Dinero recaudado -->
+    <div class="money section col-sm-6 card" id="pledged">
+        <piechart piechart-id="pledged"
+                   piechart-title="{{ 'money.sections.pledged.title' | translate }}"
+                   piechart-description="{{ 'money.sections.pledged.description' | translate }}"
+                   piechart-cumul="{{ data.pledged.year }}"
+                   piechart-unit="€"
+                   piechart-is-percentage="false"
+                   piechart-label-field="id"
+                   piechart-data="{{ data.pledged.months }}" />
     </div>
     <!-- Media de dinero recaudado -->
     <div class="money section col-sm-6 card" id="average-donation">
@@ -37,31 +50,16 @@
                    areachart-data="{{ data.averageDonation.months }}" />
     </div>
     <!-- Dinero captado -->
-    <!--
-    <div class="money section col-sm-6 card" id="matchfund-amount">
-        <areachart areachart-id="matchfund-amount"
-                   areachart-title="{{ 'money.sections.matchfund-amount.title' | translate }}"
-                   areachart-description="{{ 'money.sections.matchfund-amount.description' | translate }}"
-                   areachart-x-field="name"
-                   areachart-x-field="value"
-                   areachart-id-field="id"
-                   areachart-label-field="id"
-                   areachart-x-format="%Y"
-                   areachart-is-year="true"
-                   areachart-cumul="{{ data.matchfundAmount.year }}"
-                   areachart-unit="€"
-                   areachart-data="{{ data.matchfundAmount.months }}" />
-    -->
-    <!-- Dinero captado -->
-    <div class="money section col-sm-6 card" id="matchfund-amount">
-        <piechart piechart-id="matchfund-amount"
-                   piechart-title="{{ 'money.sections.matchfund-amount.title' | translate }}"
-                   piechart-description="{{ 'money.sections.matchfund-amount.description' | translate }}"
+    <div class="money section col-sm-6 card" id="matchfundpledge-amount">
+        <piechart piechart-id="matchfundpledge-amount"
+                   piechart-title="{{ 'money.sections.matchfundpledge-amount.title' | translate }}"
+                   piechart-description="{{ 'money.sections.matchfundpledge-amount.description' | translate }}"
                    piechart-value-format=".2%"
-                   piechart-cumul="{{ data.matchfundAmount.year }}"
+                   piechart-cumul="{{ data.matchfundPledgeAmount.year }}"
                    piechart-unit="€"
                    piechart-is-percentage="false"
-                   piechart-data="{{ data.matchfundAmount.months }}" />
+                   piechart-label-field="id"
+                   piechart-data="{{ data.matchfundPledgeAmount.months }}" />
     </div>
     <!-- Categorías -->
     <div class="community section col-sm-6 card" id="categories">
