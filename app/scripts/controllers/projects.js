@@ -127,6 +127,16 @@
               value: currentData['successful-completed']
             });
           } else {
+            // NOTE: in order to avoid downhills when next month doesn't have data, we add a fake dot in the last month
+            // with data.
+            if (i > 1) {
+              var previousData = projectsData.buckets[(i-1).pad()];
+              if (previousData) {
+                var prevK = months[i-2] + ' ' + $rootScope.year + ' 2';
+                $scope.data.averageAmountSuccessful.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+                $scope.data.averagePostsSuccessful.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+              }
+            }
             $scope.data.averageAmountSuccessful.months.push({
               id: k,
               name: $rootScope.getDate(i),

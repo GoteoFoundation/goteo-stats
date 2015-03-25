@@ -189,6 +189,17 @@
             });
             $scope.data.refunded.months.push({id: k, name: $rootScope.getDate(i), value: currentData.refunded});
           } else {
+            // NOTE: in order to avoid downhills when next month doesn't have data, we add a fake dot in the last month
+            // with data.
+            if (i > 1) {
+              var previousData = moneyData.buckets[(i-1).pad()];
+              if (previousData) {
+                var prevK = months[i-2] + ' ' + $rootScope.year + ' 2';
+                $scope.data.pledged.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+                $scope.data.averageDonation.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+                $scope.data.averageReceived.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+              }
+            }
             $scope.data.averageDonation.months.push({
               id: k,
               name: $rootScope.getDate(i),

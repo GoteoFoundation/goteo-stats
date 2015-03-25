@@ -116,7 +116,7 @@ outliers.viz.AreaChart = function() {
       .y1(function(d) {
         return yField ? y(d[yField]) : y(d);
       })
-      .interpolate("monotone");
+      .interpolate("linear");
 
     var line = d3.svg.line()
       .x(function(d, i) {
@@ -125,7 +125,7 @@ outliers.viz.AreaChart = function() {
       .y(function(d) {
         return yField ? y(d[yField]) : y(d);
       })
-      .interpolate("monotone");
+      .interpolate("linear");
 
     var renderedXAxis = svg.selectAll(".x.axis")
       .data([data]);

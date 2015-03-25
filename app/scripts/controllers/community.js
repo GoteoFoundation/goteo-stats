@@ -144,6 +144,22 @@
             $scope.data.paypalDonors.months.push({id: k, name: $rootScope.getDate(i), value: currentData['paypal-donors']});
             $scope.data.users.months.push({id: k, name: $rootScope.getDate(i), value: currentData.users});
           } else {
+            // NOTE: in order to avoid downhills when next month doesn't have data, we add a fake dot in the last month
+            // with data.
+            if (i > 1) {
+              var previousData = communityData.buckets[(i-1).pad()];
+              if (previousData) {
+                var prevK = months[i-2] + ' ' + $rootScope.year + ' 2';
+                $scope.data.averageDonors.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+                $scope.data.multidonors.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+                $scope.data.collaborators.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+                $scope.data.donors.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+                $scope.data.donorsCollaborators.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+                $scope.data.creatorsDonors.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+                $scope.data.creatorsCollaborators.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+                $scope.data.users.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
+              }
+            }
             $scope.data.averageDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
             $scope.data.collaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0});
             $scope.data.creatorsCollaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0});
