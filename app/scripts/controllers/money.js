@@ -203,45 +203,53 @@
             $scope.data.averageDonation.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
             $scope.data.averageDonationPaypal.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
             $scope.data.averageFailed.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
             $scope.data.averageMinimum.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
             $scope.data.averageReceived.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
             $scope.data.averageSecondRound.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
-            $scope.data.pledged.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.pledged.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
             $scope.data.pledgedFailed.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
             $scope.data.pledgedSuccessful.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
-            $scope.data.refunded.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.refunded.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
           }
         }
       };

@@ -145,8 +145,8 @@
                 $scope.data.percentageRewardRefusal.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
               }
             }
-            $scope.data.rewardRefusal.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.percentageRewardRefusal.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.rewardRefusal.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.percentageRewardRefusal.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
           }
         }
       };

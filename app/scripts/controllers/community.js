@@ -160,15 +160,15 @@
                 $scope.data.users.months.push({id: prevK, name: $rootScope.getDate(i-1), value: 0});
               }
             }
-            $scope.data.averageDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.collaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.creatorsCollaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.creatorsDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.donors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.donorsCollaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.multidonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.paypalDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.users.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.averageDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.collaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.creatorsCollaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.creatorsDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.donors.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.donorsCollaborators.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.multidonors.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.paypalDonors.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.users.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
           }
         }
       };

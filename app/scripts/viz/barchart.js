@@ -146,6 +146,14 @@ outliers.viz.BarChart = function() {
         }
       })
       .style("font-size", width < 480 ? "5pt" : "7pt")
+      .style("fill-opacity", function(d){
+        // NOTE: If data isn't available, we use 0.5 fill-opacity.
+        if('noAvailable' in d && d.noAvailable) {
+          return 0.5;
+        } else {
+          return 1.0;
+        }
+      })
       .text(function (d, i) {
         if (textField) {
           return formatLabels ? formatLabels(new Date(d[textField])) : d[textField];
@@ -223,6 +231,14 @@ outliers.viz.BarChart = function() {
     bars.enter()
         .append("path")
         .attr("class", function (d, i) { return "barGraph bar" + (i == maxId ? " maximum" : ""); })
+        .style("fill-opacity", function(d){
+          // NOTE: If data isn't available, we use 0.5 fill-opacity.
+          if('noAvailable' in d && d.noAvailable) {
+            return 0.5;
+          } else {
+            return 1.0;
+          }
+        })
         .attr("d", function (d, i) {
           var myX = maxOffset + labelPadding,
               myY = idField ? y(d[idField]) : y(i),

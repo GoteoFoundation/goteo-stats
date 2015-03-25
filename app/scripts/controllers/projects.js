@@ -140,31 +140,36 @@
             $scope.data.averageAmountSuccessful.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
             $scope.data.averagePostsSuccessful.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
-            $scope.data.failed.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.failed.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
             $scope.data.percentageSuccessful.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
             $scope.data.percentageSuccessfulCompleted.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
-            $scope.data.published.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.received.months.push({id: k, name: $rootScope.getDate(i), value: 0});
-            $scope.data.successful.months.push({id: k, name: $rootScope.getDate(i), value: 0});
+            $scope.data.published.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.received.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
+            $scope.data.successful.months.push({id: k, name: $rootScope.getDate(i), value: 0, noAvailable: true});
             $scope.data.successfulCompleted.months.push({
               id: k,
               name: $rootScope.getDate(i),
-              value: 0
+              value: 0,
+              noAvailable: true
             });
           }
         }

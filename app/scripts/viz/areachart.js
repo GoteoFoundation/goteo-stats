@@ -141,7 +141,15 @@ outliers.viz.AreaChart = function() {
       .selectAll('.tick text')
       .attr("dx", "-.8em")
       .attr("dy", ".15em")
-      .attr("transform", "rotate(-65)");
+      .attr("transform", "rotate(-65)")
+      .style("fill-opacity", function(d) {
+        // NOTE: If date is after current date, fill-opacity changed to 0.5
+        if (moment(d).isAfter(moment())) {
+          return 0.5;
+        } else {
+          return 1.0;
+        }
+      });
 
 
     var renderedArea = svg.selectAll(".area")
@@ -195,19 +203,36 @@ outliers.viz.AreaChart = function() {
         return yField ? y(d[yField]) : y(d);
       })
       .attr('r', dotRadius)
-      .on("mouseover", function() {
-        $(this).tooltip('show');
+      .style('fill-opacity', function(d) {
+        // NOTE: If data isn't available, we use 0.5 fill-opacity.
+        if('noAvailable' in d && d.noAvailable) {
+          return 0.5;
+        } else {
+          return 1.0;
+        }
       })
-      .on("mouseout", function() {
-        $(this).tooltip('hide');
+      .on("mouseover", function(d) {
+        // NOTE: If data isn't available, we don't display the tooltip.
+        if(!('noAvailable' in d && d.noAvailable)) {
+          $(this).tooltip('show');
+        }
+      })
+      .on("mouseout", function(d) {
+        // NOTE: If data isn't available, we don't display the tooltip.
+        if(!('noAvailable' in d && d.noAvailable)) {
+          $(this).tooltip('hide');
+        }
       })
       .each(function(d) {
-        $(this).tooltip({
-          placement: 'top',
-          container: 'body',
-          html: true,
-          title: (textField ? d[textField] : (xField ? d[xField] : i)) + '<br/>' + (tooltipFormat(yField ? d[yField] : d))
-        });
+        // NOTE: If data isn't available, we don't display the tooltip.
+        if(!('noAvailable' in d && d.noAvailable)) {
+          $(this).tooltip({
+            placement: 'top',
+            container: 'body',
+            html: true,
+            title: (textField ? d[textField] : (xField ? d[xField] : i)) + '<br/>' + (tooltipFormat(yField ? d[yField] : d))
+          });
+        }
       });
 
   };
