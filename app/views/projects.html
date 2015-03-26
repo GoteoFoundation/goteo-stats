@@ -1,28 +1,25 @@
 <div class="projects" id="projects-container">
-    <!-- Porcentaje de proyectos exitosos finalizados -->
-    <div class="section col-sm-6 card" id="percentage-successful-completed">
-        <barchart barchart-id="percentage-successful-completed"
-                  barchart-title="{{ 'projects.sections.percentage-successful-completed.title' | translate }}"
-                  barchart-description="{{ 'projects.sections.percentage-successful-completed.description' | translate }}"
-                  barchart-cumul="{{ data.percentageSuccessfulCompleted.year }}"
+    <!-- Recaudación en proyectos exitosos -->
+    <div class="section col-sm-6 card" id="average-amount-successful">
+        <areachart areachart-id="average-amount-successful"
+                   areachart-title="{{ 'projects.sections.average-amount-successful.title' | translate }}"
+                   areachart-description="{{ 'projects.sections.average-amount-successful.description' | translate }}"
+                   areachart-x-field="name"
+                   areachart-x-field="value"
+                   areachart-id-field="id"
+                   areachart-label-field="id"
+                   areachart-unit="€"
+                   areachart-cumul="{{ data.averageAmountSuccessful.year }}"
+                   areachart-data="{{ data.averageAmountSuccessful.months }}" />
+    </div>
+    <!-- Porcentaje proyectos exitosos -->
+    <div class="section col-sm-6 card" id="percentage-successful">
+        <barchart barchart-id="percentage-successful"
+                  barchart-title="{{ 'projects.sections.percentage-successful.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.percentage-successful.description' | translate }}"
+                  barchart-cumul="{{ data.percentageSuccessful.year }}"
                   barchart-number-format=".2%"
-                  barchart-data="{{ data.percentageSuccessfulCompleted.months }}" />
-    </div>
-    <!-- Proyectos recibidos -->
-    <div class="section col-sm-6 card" id="received">
-        <barchart barchart-id="received"
-                  barchart-title="{{ 'projects.sections.received.title' | translate }}"
-                  barchart-description="{{ 'projects.sections.received.description' | translate }}"
-                  barchart-cumul="{{ data.received.year }}"
-                  barchart-data="{{ data.received.months }}" />
-    </div>
-    <!-- Proyectos exitosos -->
-    <div class="section col-sm-6 card" id="successful">
-        <barchart barchart-id="successful"
-                  barchart-title="{{ 'projects.sections.successful.title' | translate }}"
-                  barchart-description="{{ 'projects.sections.successful.description' | translate }}"
-                  barchart-cumul="{{ data.successful.year }}"
-                  barchart-data="{{ data.successful.months }}" />
+                  barchart-data="{{ data.percentageSuccessful.months }}" />
     </div>
     <!-- Top recaudado -->
     <div class="section col-sm-6 card" id="top10-receipts">
@@ -50,18 +47,17 @@
                  ranking-show-value="false"
                  ranking-data="{{ data.top10Donations }}" />
     </div>
-    <!-- Recaudación en proyectos exitosos -->
-    <div class="section col-sm-6 card" id="average-amount-successful">
-        <areachart areachart-id="average-amount-successful"
-                   areachart-title="{{ 'projects.sections.average-amount-successful.title' | translate }}"
-                   areachart-description="{{ 'projects.sections.average-amount-successful.description' | translate }}"
+    <!-- Comunicaciones en proyectos exitosos -->
+    <div class="section col-sm-6 card" id="average-posts-successful">
+        <areachart areachart-id="average-posts-successful"
+                   areachart-title="{{ 'projects.sections.average-posts-successful.title' | translate }}"
+                   areachart-description="{{ 'projects.sections.average-posts-successful.description' | translate }}"
                    areachart-x-field="name"
                    areachart-x-field="value"
                    areachart-id-field="id"
                    areachart-label-field="id"
-                   areachart-unit="€"
-                   areachart-cumul="{{ data.averageAmountSuccessful.year }}"
-                   areachart-data="{{ data.averageAmountSuccessful.months }}" />
+                   areachart-cumul="{{ data.averagePostsSuccessful.year }}"
+                   areachart-data="{{ data.averagePostsSuccessful.months }}" />
     </div>
     <!-- Top colaboraciones -->
     <div class="section col-sm-6 card" id="top10-collaborations">
@@ -76,17 +72,21 @@
                  ranking-show-value="false"
                  ranking-data="{{ data.top10Collaborations }}" />
     </div>
-    <!-- Comunicaciones en proyectos exitosos -->
-    <div class="section col-sm-6 card" id="average-posts-successful">
-        <areachart areachart-id="average-posts-successful"
-                   areachart-title="{{ 'projects.sections.average-posts-successful.title' | translate }}"
-                   areachart-description="{{ 'projects.sections.average-posts-successful.description' | translate }}"
-                   areachart-x-field="name"
-                   areachart-x-field="value"
-                   areachart-id-field="id"
-                   areachart-label-field="id"
-                   areachart-cumul="{{ data.averagePostsSuccessful.year }}"
-                   areachart-data="{{ data.averagePostsSuccessful.months }}" />
+    <!-- Proyectos exitosos -->
+    <div class="section col-sm-6 card" id="successful">
+        <barchart barchart-id="successful"
+                  barchart-title="{{ 'projects.sections.successful.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.successful.description' | translate }}"
+                  barchart-cumul="{{ data.successful.year }}"
+                  barchart-data="{{ data.successful.months }}" />
+    </div>
+    <!-- Proyectos recibidos -->
+    <div class="section col-sm-6 card" id="received">
+        <barchart barchart-id="received"
+                  barchart-title="{{ 'projects.sections.received.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.received.description' | translate }}"
+                  barchart-cumul="{{ data.received.year }}"
+                  barchart-data="{{ data.received.months }}" />
     </div>
     <!-- Proyectos publicados -->
     <div class="section col-sm-6 card" id="published">
@@ -104,13 +104,13 @@
                   barchart-cumul="{{ data.failed.year }}"
                   barchart-data="{{ data.failed.months }}" />
     </div>
-    <!-- Porcentaje proyectos exitosos -->
-    <div class="section col-sm-6 card" id="percentage-successful">
-        <barchart barchart-id="percentage-successful"
-                  barchart-title="{{ 'projects.sections.percentage-successful.title' | translate }}"
-                  barchart-description="{{ 'projects.sections.percentage-successful.description' | translate }}"
-                  barchart-cumul="{{ data.percentageSuccessful.year }}"
+    <!-- Porcentaje de proyectos exitosos finalizados -->
+    <div class="section col-sm-6 card" id="percentage-successful-completed">
+        <barchart barchart-id="percentage-successful-completed"
+                  barchart-title="{{ 'projects.sections.percentage-successful-completed.title' | translate }}"
+                  barchart-description="{{ 'projects.sections.percentage-successful-completed.description' | translate }}"
+                  barchart-cumul="{{ data.percentageSuccessfulCompleted.year }}"
                   barchart-number-format=".2%"
-                  barchart-data="{{ data.percentageSuccessful.months }}" />
+                  barchart-data="{{ data.percentageSuccessfulCompleted.months }}" />
     </div>
 </div>
