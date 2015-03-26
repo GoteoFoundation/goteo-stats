@@ -21,7 +21,6 @@
       //do no ask every time for categories!
       if($rootScope.categories) return $rootScope.categories;
 
-      console.log('querying categories');
       params.lang = $rootScope.locale;
       var api_request = ApiService.get('/categories/', params);
       var api_promise = api_request(function (data) {
