@@ -48,7 +48,9 @@
         var params = {};
 
         if (type !== 'summary') {
-          params.year = year;
+          if(year > 0) {
+            params.year = year;
+          }
           if (category !== -1000) {
             params.category = category;
           }

@@ -169,6 +169,9 @@
       };
 
       $rootScope.getDate = function (i) {
+        if(i > 13) {
+          return i + '-12-31T00:00:00.000Z';
+        }
         return $rootScope.year + '-' + (i).pad() + '-01T00:00:00.000Z';
       };
 

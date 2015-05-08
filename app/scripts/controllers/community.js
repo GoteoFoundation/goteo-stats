@@ -112,9 +112,21 @@
         };
         moment.locale($rootScope.locale);
         var months = moment.months();
-        for(var i = 1; i < 13; i++) {
-          var k = months[i-1] + ' ' + $rootScope.year;
-          var currentData = communityData.buckets[i.pad()];
+        var min = 1;
+        var max = 13;
+        if(parseInt($rootScope.year, 10) === 0) {
+          min = parseInt($rootScope.years[0], 10);
+          max = parseInt($rootScope.years[$rootScope.years.length - 1], 10);
+        }
+        for(var i = min; i < max; i++) {
+          if(i < 14) {
+            var k = months[i-1] + ' ' + $rootScope.year;
+            var currentData = communityData.buckets[i.pad()];
+          }
+          else {
+            var k = i;
+            var currentData = communityData.buckets[i];
+          }
           if (currentData) {
             temp = currentData.categories.map(function (d) {
               var temp2 = Object.keys(d).map(function (k) {

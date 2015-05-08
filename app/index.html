@@ -52,6 +52,7 @@
                                 <label for="yearSelector">{{'selector.year' | translate}}</label>
                                 <select id="yearSelector" class="form-control" data-ng-model="$root.year" ng-change="updateYear()">
                                     <option ng-repeat="y in $root.years" value="{{y}}" label="{{y}}">{{y}}</option>
+                                    <option value="0" label="All">All</option>
                                 </select>
                             </div>
                             <div class="form-group">
