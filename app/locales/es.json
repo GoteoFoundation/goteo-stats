@@ -22,7 +22,7 @@
   "home": {
     "title": "Goteo es más que crowdfunding",
     "description_1": "Goteo es el barómetro de las necesidades de una sociedad más colaborativa y transparente. Lo dicen nuestros datos, que también estamos compartiendo en formato abierto.",
-    "description_2":"Te invitamos a hechar un vistazo a nuestras estadísticas visualizando los datos por secciones, años o categorias. También puedes acceder directamente a nuestra <a href=\"http://developers.goteo.org/\">API</a> para crear nuevas aplicaciones, análisis y visualizaciones."
+    "description_2":"Te invitamos a echar un vistazo a nuestras estadísticas visualizando los datos por secciones, años o categorias. También puedes acceder directamente a nuestra <a href=\"http://developers.goteo.org/\">API</a> para crear nuevas aplicaciones, análisis y visualizaciones."
   },
   "money": {
     "sections": {
