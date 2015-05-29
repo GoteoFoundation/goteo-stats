@@ -156,7 +156,7 @@
       },
       "users": {
         "title": "Usuarios",
-        "description": "Número total de usuarios nuevos dados de alta durante ese periodo)"
+        "description": "Número total de usuarios nuevos dados de alta durante ese periodo"
       },
       "average-donors": {
         "title": "Media de donantes en proyectos exitosos",

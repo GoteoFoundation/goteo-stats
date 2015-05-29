@@ -155,8 +155,8 @@
         "description": "Top 10 users who made contributions to the greatest variety of projects"
       },
       "users": {
-        "title": "Title users",
-        "description": "Description users"
+        "title": "Users",
+        "description": "Total number of new users registered in this period"
       },
       "average-donors": {
         "title": "Average donors in successful projects",
