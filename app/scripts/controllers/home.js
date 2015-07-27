@@ -157,8 +157,8 @@
             $scope.data.matchfundPledgeAmount.months.push({
               id: k,
               name: k,
-              // value: currentData['matchfundpledge-amount']
-              value: parseFloat(currentData['matchfundpledge-amount'] / homeData.global['matchfundpledge-amount'])
+              value: currentData['matchfundpledge-amount']
+              // value: parseFloat(currentData['matchfundpledge-amount'] / homeData.global['matchfundpledge-amount'])
             });
             $scope.data.users.months.push({id: k, name: k, value: currentData.users});
             // $scope.data.successful.months.push({id: k, name: k, value: currentData['projects-successful'] / currentData['projects-published']));
