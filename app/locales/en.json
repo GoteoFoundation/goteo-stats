@@ -213,9 +213,13 @@
           "rewards-more-than-400": "Rewards more than 400"
         }
       },
-      "Rewards refused": {
-        "title": "Rewards refused",
-        "description": "Percentage of donors who give up individual rewards or who are content with a thank-you mention"
+      "percentage-reward-refusal": {
+        "title": "Rewards refusals",
+        "description": "Percentage of donors who refuse individual rewards, or who accept an acknowledgement"
+      },
+      "licenses": {
+        "title" : "Most-used licenses",
+        "description" : "All Goteo projects sharing their knowledge and created under free/open licenses"
       }
     }
   }
