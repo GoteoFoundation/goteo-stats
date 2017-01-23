@@ -23,7 +23,7 @@
           data: data,
           params: params,
           headers: {
-            'Authorization': 'Basic ' + btoa('ivan:beta')
+            'Authorization': 'Basic ' + btoa('goteo:goteo')
           }
         }).then(function(response) {
           return success(response.data);
