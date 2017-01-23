@@ -14,11 +14,21 @@
             return GoteoApi.getCategories();
           }
         ],
+        nodes: [
+          'GoteoApi', function(GoteoApi) {
+            return GoteoApi.getNodes();
+          }
+        ],
+        calls: [
+          'GoteoApi', function(GoteoApi) {
+            return GoteoApi.getCalls();
+          }
+        ],
         homeData: [
           '$route',
           'GoteoApi', function($route, GoteoApi) {
             var locale = $route.current.params.locale;
-            return GoteoApi.getData('summary', locale, null, null);
+            return GoteoApi.getData('summary', locale, null, null, null, null);
           }
         ]
       }
@@ -35,11 +45,17 @@
     '$rootScope',
     '$routeParams',
     'categories',
+    'nodes',
+    'calls',
     'homeData',
-    function ($timeout, $translate, $scope, $rootScope, $routeParams, categories, homeData) {
+    function ($timeout, $translate, $scope, $rootScope, $routeParams, categories, nodes, calls, homeData) {
       $rootScope.categories = categories;
+      $rootScope.nodes = nodes;
+      $rootScope.calls = calls;
       $rootScope.locale = $routeParams.locale;
       $rootScope.category = $rootScope.category || -1000;
+      $rootScope.node = $routeParams.node || '-all-';
+      $rootScope.call = $routeParams.call || '-all-';
       $rootScope.year = $rootScope.year || (moment().year() - 1);
 
       /**

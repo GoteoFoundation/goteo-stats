@@ -17,7 +17,9 @@
   },
   "selector": {
     "year": "Year",
-    "category": "Category"
+    "category": "Category",
+    "node": "Channel",
+    "call": "Matchfunding call"
   },
   "home": {
     "title": "Goteo is more than crowdfunding",

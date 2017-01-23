@@ -15,14 +15,15 @@
     var request = function(url, method, data, params) {
       params = params || {};
       data = data || {};
-      url = '//api.goteo.org/v1' + url;
+      url = 'https://api.goteo.org/v1' + url;
+      // url = '//localhost:5000' + url;
       return function(success, error) {
         return $http({method: method,
           url: url,
           data: data,
           params: params,
           headers: {
-            'Authorization': 'Basic ' + btoa('goteo:goteo')
+            'Authorization': 'Basic ' + btoa('ivan:beta')
           }
         }).then(function(response) {
           return success(response.data);

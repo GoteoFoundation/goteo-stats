@@ -17,7 +17,9 @@
   },
   "selector": {
     "year": "Año",
-    "category": "Categoría"
+    "category": "Categoría",
+    "node": "Canal",
+    "call": "Convocatoria"
   },
   "home": {
     "title": "Goteo es más que crowdfunding",

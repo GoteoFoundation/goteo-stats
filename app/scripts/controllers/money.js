@@ -4,14 +4,24 @@
   var app = angular.module('goteoStatistics');
 
   app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/money/:locale/:year/:category', {
+    $routeProvider.when('/money/:locale/:year/:category/:node/:call', {
       templateUrl: 'views/money.html',
       controller: 'MoneyCtrl',
-      dependencies: [ 'locale', 'year', 'category' ],
+      dependencies: [ 'locale', 'year', 'category', 'node', 'call' ],
       resolve: {
         categories: [
           'GoteoApi', function(GoteoApi) {
             return GoteoApi.getCategories();
+          }
+        ],
+        nodes: [
+          'GoteoApi', function(GoteoApi) {
+            return GoteoApi.getNodes();
+          }
+        ],
+        calls: [
+          'GoteoApi', function(GoteoApi) {
+            return GoteoApi.getCalls();
           }
         ],
         moneyData: [
@@ -19,8 +29,10 @@
           'GoteoApi', function($route, GoteoApi) {
             var year = parseInt($route.current.params.year),
               category = parseInt($route.current.params.category),
+              node = $route.current.params.node,
+              call = $route.current.params.call,
               locale = $route.current.params.locale;
-            return GoteoApi.getData('money', locale, year, category);
+            return GoteoApi.getData('money', locale, year, category, node, call);
           }
         ]
       }
@@ -37,11 +49,17 @@
     '$rootScope',
     '$routeParams',
     'categories',
+    'nodes',
+    'calls',
     'moneyData',
-    function ($timeout, $translate, $scope, $rootScope, $routeParams, categories, moneyData) {
+    function ($timeout, $translate, $scope, $rootScope, $routeParams, categories, nodes, calls, moneyData) {
       $rootScope.categories = categories;
+      $rootScope.nodes = nodes;
+      $rootScope.calls = calls;
       $rootScope.year = $routeParams.year;
       $rootScope.category = $routeParams.category;
+      $rootScope.node = $routeParams.node;
+      $rootScope.call = $routeParams.call;
       $rootScope.locale = $routeParams.locale;
 
       /**
@@ -272,6 +290,8 @@
         });
         //hack if the user is comming for the first time into this controller
         $('#categorySelector').val($rootScope.category);
+        $('#nodeSelector').val($rootScope.node);
+        $('#callSelector').val($rootScope.call);
 
       }, 1000);
   }]);

@@ -33,10 +33,10 @@
                     </div>
                     <div class="collapse navbar-collapse" id="menu-navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li ng-class="{'active': isActive('money')}" class="money-link"><a href="/money/{{ locale }}/{{ year }}/{{ category }}">{{'sections.money' | translate}}</a></li>
-                            <li ng-class="{'active': isActive('projects')}" class="projects-link"><a href="/projects/{{ locale }}/{{ year }}/{{ category }}">{{'sections.projects' | translate}}</a></li>
-                            <li ng-class="{'active': isActive('community')}" class="community-link"><a href="/community/{{ locale }}/{{ year }}/{{ category }}">{{'sections.community' | translate}}</a></li>
-                            <li ng-class="{'active': isActive('rewards')}" class="rewards-link"><a href="/rewards/{{ locale }}/{{ year }}/{{ category }}">{{'sections.rewards' | translate}}</a></li>
+                            <li ng-class="{'active': isActive('money')}" class="money-link"><a href="/money/{{ locale }}/{{ year }}/{{ category }}/{{ node }}/{{ call }}">{{'sections.money' | translate}}</a></li>
+                            <li ng-class="{'active': isActive('projects')}" class="projects-link"><a href="/projects/{{ locale }}/{{ year }}/{{ category }}/{{ node }}/{{ call }}">{{'sections.projects' | translate}}</a></li>
+                            <li ng-class="{'active': isActive('community')}" class="community-link"><a href="/community/{{ locale }}/{{ year }}/{{ category }}/{{ node }}/{{ call }}">{{'sections.community' | translate}}</a></li>
+                            <li ng-class="{'active': isActive('rewards')}" class="rewards-link"><a href="/rewards/{{ locale }}/{{ year }}/{{ category }}/{{ node }}/{{ call }}">{{'sections.rewards' | translate}}</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
@@ -59,6 +59,18 @@
                                 <label for="categorySelector">{{'selector.category' | translate}}</label>
                                 <select id="categorySelector" class="form-control" data-ng-model="$root.category" ng-change="updateCategory()">
                                     <option ng-repeat="c in $root.categories" value="{{c.id}}" label="{{c.name}}">{{c.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nodeSelector">{{'selector.node' | translate}}</label>
+                                <select id="nodeSelector" class="form-control" data-ng-model="$root.node" ng-change="updateNode()">
+                                    <option ng-repeat="c in $root.nodes" value="{{c.id}}" label="{{c.name}}">{{c.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="callSelector">{{'selector.call' | translate}}</label>
+                                <select id="callSelector" class="form-control" data-ng-model="$root.call" ng-change="updateCall()">
+                                    <option ng-repeat="c in $root.calls" value="{{c.id}}" label="{{c.name}}">{{c.name}}</option>
                                 </select>
                             </div>
                         </form>

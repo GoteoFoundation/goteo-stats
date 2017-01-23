@@ -140,6 +140,22 @@
         $location.path(path.join('/'));
       };
       /**
+       * When a new node is selected, we need to change to the route with the new node
+       */
+      $scope.updateNode = function() {
+        var path = $location.path().split('/');
+        path[5] = $rootScope.node;
+        $location.path(path.join('/'));
+      };
+      /**
+       * When a new call is selected, we need to change to the route with the new call
+       */
+      $scope.updateCall = function() {
+        var path = $location.path().split('/');
+        path[6] = $rootScope.call;
+        $location.path(path.join('/'));
+      };
+      /**
        * When locale changes, we need to change to the route with the new locale
        */
       $scope.$watch(function() {
@@ -183,12 +199,14 @@
       });
       $scope.$root.$on('$routeChangeSuccess', function() {
         $rootScope.globalLoading = false;
-        // console.log('end route', $rootScope.year, $rootScope.category);
+        console.log('end route', $rootScope.year, $rootScope.category, $rootScope.node, $rootScope.call);
 
         // hack to force the update of the year selector after changing rout
         // (allways resets the value)
         $('#yearSelector').val($rootScope.year);
         $('#categorySelector').val($rootScope.category);
+        $('#nodeSelector').val($rootScope.node);
+        $('#callSelector').val($rootScope.call);
       });
 
       // Load initial data.

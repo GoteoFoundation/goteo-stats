@@ -4,14 +4,24 @@
   var app = angular.module('goteoStatistics');
 
   app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/community/:locale/:year/:category', {
+    $routeProvider.when('/community/:locale/:year/:category/:node/:call', {
       templateUrl: 'views/community.html',
       controller: 'CommunityCtrl',
-      dependencies: [ 'locale', 'year', 'category' ],
+      dependencies: [ 'locale', 'year', 'category', 'node', 'call' ],
       resolve: {
         categories: [
           'GoteoApi', function(GoteoApi) {
             return GoteoApi.getCategories();
+          }
+        ],
+        nodes: [
+          'GoteoApi', function(GoteoApi) {
+            return GoteoApi.getNodes();
+          }
+        ],
+        calls: [
+          'GoteoApi', function(GoteoApi) {
+            return GoteoApi.getCalls();
           }
         ],
         communityData: [
@@ -19,8 +29,10 @@
           'GoteoApi', function($route, GoteoApi) {
             var year = parseInt($route.current.params.year),
               category = parseInt($route.current.params.category),
+              node = $route.current.params.node,
+              call = $route.current.params.call,
               locale = $route.current.params.locale;
-            return GoteoApi.getData('community', locale, year, category);
+            return GoteoApi.getData('community', locale, year, category, node, call);
           }
         ]
       }
@@ -38,11 +50,17 @@
     '$rootScope',
     '$routeParams',
     'categories',
+    'nodes',
+    'calls',
     'communityData',
-    function ($timeout, $translate, $scope, $rootScope, $routeParams, categories, communityData) {
+    function ($timeout, $translate, $scope, $rootScope, $routeParams, categories, nodes, calls, communityData) {
       $rootScope.categories = categories;
+      $rootScope.nodes = nodes;
+      $rootScope.calls = calls;
       $rootScope.year = $routeParams.year;
       $rootScope.category = $routeParams.category;
+      $rootScope.node = $routeParams.node;
+      $rootScope.call = $routeParams.call;
       $rootScope.locale = $routeParams.locale;
 
       /**
@@ -63,14 +81,14 @@
           return temp2.users;
         }).reduce(function(previousValue, currentValue) {
           return previousValue + currentValue;
-        });
+        },0 );
         $scope.data.categories.push({
           select: $rootScope.year,
           data: communityData.global.categories.map(function (d) {
              var temp2 = Object.keys(d).map(function (k) {
               return d[k];
             })[0];
-            temp2.users = temp2.users / temp;
+            temp2.users = temp ? (temp2.users / temp) : 0;
             return temp2;
           })
         });
@@ -135,14 +153,14 @@
               return temp2.users;
             }).reduce(function (previousValue, currentValue) {
               return previousValue + currentValue;
-            });
+            },0);
             $scope.data.categories.push({
               select: k,
               data: currentData.categories.map(function (d) {
                 var temp2 = Object.keys(d).map(function (k) {
                   return d[k];
                 })[0];
-                temp2.users = temp2.users / temp;
+                temp2.users = temp ? (temp2.users / temp) : 0;
                 return temp2;
               })
             });
@@ -191,6 +209,8 @@
         });
         //hack if the user is comming for the first time into this controller
         $('#categorySelector').val($rootScope.category);
+        $('#nodeSelector').val($rootScope.node);
+        $('#callSelector').val($rootScope.call);
 
       }, 1000);
   }]);

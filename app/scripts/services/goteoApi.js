@@ -35,6 +35,41 @@
       });
     };
 
+    api.getCalls = function () {
+      var params = {};
+
+      //do no ask every time for calls!
+      if($rootScope.calls) return $rootScope.calls;
+
+      params.lang = $rootScope.locale;
+      var api_request = ApiService.get('/calls/', params);
+      var api_promise = api_request(function (data) {
+        data.items.unshift({
+          id: '-all-',
+          name: $translate.instant('global.all')
+        });
+        return data.items;
+      });
+      return api_promise.then(function (data) {
+        return data;
+      });
+    };
+
+    // TODO: from api
+    api.getNodes = function () {
+      return [
+        {id:'-all-',name:$translate.instant('global.all')}
+        , {id:'goteo',name:'Goteo central'}
+        , {id:'barcelona',name:'Goteo Barcelona'}
+        , {id:'uc3m',name:'Crowd-UC3M'}
+        // , {id:'andalucia',name:'Goteo Andalucía'}
+        // , {id:'euskadi',name:'Euskadi'}
+        // , {id:'guadalinfo',name:'Guadalinfo'}
+        //, {id:'ugr',name:'Universidad de granada'}
+        //, {id:'unal',name:'Universidad Nacional de Colombia'}
+      ];
+    };
+
       /**
        * Data request generic function.
        *
@@ -44,18 +79,25 @@
        * @param {Number} category category we want to retrieve the data for
        * @return {Object} result of the request to the API
        */
-    api.getData = function (type, locale, year, category) {
+    api.getData = function (type, locale, year, category, node, call) {
         var params = {};
 
         if (type !== 'summary') {
           if(year > 0) {
             params.year = year;
           }
-          if (category !== -1000) {
+          if (category && category !== -1000) {
             params.category = category;
+          }
+          if (node && node !== '-all-') {
+            params.node = node;
+          }
+          if (node && call !== '-all-') {
+            params.call = call;
           }
         }
         params.lang = locale;
+        console.log(type, params);
         if (type === 'money') {
           return api.getMoney(params);
         } else if (type === 'projects') {
