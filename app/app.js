@@ -153,6 +153,8 @@
       $scope.updateCall = function() {
         var path = $location.path().split('/');
         path[6] = $rootScope.call;
+        // Set year to all
+        path[3] = '0';
         $location.path(path.join('/'));
       };
       /**
