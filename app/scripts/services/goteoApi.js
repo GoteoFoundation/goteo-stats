@@ -36,7 +36,7 @@
     };
 
     api.getCalls = function () {
-      var params = {};
+      var params = {limit: 50};
 
       //do no ask every time for calls!
       if($rootScope.calls) return $rootScope.calls;
@@ -61,7 +61,8 @@
         {id:'-all-',name:$translate.instant('global.all')}
         , {id:'goteo',name:'Goteo central'}
         , {id:'barcelona',name:'Goteo Barcelona'}
-        , {id:'uc3m',name:'Crowd-UC3M'}
+        , {id:'uc3m',name:'Crowd-UC3M'},
+        , {id:'lar',name:'LAR'}
         // , {id:'andalucia',name:'Goteo Andalucía'}
         // , {id:'euskadi',name:'Euskadi'}
         // , {id:'guadalinfo',name:'Guadalinfo'}
