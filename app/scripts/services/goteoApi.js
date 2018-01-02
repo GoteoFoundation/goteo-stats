@@ -61,6 +61,7 @@
         {id:'-all-',name:$translate.instant('global.all')}
         , {id:'goteo',name:'Goteo central'}
         , {id:'barcelona',name:'Goteo Barcelona'}
+        , {id:'ahoracomparte',name:'Ahora comparte'}
         , {id:'uc3m',name:'Crowd-UC3M'}
         , {id:'lar',name:'LAR'}
         // , {id:'andalucia',name:'Goteo Andalucía'}

@@ -135,7 +135,7 @@
         for(var i = 0; i < years.length; i++) {
           var k = years[i];
           var currentData = homeData.buckets[k];
-          if (currentData) {
+          if (currentData && currentData.categories && currentData.categories.length) {
             temp = currentData.categories.map(function (d) {
               var temp2 = Object.keys(d).map(function (j) {
                 return d[j];
