@@ -99,7 +99,7 @@
           }
         }
         params.lang = locale;
-        console.log(type, params);
+        // console.log('getData', type, params);
         if (type === 'money') {
           return api.getMoney(params);
         } else if (type === 'projects') {

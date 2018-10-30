@@ -1,0 +1,229 @@
+{
+  "title": "Goteo Estadístiques",
+  "global": {
+    "all": "Totes",
+    "nodata": "No hi ha dades disponibles"
+  },
+  "lang": {
+    "select": "Selecciona l'idioma",
+    "en": "English",
+    "es": "Castellano",
+    "ca": "Català"
+  },
+  "sections": {
+    "money": "Diners",
+    "projects": "Projectes",
+    "community": "Comunitat",
+    "rewards": "Retorns"
+  },
+  "selector": {
+    "year": "Any",
+    "category": "Categoria",
+    "node": "Canal",
+    "call": "Convocatòria"
+  },
+  "home": {
+    "title": "Goteo es més que crowdfunding",
+    "description_1": "Goteo es el baròmetre de les necessitats d'una societat més col·laborativa i transparent. ho diuen les nostres dades, que també compartim en formats oberts.",
+    "description_2":"Et convidem a fer una ullada a les nostres estadístiques visualitzant les dades per seccions, anys o categories. També pots accedir directament a la nostra <a href=\"http://developers.goteo.org/\">API</a> per a crear noves aplicacions, anàlisis i visualitzacions."
+  },
+  "money": {
+    "sections": {
+      "amount": {
+        "title": "Aportacions monetàries segons origen",
+        "description": "Percentatge de diners segons el mitjà de pagament",
+        "labels": {
+          "cash": "Recaptació offline",
+          "creditcard": "Aportacions individuals amb targeta de crèdit",
+          "fee": "Comissió de Goteo",
+          "matchfund": "Diners captats per la Fundació Goteo per a multiplicar aportacions individuals",
+          "matchfundpledge": "Total compromès per captacions externes",
+          "paypal": "Aportacions individuals mitjançant Paypal"
+        }
+      },
+      "matchfundpledge-amount": {
+        "title": "Diners captats per la Fundació Goteo",
+        "description": "Quantitat de diners captada per la Fundació Goteo per a multiplicar aportacions individuals"
+      },
+      "average-donation": {
+        "title": "Aportació mitjana a projectes",
+        "description": "Una de les mitjanes més altes del mon!"
+      },
+      "average-donation-paypal": {
+        "title": "Mitjana de donacions amb Paypal",
+        "description": "Donacions realitzades via Paypal"
+      },
+      "average-failed": {
+        "title": "Recaptat per projectes fallits",
+        "description": "Mitjana de recaptació en projectes que han fallat"
+      },
+      "average-minimum": {
+        "title": "Quantitat mínima en projectes reeixits",
+        "description": "Mitjana de la quantitat mínima que demanen els projectes que han tingut èxit"
+      },
+      "average-received": {
+        "title": "Recaptat per projectes reeixits",
+        "description": "Mitjana de diners recaptats per projectes reeixits"
+      },
+      "average-second-round": {
+        "title": "Recaptat en segona ronda",
+        "description": "Mitjana de diners aconseguits per projectes reeixits només en la segona ronda de finançament"
+      },
+      "pledged": {
+        "title": "Diners recaptats",
+        "description": "Total de diners recaptats per Goteo"
+      },
+      "pledged-failed": {
+        "title": "Percentatge de recaptació en projectes fallits",
+        "description": "Percentatge de recaptació (en base al mínim requerit) que obtenen els projectes fallits"
+      },
+      "pledged-successful": {
+        "title": "Percentatge de recaptació en projectes reeixits",
+        "description": "Percentatge de recaptació (en base al mínim requerit) que obtenen els projectes reeixits"
+      },
+      "refunded": {
+        "title": "Diners reemborsats",
+        "description": "Total de diners retornats degut als projectes fallits"
+      }
+    }
+  },
+  "projects": {
+    "sections": {
+      "average-amount-successful": {
+        "title": "Recaptat en projectes reeixits",
+        "description": "Mitjana de diners recaptats en projectes reeixits"
+      },
+      "average-posts-successful": {
+        "title": "Comunicacions en projectes reeixits",
+        "description": "Mitjana del número de missatges publicats en el blog sobre l'estat del projecte"
+      },
+      "failed": {
+        "title": "Projectes fallits",
+        "description": "Número de projectes publicats que no han aconseguit finançament"
+      },
+      "percentage-successful": {
+        "title": "Percentatge projectes reeixits",
+        "description": "Percentatge de projectes que han tingut èxit"
+      },
+      "percentage-successful-completed": {
+        "title": "Percentatge de projectes reeixits finalitzats",
+        "description": "Percentatge de projectes reeixits que ja no estan en campanya"
+      },
+      "published": {
+        "title": "Projectes publicats",
+        "description": "Número de projectes publicats"
+      },
+      "received": {
+        "title": "Projectes rebuts",
+        "description": "Número de projectes rebuts per Goteo per a la seva revisió i posterior publicació"
+      },
+      "successful": {
+        "title": "Projectes reeixits",
+        "description": "Número de projectes reeixits"
+      },
+      "successful-completed": {
+        "title": "Projectes reeixits finalitzats",
+        "description": "Número de projectes reeixits que ja no estan en campanya"
+      },
+      "top10-collaborations": {
+        "title": "Top col·laboracions",
+        "description": "Els 10 projectes amb més col·laboracions no monetàries"
+      },
+      "top10-donations": {
+        "title": "Top donacions",
+        "description": "Els 10 projectes amb més donants"
+      },
+      "top10-receipts": {
+        "title": "Top recaptat",
+        "description": "Els 10 projectes amb més recaptació"
+      }
+    }
+  },
+  "community": {
+    "sections": {
+      "categories": {
+        "title": "Categories",
+        "description": "Àrees d'interès on s'ubiquen els projectes"
+      },
+      "top10-collaborators": {
+        "title": "Top col·laboracions",
+        "description": "Els 10 usuaris que més han col·laborat no monetàriament con projectes"
+      },
+      "top10-donors": {
+        "title": "Top donacions",
+        "description": "Els 10 usuaris que més diners han aportat en total"
+      },
+      "top10-multidonors": {
+        "title": "Top multi-donants",
+        "description": "Els 10 usuaris que a més projectes diferents han aportat"
+      },
+      "users": {
+        "title": "Usuaris",
+        "description": "Número total d'usuaris nous donats d'alta durant aquest període"
+      },
+      "average-donors": {
+        "title": "Mitjana de donants en projectes reeixits",
+        "description": "Número mig d'usuaris que contribueixen monetàriament en projectes que han tingut èxit"
+      },
+      "collaborators": {
+        "title": "Col·laboradors que aporten talent",
+        "description": "Número total de col·laboradors que contribueixen als projectes no monetàriament durant aquest període"
+      },
+      "creators-collaborators": {
+        "title": "Impulsors - col·laboradors",
+        "description": "Número d'impulsors que també col·laboren en altres projectes"
+      },
+      "creators-donors": {
+        "title": "Impulsors - donants",
+        "description": "Número d'impulsors que també fan aportacions monetàries en altres projectes"
+      },
+      "donors": {
+        "title": "Donants",
+        "description": "Número d'usuaris que han fet aportacions durant aquest període"
+      },
+      "donors-collaborators": {
+        "title": "Donants - col·laboradors",
+        "description": "Número de donants que també col·laboren en altres projectes"
+      },
+      "multidonors": {
+        "title": "Multi-donants",
+        "description": "Número d'usuaris que fan aportacions monetàries en més d'un projecte"
+      },
+      "paypal-donors": {
+        "title": "Donants via Paypal",
+        "description": "Donants que han fet servir el sistema de pagament de Paypal"
+      },
+      "paypal-multidonors": {
+        "title": "Multi-donants via Paypal",
+        "description": "Multi-donants que han fet servir el sistema de pagament de Paypal"
+      }
+    }
+  },
+  "rewards": {
+    "sections": {
+      "favorite-rewards": {
+        "title": "Recompenses favorites",
+        "description": "Tipus de recompenses individuals més usades en projectes reeixits"
+      },
+      "rewards-per-amount": {
+        "title": "Recompenses segons franges monetàries",
+        "description": "Percentatge de recompenses segons la quantitat monetària requerida en projectes reeixits",
+        "labels": {
+          "rewards-less-than-15": "Recompenses de menys de 15 €",
+          "rewards-between-30-100": "Recompenses entre 30 i 100 €",
+          "rewards-between-15-30": "Recompenses entre 15 i 30 €",
+          "rewards-between-100-400": "Recompenses entre 100 i 400€",
+          "rewards-more-than-400": "Recompenses de més de 400 €"
+        }
+      },
+      "percentage-reward-refusal": {
+        "title": "Renuncies a recompenses",
+        "description": "Percentatge de donants que renuncien a recompenses individuals o es conformen amb un agraïment"
+      },
+      "licenses": {
+        "title" : "Llicències més utilitzades",
+        "description" : "Tots els projectes en Goteo comparteixen el coneixement que tenen i creen amb llicències lliures/obertes"
+      }
+    }
+  }
+}

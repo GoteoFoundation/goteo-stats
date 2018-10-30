@@ -7,7 +7,8 @@
   "lang": {
     "select": "Select language",
     "en": "English",
-    "es": "Spanish"
+    "es": "Castellano",
+    "ca": "Català"
   },
   "sections": {
     "money": "Money",
@@ -34,9 +35,9 @@
         "labels": {
           "cash": "Offline revenue",
           "creditcard": "Individual contributions by credit card",
-          "fee": "Comisión en Goteo (QUITAR)",
+          "fee": "Comisión en Goteo",
           "matchfund": "Funds obtained by Fundación Goteo for multiplying individual contributions",
-          "matchfundpledge": "Total de comprometido por captaciones externas (QUITAR)",
+          "matchfundpledge": "Total de comprometido por captaciones externas",
           "paypal": "Individual contributions by Paypal"
         }
       },
@@ -53,7 +54,7 @@
         "description": "Contributions made by Paypal"
       },
       "average-failed": {
-        "title": "Failed projects",
+        "title": "Revenue for failed projects",
         "description": "Average revenue for failed projects"
       },
       "average-minimum": {

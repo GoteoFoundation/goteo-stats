@@ -36,17 +36,18 @@
     '$translateProvider',
     function ($translateProvider) {
       $translateProvider.useLoader('customLoader', {});
-      $translateProvider.registerAvailableLanguageKeys(['es', 'en'],{
+      $translateProvider.registerAvailableLanguageKeys(['es', 'en', 'ca'],{
         'en_US': 'en',
         'en_UK': 'en',
-        'es_ES': 'es'
+        'es_ES': 'es',
+        'ca_ES': 'es'
       });
     }
   ]);
   app.factory('customLoader', function ($http, $q) {
     return function (options) {
       var deferred = $q.defer();
-      var local_files = {'es': "locales/es.json", 'en': "locales/en.json"};
+      var local_files = {'es': "locales/es.json", 'en': "locales/en.json", 'ca': "locales/ca.json"};
       $http({
         method:'GET',
         url:local_files[options.key]
@@ -96,6 +97,20 @@
         "shortDays": ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
         "months": ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
         "shortMonths": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+      });
+      $rootScope.d3locales.ca = d3.locale({
+        "decimal": ",",
+        "thousands": ".",
+        "grouping": [3],
+        "currency": ["", "€"],
+        "dateTime": "%a %b %e %X %Y",
+        "date": "%d/%m/%Y",
+        "time": "%H:%M:%S",
+        "periods": ["AM", "PM"],
+        "days": ["Diumenge", "Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte"],
+        "shortDays": ["Dg", "Dl", "Dm", "Dm", "Dj", "Dv", "Ds"],
+        "months": ["Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre"],
+        "shortMonths": ["Gen", "Feb", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Des"]
       });
       $rootScope.isInt = function(value) {
         return !isNaN(value) &&

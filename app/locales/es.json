@@ -7,7 +7,8 @@
   "lang": {
     "select": "Selecciona idioma",
     "en": "English",
-    "es": "Castellano"
+    "es": "Castellano",
+    "ca": "Català"
   },
   "sections": {
     "money": "Dinero",
@@ -34,9 +35,9 @@
         "labels": {
           "cash": "Recaudación offline",
           "creditcard": "Aportaciones individuales con tarjeta de crédito",
-          "fee": "Comisión en Goteo (QUITAR)",
+          "fee": "Comisión en Goteo",
           "matchfund": "Dinero captado por Fundación Goteo para multiplicar aportes individuales",
-          "matchfundpledge": "Total de comprometido por captaciones externas (QUITAR)",
+          "matchfundpledge": "Total de comprometido por captaciones externas",
           "paypal": "Aportaciones individuales con Paypal"
         }
       },
@@ -53,7 +54,7 @@
         "description": "Donaciones realizadas por aportaciones Paypal"
       },
       "average-failed": {
-        "title": "Proyectos fallidos",
+        "title": "Recaudado por proyectos fallidos",
         "description": "Media de recaudación en proyectos que han fallado"
       },
       "average-minimum": {
